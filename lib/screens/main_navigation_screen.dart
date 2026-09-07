@@ -194,7 +194,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     // Official Adaptive & Animated Logo
                     InkWell(
                       onTap: () => _onTabTapped(0),
-                      child: AdaptiveLogo(height: isDesktop ? 34 : 26),
+                      child: AdaptiveLogoTop(height: isDesktop ? 34 : 26),
                     ),
 
                     const Spacer(),

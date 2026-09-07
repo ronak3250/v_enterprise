@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/models/product_model.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
+import 'package:vinit_enterprise/widgets/brochure_viewer.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
 
 class ProductDetailSheet extends StatelessWidget {
@@ -270,43 +271,77 @@ class ProductDetailSheet extends StatelessWidget {
 
                   const SizedBox(height: 24),
 
-                  // Request Quote Button
-                  Container(
-                    width: double.infinity,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFF0072CE), Color(0xFF0A2540)],
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xFF0072CE).withValues(alpha: 0.3),
-                          blurRadius: 12,
-                          offset: const Offset(0, 4),
+                  // Brochure & Request Quote Action Buttons
+                  Row(
+                    children: [
+                      if (product.brochurePath.isNotEmpty) ...[
+                        Expanded(
+                          child: OutlinedButton.icon(
+                            onPressed: () {
+                              BrochureViewerDialog.show(
+                                context,
+                                title: '${product.title} Brochure',
+                                brochurePath: product.brochurePath,
+                                allBrochures: ProductCatalog.allBrochurePaths,
+                              );
+                            },
+                            icon: const Icon(Icons.picture_as_pdf_rounded, color: Color(0xFF0072CE), size: 18),
+                            label: const Text(
+                              'View Brochure',
+                              style: TextStyle(
+                                fontSize: 13.5,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF0072CE),
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                              side: const BorderSide(color: Color(0xFF0072CE), width: 1.5),
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                          ),
                         ),
+                        const SizedBox(width: 12),
                       ],
-                    ),
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        QuoteRequestSheet.show(context, initialProduct: product.title);
-                      },
-                      icon: const Icon(Icons.send_rounded, color: Colors.white, size: 18),
-                      label: const Text(
-                        'Request Quote for this Product',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                      Expanded(
+                        child: Container(
+                          height: 48,
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF0072CE), Color(0xFF0A2540)],
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFF0072CE).withValues(alpha: 0.3),
+                                blurRadius: 10,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              QuoteRequestSheet.show(context, initialProduct: product.title);
+                            },
+                            icon: const Icon(Icons.send_rounded, color: Colors.white, size: 16),
+                            label: const Text(
+                              'Request Quote',
+                              style: TextStyle(
+                                fontSize: 13.5,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                          ),
                         ),
                       ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      ),
-                    ),
+                    ],
                   ),
                 ],
               ),

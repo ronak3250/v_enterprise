@@ -21,6 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const productModalClose = document.getElementById('product-modal-close');
   const productModalBody = document.getElementById('product-modal-body');
 
+  const brochureModal = document.getElementById('brochure-modal');
+  const brochureModalClose = document.getElementById('brochure-modal-close');
+  const brochureModalTitle = document.getElementById('brochure-modal-title');
+  const brochureModalImg = document.getElementById('brochure-modal-img');
+  const brochureDownloadLink = document.getElementById('brochure-download-link');
+
   const contactForm = document.getElementById('contact-form');
   const toastNotify = document.getElementById('toast-notify');
   const toastMessage = document.getElementById('toast-message');
@@ -32,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'EKOMILK Bond Ultra Pro',
       category: 'Milk Testing Equipment',
       image: 'assets/ekomilk_bond.jpg',
+      brochure: 'assets/brochures/ekomilk_ultra_pro_brochure.jpg',
       overview: 'Compact and reliable ultrasonic milk analyzer designed for fast and accurate real-time milk quality analysis.',
       specs: [
         { label: 'Measuring Parameters', value: 'Fat, SNF, Protein, Lactose, Added Water' },
@@ -54,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Digital Ultrasonic Stirrer',
       category: 'Sample Preparation Instrument',
       image: 'assets/digital_ultrasonic_stirrer.jpg',
+      brochure: 'assets/brochures/digital_ultrasonic_stirrer_brochure.jpg',
       overview: 'Digital ultrasonic stirrer designed for efficient and uniform mixing and sample homogenization using ultrasonic technology.',
       specs: [
         { label: 'Display', value: 'Digital 7-Segment Display' },
@@ -75,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Mobile Dairy App',
       category: 'Dairy Management Software',
       image: 'assets/mobile_dairy_app.jpg',
+      brochure: 'assets/brochures/mobile_dairy_app_brochure.jpg',
       overview: 'Smart mobile dairy management application for digitalizing milk collection, transportation, quality management and dairy operations.',
       specs: [
         { label: 'Platform', value: 'Mobile Application (Android & iOS)' },
@@ -95,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'EKOMILK Analyzer',
       category: 'Milk Testing Equipment',
       image: 'assets/milk_analyzer.jpg',
+      brochure: 'assets/brochures/ekomilk_bond_ultra_pro_kit_brochure.jpg',
       overview: 'Fast and efficient milk analyzer kit designed for accurate milk quality testing with a compact and user-friendly design.',
       specs: [
         { label: 'Measuring Time', value: '30 seconds' },
@@ -116,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'EKO Bond Combo',
       category: 'Milk Collection Kiosk (AMCU)',
       image: 'assets/ekomilk_bond_ultra_pro.jpg',
+      brochure: 'assets/brochures/eko_bond_combo_brochure.jpg',
       overview: 'All-in-one milk testing and collection solution combining a milk analyzer, digital ultrasonic stirrer, DPU, weighing scale and thermal printer.',
       specs: [
         { label: 'Measurement Time', value: '27 seconds' },
@@ -136,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Vinit Smart DPU',
       category: 'Data Management & Automation',
       image: 'assets/dpu.jpg',
+      brochure: 'assets/brochures/eko_bond_combo_brochure.jpg',
       overview: 'Intelligent milk collection and data processing unit designed for milk collection management, reporting, payment processing and system connectivity.',
       specs: [
         { label: 'Processor', value: '32-bit High-Performance Microcontroller' },
@@ -156,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Dairy Portal',
       category: 'Dairy Management Software',
       image: 'assets/dairy_portal.jpg',
+      brochure: 'assets/brochures/mobile_dairy_app_brochure.jpg',
       overview: 'Web-based cloud dairy management portal providing centralized real-time monitoring of milk procurement, cooperative ledgers, rate charts, and member payouts.',
       specs: [
         { label: 'Platform', value: 'Cloud Web Application (Browser & Tablet)' },
@@ -296,8 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="btn btn-primary open-quote-modal" data-product="${data.title}" style="flex: 1;">
                   <i class="fa-solid fa-paper-plane"></i> Enquire Now
                 </button>
-                <button class="btn btn-secondary download-brochure-btn" style="flex: 1;">
-                  <i class="fa-solid fa-download"></i> Download Specs
+                <button class="btn btn-secondary open-brochure-modal" data-brochure="${data.brochure || 'assets/brochures/ekomilk_ultra_pro_brochure.jpg'}" data-title="${data.title} Brochure" style="flex: 1;">
+                  <i class="fa-solid fa-file-pdf"></i> View Brochure
                 </button>
               </div>
             </div>
@@ -326,7 +339,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Quote Modal Logic
+  // 6. Brochure Modal Logic
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.open-brochure-modal');
+    if (btn) {
+      const brochurePath = btn.dataset.brochure || 'assets/brochures/ekomilk_ultra_pro_brochure.jpg';
+      const title = btn.dataset.title || 'Product Brochure Sheet';
+
+      if (brochureModalTitle) brochureModalTitle.textContent = title;
+      if (brochureModalImg) brochureModalImg.src = brochurePath;
+      if (brochureDownloadLink) brochureDownloadLink.href = brochurePath;
+
+      // Close product modal if open
+      if (productModal) productModal.classList.remove('active');
+
+      if (brochureModal) brochureModal.classList.add('active');
+    }
+  });
+
+  if (brochureModalClose) {
+    brochureModalClose.addEventListener('click', () => {
+      brochureModal.classList.remove('active');
+    });
+  }
+
+  // 7. Quote Modal Logic
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.open-quote-modal');
     if (btn) {
@@ -347,7 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Close Modals on overlay backdrop click
-  [quoteModal, productModal].forEach(modal => {
+  [quoteModal, productModal, brochureModal].forEach(modal => {
     if (modal) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {

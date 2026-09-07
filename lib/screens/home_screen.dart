@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/models/product_model.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
+import 'package:vinit_enterprise/widgets/brochure_viewer.dart';
 import 'package:vinit_enterprise/widgets/dairy_domain_ui.dart';
 import 'package:vinit_enterprise/widgets/dairy_lottie_widget.dart';
 import 'package:vinit_enterprise/widgets/innovative_equipment_graphics.dart';
@@ -15,6 +16,15 @@ class HomeScreen extends StatelessWidget {
     super.key,
     required this.onNavigateToTab,
   });
+
+  void _openCorporateBrochure(BuildContext context) {
+    BrochureViewerDialog.show(
+      context,
+      title: 'Vinit Enterprise Product Catalog Brochure',
+      brochurePath: ProductCatalog.allBrochurePaths.first,
+      allBrochures: ProductCatalog.allBrochurePaths,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +116,17 @@ class HomeScreen extends StatelessWidget {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: const Color(0xFF0072CE),
                                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                        elevation: 4,
+                                      ),
+                                    ),
+                                    ElevatedButton.icon(
+                                      onPressed: () => _openCorporateBrochure(context),
+                                      icon: const Icon(Icons.picture_as_pdf_rounded, color: Colors.white, size: 18),
+                                      label: const Text('Download Brochure', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 15)),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color(0xFF10B981),
+                                        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                                         elevation: 4,
                                       ),

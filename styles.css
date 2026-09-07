@@ -150,6 +150,32 @@ button, input, select, textarea {
   height: 64px;
 }
 
+.logo-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 46px;
+  width: auto;
+  max-width: 175px;
+  object-fit: contain;
+  transition: var(--transition);
+}
+
+.brand-logo-dark {
+  display: none;
+}
+
+body.dark-mode .brand-logo-light {
+  display: none;
+}
+
+body.dark-mode .brand-logo-dark {
+  display: block;
+}
+
 .logo {
   display: flex;
   align-items: center;

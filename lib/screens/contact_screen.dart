@@ -32,7 +32,7 @@ class _ContactScreenState extends State<ContactScreen> {
     'Mobile Dairy App',
     'EKOMILK Analyzer',
     'EKO Bond Combo',
-    'Vinit Smart DPU',
+    'Smart DPU',
     'Dairy Portal',
     'Annual Maintenance Contract (AMC)',
   ];

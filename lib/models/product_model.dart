@@ -17,6 +17,7 @@ class Product {
   final String imagePath;
   final String iconName;
   final String badgeText;
+  final String brochurePath;
   final List<ProductSpec> specs;
   final List<String> features;
   final String applications;
@@ -31,6 +32,7 @@ class Product {
     required this.imagePath,
     required this.iconName,
     required this.badgeText,
+    this.brochurePath = '',
     required this.specs,
     required this.features,
     required this.applications,
@@ -47,6 +49,15 @@ class ProductCatalog {
     'Automation & DPUs',
     'Dairy Management Software',
   ];
+
+  static const List<String> allBrochurePaths = [
+    'assets/brochures/ekomilk_ultra_pro_brochure.jpg',
+    'assets/brochures/digital_ultrasonic_stirrer_brochure.jpg',
+    'assets/brochures/ekomilk_bond_ultra_pro_kit_brochure.jpg',
+    'assets/brochures/eko_bond_combo_brochure.jpg',
+    'assets/brochures/mobile_dairy_app_brochure.jpg',
+  ];
+
   static const List<Product> sampleProducts = [
     Product(
       id: 'ekomilk-ultra-pro',
@@ -56,6 +67,7 @@ class ProductCatalog {
       imagePath: 'assets/ekomilk_bond.jpg',
       iconName: 'flask',
       badgeText: 'All-in-One Milk Testing',
+      brochurePath: 'assets/brochures/ekomilk_ultra_pro_brochure.jpg',
 
       overview:
       'Compact and reliable ultrasonic milk analyzer designed for fast and accurate real-time milk quality analysis.',
@@ -103,6 +115,7 @@ class ProductCatalog {
       imagePath: 'assets/digital_ultrasonic_stirrer.jpg',
       iconName: 'vial',
       badgeText: 'Sample Preparation',
+      brochurePath: 'assets/brochures/digital_ultrasonic_stirrer_brochure.jpg',
       overview:
       'Digital ultrasonic stirrer designed for efficient and uniform mixing and sample homogenization using ultrasonic technology.',
       specs: [
@@ -153,6 +166,7 @@ class ProductCatalog {
       imagePath: 'assets/mobile_dairy_app.jpg',
       iconName: 'mobile',
       badgeText: 'Dairy Management',
+      brochurePath: 'assets/brochures/mobile_dairy_app_brochure.jpg',
       overview:
       'Smart mobile dairy management application for digitalizing milk collection, transportation, quality management and dairy operations.',
       specs: [
@@ -203,6 +217,7 @@ class ProductCatalog {
       imagePath: 'assets/milk_analyzer.jpg',
       iconName: 'flask',
       badgeText: 'Milk Analyzer',
+      brochurePath: 'assets/brochures/ekomilk_bond_ultra_pro_kit_brochure.jpg',
       overview:
       'Fast and efficient milk analyzer kit designed for accurate milk quality testing with a compact and user-friendly design.',
       specs: [
@@ -263,6 +278,7 @@ class ProductCatalog {
       imagePath: 'assets/ekomilk_bond_ultra_pro.jpg',
       iconName: 'microchip',
       badgeText: 'All-in-One Milk Testing',
+      brochurePath: 'assets/brochures/eko_bond_combo_brochure.jpg',
       overview:
       'All-in-one milk testing and collection solution combining a milk analyzer, digital ultrasonic stirrer, DPU, weighing scale and thermal printer.',
       specs: [
@@ -311,12 +327,13 @@ class ProductCatalog {
 
     Product(
       id: 'vinit-smart-dpu',
-      title: 'Vinit Smart DPU',
+      title: 'Smart DPU',
       category: 'Automation & DPUs',
       categoryId: 'Automation & DPUs',
       imagePath: 'assets/dpu.jpg',
       iconName: 'database',
       badgeText: 'Smart DPU',
+      brochurePath: 'assets/brochures/eko_bond_combo_brochure.jpg',
       overview:
       'Intelligent milk collection and data processing unit designed for milk collection management, reporting, payment processing and system connectivity.',
       specs: [
@@ -371,6 +388,7 @@ class ProductCatalog {
       imagePath: 'assets/dairy_portal.jpg',
       iconName: 'cloud',
       badgeText: 'Dairy Cloud Portal',
+      brochurePath: 'assets/brochures/mobile_dairy_app_brochure.jpg',
       overview:
           'Web-based cloud dairy management portal providing centralized real-time monitoring of milk procurement, cooperative ledgers, rate charts, and member payouts.',
       specs: [
