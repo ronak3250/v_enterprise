@@ -28,106 +28,148 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Product Database for Modals
   const productData = {
-    'ekomilk-bond': {
-      title: 'EKOMILK Bond',
+    'ekomilk-ultra-pro': {
+      title: 'EKOMILK Bond Ultra Pro',
       category: 'Milk Testing Equipment',
       image: 'assets/ekomilk_bond.jpg',
-      overview: 'Vinit Enterprise EKOMILK Bond is a compact, high-speed ultrasonic milk analyzer with integrated sample chamber and LCD display for accurate, non-chemical Fat & SNF analysis.',
+      overview: 'Compact and reliable ultrasonic milk analyzer designed for fast and accurate real-time milk quality analysis.',
       specs: [
-        { label: 'Measuring Speed', value: '30 - 40 seconds per sample' },
-        { label: 'Parameters', value: 'Fat, SNF, Density, Added Water, Protein' },
-        { label: 'Sample Volume', value: '10 mL to 15 mL' },
-        { label: 'Power Supply', value: '12V DC / 220V AC with Battery Backup' },
-        { label: 'Connectivity', value: 'RS232 / USB Serial Output' }
+        { label: 'Measuring Parameters', value: 'Fat, SNF, Protein, Lactose, Added Water' },
+        { label: 'Measurement Time', value: 'Less than 30 seconds' },
+        { label: 'Average Speed', value: 'Up to 180 samples/hour' },
+        { label: 'Connectivity', value: 'RS232' },
+        { label: 'Display', value: 'Color LCD Display' }
       ],
       features: [
-        'Fast non-chemical ultrasonic measurement probe',
-        'User-friendly keypad with clear LCD display',
-        'Built-in sample lid chamber for clean operation',
-        'Direct interface with scales and printers'
+        'Double Sensor Technology',
+        'Accurate & Reliable Results',
+        'Color LCD Display',
+        'Compact & Portable Design',
+        'Low Power Consumption'
       ],
-      applications: 'Milk Collection Centers, Dairy Cooperatives, Raw Milk Purchasing Facilities.'
-    },
-
-    'ekomilk-bond-ultra-pro': {
-      title: 'EKOMILK Bond Ultra Pro',
-      category: 'Integrated Collection Kiosk (AMCU)',
-      image: 'assets/ekomilk_bond_ultra_pro.jpg',
-      overview: 'The EKOMILK Bond Ultra Pro is an all-in-one stainless steel Automated Milk Collection Unit (AMCU) integrating the milk analyzer, ultrasonic stirrer, data processor, weight display, and printer interface.',
-      specs: [
-        { label: 'Cabinet Material', value: 'SS-304 Heavy Duty Industrial Stainless Steel' },
-        { label: 'Integrated Modules', value: 'Milk Analyzer + Ultrasonic Stirrer + Smart DPU + Weight Display' },
-        { label: 'Display Panel', value: 'Multi-line LCD & Digital LED Display System' },
-        { label: 'Keypad', value: 'Industrial Numeric Keypad with Function Keys' },
-        { label: 'Connectivity', value: 'GPRS Cloud Gateway, USB, RS232 Interface' }
-      ],
-      features: [
-        'All-in-one milk intake and quality testing workstation',
-        'Integrated ultrasonic stirrer probe for sample de-aeration',
-        'Simultaneous multi-parameter readout and receipt printing',
-        'Heavy-duty stainless steel splash-proof build'
-      ],
-      applications: 'Village Milk Collection Centers (AMCU), Dairy Cooperatives, High-Volume Procurement Plants.'
+      applications: 'Milk Collection Centers, Dairy Cooperatives, Milk Testing Laboratories.'
     },
 
     'digital-ultrasonic-stirrer': {
       title: 'Digital Ultrasonic Stirrer',
       category: 'Sample Preparation Instrument',
       image: 'assets/digital_ultrasonic_stirrer.jpg',
-      overview: 'Digital ultrasonic sample stirrer engineered to eliminate trapped air bubbles in raw milk before testing, ensuring accurate fat and SNF analyzer readings.',
+      overview: 'Digital ultrasonic stirrer designed for efficient and uniform mixing and sample homogenization using ultrasonic technology.',
       specs: [
-        { label: 'Display', value: '2-Digit RED LED Digital Display' },
-        { label: 'Timer Control', value: '5 to 10 Seconds Auto-Timer Control' },
-        { label: 'Probe Material', value: 'Titanium / SS-316 Ultrasonic Transducer' },
-        { label: 'Operating Buttons', value: 'START/STOP & UP/DOWN Timer Adjustment' }
+        { label: 'Display', value: 'Digital 7-Segment Display' },
+        { label: 'Control', value: 'Start/Stop, Up/Down' },
+        { label: 'Stirring Technology', value: 'Ultrasonic' },
+        { label: 'Power Supply', value: '220V AC, 50Hz' }
       ],
       features: [
-        'High efficiency ultrasonic cavitation for sample de-aeration',
-        'Bright 2-digit LED timer display',
-        'Safety warning & dry-run operation protection',
-        'Powder-coated stainless housing with beaker holder'
+        'Ultrasonic Mixing',
+        'Digital Control',
+        'Reliable & Durable',
+        'Easy Operation',
+        'Adjustable Speed / Power'
       ],
-      applications: 'Milk Testing Counters, Dairy Laboratories, Quality Control Facilities.'
+      applications: 'Laboratories, Research Institutes, Food & Beverage, Quality Control.'
     },
 
-    'milk-analyzer': {
-      title: 'Milk Analyzer',
+    'mobile-dairy-app': {
+      title: 'Mobile Dairy App',
+      category: 'Dairy Management Software',
+      image: 'assets/mobile_dairy_app.jpg',
+      overview: 'Smart mobile dairy management application for digitalizing milk collection, transportation, quality management and dairy operations.',
+      specs: [
+        { label: 'Platform', value: 'Mobile Application (Android & iOS)' },
+        { label: 'Connectivity', value: 'Bluetooth & Cloud Sync' },
+        { label: 'Milk Testing', value: 'FAT, SNF, CLR & Protein Integration' },
+        { label: 'Notifications', value: 'SMS & Instant App Alerts' }
+      ],
+      features: [
+        'Quick registration for Farmers, VLC, BMC & Chilling Centers',
+        'Milk Collection Management & Bluetooth Integration',
+        'Automated milk rate calculation & slip printing',
+        'Transport & Driver Management with Real-time Reports'
+      ],
+      applications: 'Farmers, Village Collection Centers, BMCs, VLCs, Chilling Centers and Milk Unions.'
+    },
+
+    'ekomilk-bond-ultra-pro-kit': {
+      title: 'EKOMILK Analyzer',
       category: 'Milk Testing Equipment',
       image: 'assets/milk_analyzer.jpg',
-      overview: 'Multi-parameter EKOMILK Ultra Pro ultrasonic raw milk analyzer for rapid measurement of Fat, SNF, Density, Added Water, and Protein.',
+      overview: 'Fast and efficient milk analyzer kit designed for accurate milk quality testing with a compact and user-friendly design.',
       specs: [
-        { label: 'Measuring Parameters', value: 'FAT%, SNF%, DENSITY, ADDED WATER%, PROTEIN%' },
-        { label: 'Measuring Speed', value: '30 - 45 seconds per sample' },
-        { label: 'Intake System', value: 'Automatic Peristaltic Intake Pump' },
-        { label: 'Display', value: '2-Line Blue Backlit Graphic LCD Display' }
+        { label: 'Measuring Time', value: '30 seconds' },
+        { label: 'Fat Range', value: '0.5% to 12%' },
+        { label: 'SNF Range', value: '6% to 12%' },
+        { label: 'Added Water', value: '0% to 60%' },
+        { label: 'Connectivity', value: 'RS232 & USB Serial Port' }
       ],
       features: [
-        'Measures 5 key milk composition parameters in seconds',
-        'Automatic peristaltic intake pump',
-        'Rugged compact metal chassis with top handles',
-        'RS232 serial interface for DPU / Printer'
+        'Fast 30-second analysis',
+        'Simple and lightweight design',
+        'No acid or chemicals required',
+        'RS232 & USB data collection system'
       ],
-      applications: 'Raw Milk Collection Counters, Dairy Cooperatives, Testing Laboratories.'
+      applications: 'Milk Collection Centers, Dairy Cooperatives, Milk Testing Facilities.'
     },
 
-    'dpu': {
-      title: 'Data Processing Unit (DPU)',
-      category: 'Data Management & Automation',
-      image: 'assets/dpu.jpg',
-      overview: 'Smart data processing terminal with built-in thermal receipt printer, graphic LCD, and tactile keyboard designed for daily shift intake logging and member receipts.',
+    'eko-bond-combo': {
+      title: 'EKO Bond Combo',
+      category: 'Milk Collection Kiosk (AMCU)',
+      image: 'assets/ekomilk_bond_ultra_pro.jpg',
+      overview: 'All-in-one milk testing and collection solution combining a milk analyzer, digital ultrasonic stirrer, DPU, weighing scale and thermal printer.',
       specs: [
-        { label: 'Printer Type', value: 'Built-in High Speed Thermal Slip Printer' },
-        { label: 'Display', value: 'Wide Graphic LCD Display Panel' },
-        { label: 'Keyboard', value: 'Tactile ABC/Numeric Keypad (1-9, PRINT, CANCEL, MENU, ENTER)' },
-        { label: 'Memory', value: 'High Capacity Non-Volatile Transaction Storage' }
+        { label: 'Measurement Time', value: '27 seconds' },
+        { label: 'Integrated System', value: 'Milk Analyzer + Stirrer + DPU + Scale + Printer' },
+        { label: 'Data Storage', value: 'Up to 1000 customers per shift' },
+        { label: 'Connectivity', value: 'SIM & Wi-Fi Cloud Gateway' }
       ],
       features: [
-        'Built-in thermal receipt printer for instant milk collection slips',
-        'Automatic rate chart payment calculation based on Fat/SNF',
-        'Multi-lingual display support (English, Hindi, Regional)',
-        'VINIT Enterprise custom branded heavy-duty console'
+        '27-second milk measurement',
+        'Built-in ultrasonic stirrer & integrated DPU',
+        'Integrated weighing scale & cloud connectivity',
+        'SIM-based data transfer & SMS Alerts'
       ],
-      applications: 'Cooperative Milk Societies, Chilling Centers, Milk Purchasing Units.'
+      applications: 'Village Milk Collection Centers, Dairy Cooperatives, Milk Unions, BMCs.'
+    },
+
+    'vinit-smart-dpu': {
+      title: 'Vinit Smart DPU',
+      category: 'Data Management & Automation',
+      image: 'assets/dpu.jpg',
+      overview: 'Intelligent milk collection and data processing unit designed for milk collection management, reporting, payment processing and system connectivity.',
+      specs: [
+        { label: 'Processor', value: '32-bit High-Performance Microcontroller' },
+        { label: 'Display', value: '5-inch Intelligent Touch Display' },
+        { label: 'Connectivity', value: 'Wi-Fi & GSM' },
+        { label: 'Printer', value: 'Built-in Thermal Receipt Printer' }
+      ],
+      features: [
+        'Milk Collection Management & Shift Summary',
+        'USB / Server Data Exchange & Dispatch Notes',
+        'Payment Cycle Management & Real-time Monitoring',
+        'Built-in Thermal Printer & Secure Data Storage'
+      ],
+      applications: 'Cooperative Milk Societies, Milk Collection Centers, Chilling Centers.'
+    },
+
+    'dairy-portal': {
+      title: 'Dairy Portal',
+      category: 'Dairy Management Software',
+      image: 'assets/dairy_portal.jpg',
+      overview: 'Web-based cloud dairy management portal providing centralized real-time monitoring of milk procurement, cooperative ledgers, rate charts, and member payouts.',
+      specs: [
+        { label: 'Platform', value: 'Cloud Web Application (Browser & Tablet)' },
+        { label: 'Synchronization', value: 'Real-Time Sync with AMCUs, DPUs & Mobile Apps' },
+        { label: 'Multi-Society', value: 'Multi-Branch, Union & BMC Hierarchy Support' },
+        { label: 'Security', value: 'Encrypted Cloud Storage & Role-Based Access' }
+      ],
+      features: [
+        'Real-time cloud dashboard for milk procurement analytics',
+        'Automated society ledger management & farmer payment calculations',
+        'Remote rate chart manager & instant push to collection centers',
+        'Comprehensive analytical reports with Excel & PDF export'
+      ],
+      applications: 'Dairy Unions, Cooperative Societies, Bulk Milk Cooler (BMC) Hubs, Milk Processing Plants.'
     }
   };
 

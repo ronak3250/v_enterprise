@@ -27,11 +27,13 @@ class _ContactScreenState extends State<ContactScreen> {
 
   final List<String> _requirementOptions = [
     'Select Equipment / Service',
-    'EKOMILK Bond',
     'EKOMILK Bond Ultra Pro',
     'Digital Ultrasonic Stirrer',
-    'Milk Analyzer',
-    'Data Processing Unit (DPU)',
+    'Mobile Dairy App',
+    'EKOMILK Analyzer',
+    'EKO Bond Combo',
+    'Vinit Smart DPU',
+    'Dairy Portal',
     'Annual Maintenance Contract (AMC)',
   ];
 

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
 
+import 'adaptive_logo.dart';
+
 class AppFooter extends StatelessWidget {
   final Function(int)? onNavigateToTab;
 
@@ -40,32 +42,7 @@ class AppFooter extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Official Company Logo (with Light container for dark mode contrast)
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.1),
-                                blurRadius: 8,
-                              ),
-                            ],
-                          ),
-                          child: Image.asset(
-                            'assets/company_logo.jpeg',
-                            height: 42,
-                            fit: BoxFit.contain,
-                            errorBuilder: (ctx, e, st) => const Text(
-                              'VINIT ENTERPRISE',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF0072CE),
-                              ),
-                            ),
-                          ),
-                        ),
+                        AdaptiveLogo(),
                         const SizedBox(height: 14),
                         const Text(
                           'Precision-engineered milk testing instruments, automated milk collection units, and electronic weighing scales designed for maximum efficiency and durability.',
@@ -76,15 +53,15 @@ class AppFooter extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        Row(
-                          children: [
-                            _buildSocialBtn(Icons.business),
-                            const SizedBox(width: 10),
-                            _buildSocialBtn(Icons.chat_bubble_outline),
-                            const SizedBox(width: 10),
-                            _buildSocialBtn(Icons.play_arrow_outlined),
-                          ],
-                        ),
+                        // Row(
+                        //   children: [
+                        //     _buildSocialBtn(Icons.business),
+                        //     const SizedBox(width: 10),
+                        //     _buildSocialBtn(Icons.chat_bubble_outline),
+                        //     const SizedBox(width: 10),
+                        //     _buildSocialBtn(Icons.play_arrow_outlined),
+                        //   ],
+                        // ),
                       ],
                     ),
                   ),
@@ -199,17 +176,6 @@ class AppFooter extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildSocialBtn(IconData icon) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.1),
-        shape: BoxShape.circle,
-      ),
-      child: Icon(icon, color: Colors.white, size: 16),
     );
   }
 

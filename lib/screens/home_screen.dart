@@ -102,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                                     ElevatedButton.icon(
                                       onPressed: () => QuoteRequestSheet.show(context),
                                       icon: const Icon(Icons.send_rounded, color: Colors.white, size: 18),
-                                      label: const Text('Get Free Quote & Pricing', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 15)),
+                                      label: const Text('Get Quote & Pricing', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 15)),
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: const Color(0xFF0072CE),
                                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
