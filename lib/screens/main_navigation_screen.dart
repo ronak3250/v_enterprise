@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vinit_enterprise/providers/theme_provider.dart';
@@ -27,7 +28,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   }
 
   Future<void> _openWhatsApp() async {
-    const phone = "919876543210";
+    const phone = "919173251191";
     final text = Uri.encodeComponent(
       "Hello Vinit Enterprise team, I would like to inquire about your milk testing and dairy equipment.",
     );
@@ -78,13 +79,13 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InkWell(
-                          onTap: () => _launchUrl('tel:+919876543210'),
+                          onTap: () => _launchUrl('tel:+919173251191'),
                           child: Row(
                             children: [
                               const Icon(Icons.phone, color: Color(0xFF0072CE), size: 12),
                               const SizedBox(width: 4),
                               Text(
-                                '+91 98765 43210',
+                                '+91 91732 51191',
                                 style: TextStyle(
                                   color: isDark ? Colors.white : const Color(0xFF0A2540),
                                   fontSize: 11,
@@ -118,7 +119,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                             const Icon(Icons.access_time, color: Color(0xFF0072CE), size: 12),
                             const SizedBox(width: 4),
                             Text(
-                              'Mon - Sat: 9:00 AM - 6:30 PM',
+                              'Mon - Fri: 10:00 AM - 6:00 PM',
                               style: TextStyle(
                                 color: isDark ? Colors.white70 : const Color(0xFF475569),
                                 fontSize: 11,
@@ -331,7 +332,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         onPressed: _openWhatsApp,
         backgroundColor: const Color(0xFF25D366),
         elevation: 4,
-        child: const Icon(Icons.chat_bubble, color: Colors.white, size: 26),
+        child:  const   FaIcon(
+          FontAwesomeIcons.whatsapp,
+          color: Colors.white,
+          size: 26,
+        ),
       ),
 
     );

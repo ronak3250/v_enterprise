@@ -132,7 +132,7 @@ class HomeScreen extends StatelessWidget {
                         // Right Hero Equipment Graphic Showcase
                         _buildResponsiveFlexChild(
                           isWide: isWide,
-                          flex: 5,
+                          flex: 2,
                           child: FadeSlideTransition(
                             delay: const Duration(milliseconds: 200),
                             child: FloatingAnimation(
@@ -191,8 +191,7 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(height: 14),
-                                  const AnimatedMilkAnalyzerGauge(),
+                                  // const AnimatedMilkAnalyzerGauge(),
                                 ],
                               ),
                             ),
@@ -305,7 +304,7 @@ class HomeScreen extends StatelessWidget {
                             OutlinedButton.icon(
                               onPressed: () => onNavigateToTab(1),
                               icon: const Icon(Icons.arrow_forward, size: 16, color: Color(0xFF0072CE)),
-                              label: const Text('Learn More About Us ->', style: TextStyle(color: Color(0xFF0072CE), fontWeight: FontWeight.bold)),
+                              label: const Text('Learn More', style: TextStyle(color: Color(0xFF0072CE), fontWeight: FontWeight.bold)),
                               style: OutlinedButton.styleFrom(
                                 side: const BorderSide(color: Color(0xFF0072CE)),
                                 padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),

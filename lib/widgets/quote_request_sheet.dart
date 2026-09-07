@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vinit_enterprise/widgets/toast_service.dart';
 
 class QuoteRequestSheet extends StatefulWidget {
@@ -66,13 +67,58 @@ class _QuoteRequestSheetState extends State<QuoteRequestSheet> {
     super.dispose();
   }
 
-  void _submitForm() {
+  Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      Navigator.of(context).pop();
-      ToastService.showToast(
-        context,
-        'Thank you ${_nameController.text}! Your quote request for "${_productController.text}" has been received by Vinit Enterprise.',
-      );
+      final productName = _productController.text.trim();
+      final customerName = _nameController.text.trim();
+      final phone = _phoneController.text.trim();
+      final email = _emailController.text.trim();
+      final qty = _qtyController.text.trim().isEmpty ? '1' : _qtyController.text.trim();
+      final notes = _notesController.text.trim();
+      final nowStr = DateTime.now().toString().split('.')[0];
+
+      final emailBody = '''
+EQUIPMENT QUOTE REQUEST
+Vinit Enterprise - Dairy Equipment & Testing Solutions
+--------------------------------------------------
+
+PRODUCT / SERVICE REQUIRED:
+• Product Name: $productName
+• Quantity: $qty Unit(s)
+
+CUSTOMER CONTACT INFORMATION:
+• Full Name / Business: $customerName
+• Phone Number: $phone
+• Email Address: ${email.isEmpty ? 'Not Provided' : email}
+
+REQUIREMENT DETAILS & DELIVERY LOCATION:
+• Details / Location: ${notes.isEmpty ? 'None specified' : notes}
+
+--------------------------------------------------
+Submitted on: $nowStr
+Platform: Vinit Enterprise Mobile/Web Portal
+--------------------------------------------------
+''';
+
+      final subjectStr = '[EQUIPMENT QUOTE REQUEST] $productName - $customerName';
+      final mailtoUrl = 'mailto:info@vinitenterprise.com?subject=${Uri.encodeComponent(subjectStr)}&body=${Uri.encodeComponent(emailBody)}';
+      final Uri emailUri = Uri.parse(mailtoUrl);
+
+      try {
+        if (await canLaunchUrl(emailUri)) {
+          await launchUrl(emailUri);
+        }
+      } catch (e) {
+        debugPrint('Could not launch mail client: $e');
+      }
+
+      if (mounted) {
+        Navigator.of(context).pop();
+        ToastService.showToast(
+          context,
+          'Thank you $customerName! Quote request sent to info@vinitenterprise.com',
+        );
+      }
     }
   }
 

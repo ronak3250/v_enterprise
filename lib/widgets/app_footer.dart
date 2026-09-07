@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
 
 class AppFooter extends StatelessWidget {
@@ -8,6 +9,13 @@ class AppFooter extends StatelessWidget {
     super.key,
     this.onNavigateToTab,
   });
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -145,8 +153,8 @@ class AppFooter extends StatelessWidget {
                         ),
                         const SizedBox(height: 14),
                         _buildContactRow(Icons.location_on_outlined, '[Vinit Enterprise Industrial Estate Address]'),
-                        _buildContactRow(Icons.phone_outlined, '+91 98765 43210'),
-                        _buildContactRow(Icons.email_outlined, 'sales@vinitenterprise.com'),
+                        _buildContactRow(Icons.phone_outlined, '+91 91732 51191', onTap: () => _launchUrl('tel:+919173251191')),
+                        _buildContactRow(Icons.email_outlined, 'sales@vinitenterprise.com', onTap: () => _launchUrl('mailto:sales@vinitenterprise.com')),
                         const SizedBox(height: 16),
                         ElevatedButton.icon(
                           onPressed: () => QuoteRequestSheet.show(context),
@@ -218,21 +226,24 @@ class AppFooter extends StatelessWidget {
     );
   }
 
-  Widget _buildContactRow(IconData icon, String text) {
+  Widget _buildContactRow(IconData icon, String text, {VoidCallback? onTap}) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, color: const Color(0xFF0072CE), size: 16),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 12.5, color: Colors.grey),
+      child: InkWell(
+        onTap: onTap,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(icon, color: const Color(0xFF0072CE), size: 16),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                text,
+                style: const TextStyle(fontSize: 12.5, color: Colors.grey),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

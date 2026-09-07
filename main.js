@@ -340,8 +340,41 @@ document.addEventListener('DOMContentLoaded', () => {
   if (quoteForm) {
     quoteForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      const product = document.getElementById('quote-product-name')?.value || 'General Equipment Enquiry';
+      const name = document.getElementById('quote-name')?.value || 'Valued Customer';
+      const phone = document.getElementById('quote-phone')?.value || 'N/A';
+      const email = document.getElementById('quote-email')?.value || 'Not Provided';
+      const qty = document.getElementById('quote-qty')?.value || '1';
+      const notes = document.getElementById('quote-notes')?.value || 'None specified';
+      const timestamp = new Date().toLocaleString();
+
+      const bodyText = `EQUIPMENT QUOTE REQUEST
+Vinit Enterprise - Dairy Equipment & Testing Solutions
+--------------------------------------------------
+
+PRODUCT / SERVICE REQUIRED:
+• Product Name: ${product}
+• Quantity: ${qty} Unit(s)
+
+CUSTOMER CONTACT INFORMATION:
+• Full Name / Business: ${name}
+• Phone Number: ${phone}
+• Email Address: ${email}
+
+REQUIREMENT DETAILS & DELIVERY LOCATION:
+• Details / Location: ${notes}
+
+--------------------------------------------------
+Submitted on: ${timestamp}
+Platform: Vinit Enterprise Web Portal
+--------------------------------------------------`;
+
+      const subject = `[EQUIPMENT QUOTE REQUEST] ${product} - ${name}`;
+      const mailtoUrl = `mailto:info@vinitenterprise.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+      
       quoteModal.classList.remove('active');
-      showToast('Thank you! Your quote request has been submitted to Vinit Enterprise.');
+      window.location.href = mailtoUrl;
+      showToast(`Thank you ${name}! Opening email client to send quote request to info@vinitenterprise.com`);
       quoteForm.reset();
     });
   }
@@ -349,7 +382,40 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      showToast('Enquiry Sent! Our technical team will get back to you shortly.');
+      const name = document.getElementById('contact-name')?.value || 'Valued Customer';
+      const company = document.getElementById('contact-company')?.value || 'N/A';
+      const phone = document.getElementById('contact-phone')?.value || 'N/A';
+      const email = document.getElementById('contact-email')?.value || 'N/A';
+      const requirement = document.getElementById('contact-product')?.value || 'General Enquiry';
+      const details = document.getElementById('contact-message')?.value || 'N/A';
+      const timestamp = new Date().toLocaleString();
+
+      const bodyText = `SALES & TECHNICAL INQUIRY
+Vinit Enterprise - Dairy Equipment & Testing Solutions
+--------------------------------------------------
+
+INQUIRY CATEGORY:
+• Requirement: ${requirement}
+
+CONTACT INFORMATION:
+• Full Name: ${name}
+• Company / Dairy Name: ${company}
+• Phone Number: ${phone}
+• Email Address: ${email}
+
+REQUIREMENT SPECIFICATIONS & MESSAGE:
+• Details: ${details}
+
+--------------------------------------------------
+Submitted on: ${timestamp}
+Platform: Vinit Enterprise Web Portal
+--------------------------------------------------`;
+
+      const subject = `[SALES INQUIRY] ${requirement} - ${name}`;
+      const mailtoUrl = `mailto:sales@vinitenterprise.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+
+      window.location.href = mailtoUrl;
+      showToast(`Enquiry Sent! Opening email client to send sales inquiry to sales@vinitenterprise.com`);
       contactForm.reset();
     });
   }

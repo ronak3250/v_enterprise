@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
-import 'package:vinit_enterprise/widgets/dairy_lottie_widget.dart';
 import 'package:vinit_enterprise/widgets/toast_service.dart';
 
 class ContactScreen extends StatefulWidget {
@@ -47,20 +46,65 @@ class _ContactScreenState extends State<ContactScreen> {
     super.dispose();
   }
 
-  void _submitForm() {
+  Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      ToastService.showToast(
-        context,
-        'Thank you ${_nameController.text}! Your enquiry has been submitted to Vinit Enterprise.',
-      );
-      _nameController.clear();
-      _companyController.clear();
-      _phoneController.clear();
-      _emailController.clear();
-      _detailsController.clear();
-      setState(() {
-        _selectedRequirement = 'Select Equipment / Service';
-      });
+      final name = _nameController.text.trim();
+      final company = _companyController.text.trim();
+      final phone = _phoneController.text.trim();
+      final email = _emailController.text.trim();
+      final requirement = _selectedRequirement;
+      final details = _detailsController.text.trim();
+      final nowStr = DateTime.now().toString().split('.')[0];
+
+      final emailBody = '''
+SALES & TECHNICAL INQUIRY
+Vinit Enterprise - Dairy Equipment & Testing Solutions
+--------------------------------------------------
+
+INQUIRY CATEGORY:
+• Requirement: $requirement
+
+CONTACT INFORMATION:
+• Full Name: $name
+• Company / Dairy Name: ${company.isEmpty ? 'N/A' : company}
+• Phone Number: $phone
+• Email Address: $email
+
+REQUIREMENT SPECIFICATIONS & MESSAGE:
+• Details: $details
+
+--------------------------------------------------
+Submitted on: $nowStr
+Platform: Vinit Enterprise Mobile/Web Portal
+--------------------------------------------------
+''';
+
+      final subjectStr = '[SALES INQUIRY] $requirement - $name';
+      final mailtoUrl = 'mailto:sales@vinitenterprise.com?subject=${Uri.encodeComponent(subjectStr)}&body=${Uri.encodeComponent(emailBody)}';
+      final Uri emailUri = Uri.parse(mailtoUrl);
+
+      try {
+        if (await canLaunchUrl(emailUri)) {
+          await launchUrl(emailUri);
+        }
+      } catch (e) {
+        debugPrint('Could not launch mail client: $e');
+      }
+
+      if (mounted) {
+        ToastService.showToast(
+          context,
+          'Thank you $name! Sales enquiry sent to sales@vinitenterprise.com',
+        );
+        _nameController.clear();
+        _companyController.clear();
+        _phoneController.clear();
+        _emailController.clear();
+        _detailsController.clear();
+        setState(() {
+          _selectedRequirement = 'Select Equipment / Service';
+        });
+      }
     }
   }
 
@@ -88,13 +132,13 @@ class _ContactScreenState extends State<ContactScreen> {
             child: FadeSlideTransition(
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 90,
-                    width: 90,
-                    child: DairyLottieWidget(
-                      assetName: 'assets/contact_support_animation.json',
-                    ),
-                  ),
+                  // const SizedBox(
+                  //   height: 90,
+                  //   width: 90,
+                  //   child: DairyLottieWidget(
+                  //     assetName: 'assets/contact_support_animation.json',
+                  //   ),
+                  // ),
                   const SizedBox(height: 12),
                   Text(
                     "Let's Build the Right Dairy Solution for You",
@@ -175,9 +219,9 @@ class _ContactScreenState extends State<ContactScreen> {
                               _buildInfoTile(
                                 Icons.phone_outlined,
                                 'Phone & WhatsApp',
-                                '+91 [Phone Number / WhatsApp Contact]\n+91 [Sales Support Line]',
+                                '+91 9173251191',
                                 isDark,
-                                onTap: () => _launchUrl('tel:+919876543210'),
+                                onTap: () => _launchUrl('tel:+91 91732 51191'),
                               ),
                               const SizedBox(height: 16),
                               _buildInfoTile(
@@ -191,7 +235,7 @@ class _ContactScreenState extends State<ContactScreen> {
                               _buildInfoTile(
                                 Icons.access_time_outlined,
                                 'Business Hours',
-                                'Monday - Saturday: 9:00 AM - 6:30 PM\nSunday: Closed',
+                                'Monday - Friday: 10:00 AM - 6:00 PM\n Saturday,Sunday: Closed',
                                 isDark,
                               ),
                             ],

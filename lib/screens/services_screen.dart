@@ -29,13 +29,13 @@ class ServicesScreen extends StatelessWidget {
             child: FadeSlideTransition(
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 100,
-                    width: 100,
-                    child: DairyLottieWidget(
-                      assetName: 'assets/services_maintenance_animation.json',
-                    ),
-                  ),
+                  // const SizedBox(
+                  //   height: 100,
+                  //   width: 100,
+                  //   child: DairyLottieWidget(
+                  //     assetName: 'assets/services_maintenance_animation.json',
+                  //   ),
+                  // ),
                   const SizedBox(height: 12),
                   Text(
                     'Comprehensive Milk Testing & Technical Support Services',

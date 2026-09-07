@@ -3,7 +3,6 @@ import 'package:vinit_enterprise/models/product_model.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
 import 'package:vinit_enterprise/widgets/dairy_domain_ui.dart';
-import 'package:vinit_enterprise/widgets/dairy_lottie_widget.dart';
 import 'package:vinit_enterprise/widgets/product_detail_sheet.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
 
@@ -46,13 +45,13 @@ class _ProductsScreenState extends State<ProductsScreen> {
             child: FadeSlideTransition(
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 90,
-                    width: 90,
-                    child: DairyLottieWidget(
-                      assetName: 'assets/products_catalog_animation.json',
-                    ),
-                  ),
+                  // const SizedBox(
+                  //   height: 90,
+                  //   width: 90,
+                  //   child: DairyLottieWidget(
+                  //     assetName: 'assets/products_catalog_animation.json',
+                  //   ),
+                  // ),
                   const SizedBox(height: 12),
                   Text(
                     'Dairy Equipment Designed for Accuracy and Efficiency',

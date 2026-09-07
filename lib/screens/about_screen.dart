@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
-import 'package:vinit_enterprise/widgets/dairy_lottie_widget.dart';
 
 class AboutScreen extends StatelessWidget {
   final Function(int)? onNavigateToTab;
@@ -28,13 +27,13 @@ class AboutScreen extends StatelessWidget {
             child: FadeSlideTransition(
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 90,
-                    width: 90,
-                    child: DairyLottieWidget(
-                      assetName: 'assets/about_factory_animation.json',
-                    ),
-                  ),
+                  // const SizedBox(
+                  //   height: 90,
+                  //   width: 90,
+                  //   child: DairyLottieWidget(
+                  //     assetName: 'assets/about_factory_animation.json',
+                  //   ),
+                  // ),
                   const SizedBox(height: 12),
                   Text(
                     'Engineering Reliable Solutions for the Dairy Industry',
