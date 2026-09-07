@@ -137,7 +137,7 @@ class AppFooter extends StatelessWidget {
                           onPressed: () => QuoteRequestSheet.show(context),
                           icon: const Icon(Icons.send_rounded, size: 14, color: Colors.white),
                           label: const Text(
-                            'Request a Quote ->',
+                            'Request a Quote',
                             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
                           ),
                           style: ElevatedButton.styleFrom(

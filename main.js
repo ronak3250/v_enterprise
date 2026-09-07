@@ -57,6 +57,33 @@ document.addEventListener('DOMContentLoaded', () => {
       applications: 'Milk Collection Centers, Dairy Cooperatives, Milk Testing Laboratories.'
     },
 
+    'platform-weighing-scale': {
+      title: 'Platform Weighing Scale',
+      category: 'Heavy Duty Weighing System',
+      image: 'assets/platform_weighing_scale.jpg',
+      brochure: 'assets/brochures/platform_weighing_scale_brochure.jpg',
+      overview: 'Built for industrial and commercial use, our platform weighing scale combines durability with precision to deliver accurate weight measurements every time.',
+      specs: [
+        { label: 'Platform Size (L x W)', value: 'Customizable (As per requirement)' },
+        { label: 'Capacity', value: '50 kg – 500 kg (Available in multiple ranges)' },
+        { label: 'Accuracy', value: '± 0.05% – 0.1% FS' },
+        { label: 'Display', value: 'LED / LCD (Red / White)' },
+        { label: 'Power Supply', value: 'AC 220V ±10%, 50Hz (or Rechargeable Battery)' },
+        { label: 'Material', value: 'MS Frame + SS Platform' },
+        { label: 'Load Cell', value: 'High Precision Load Cell' },
+        { label: 'Operating Temp', value: '-10°C to 45°C' }
+      ],
+      features: [
+        'High Accuracy — Reliable and consistent weighing results',
+        'Sturdy Construction — Durable MS frame with stainless steel top',
+        'High Load Capacity — Suitable for 50 kg to 500 kg industrial applications',
+        'Digital Indicator — Clear LED display for easy reading & operation',
+        'Adjustable Feet — Ensures stability on uneven surfaces',
+        'Low Power Consumption — Energy efficient with long working hours'
+      ],
+      applications: 'Manufacturing, Warehousing, Logistics, Agriculture, Retail & Dairy Milk Collection Centers.'
+    },
+
     'digital-ultrasonic-stirrer': {
       title: 'Digital Ultrasonic Stirrer',
       category: 'Sample Preparation Instrument',

@@ -45,6 +45,7 @@ class ProductCatalog {
     'All Products',
     'Milk Analyzer',
     'Milk Collection & AMCU',
+    'Platform Weighing Scale',
     'Sample Preparation',
     'Automation & DPUs',
     'Dairy Management Software',
@@ -52,6 +53,7 @@ class ProductCatalog {
 
   static const List<String> allBrochurePaths = [
     'assets/brochures/ekomilk_ultra_pro_brochure.jpg',
+    'assets/brochures/platform_weighing_scale_brochure.jpg',
     'assets/brochures/digital_ultrasonic_stirrer_brochure.jpg',
     'assets/brochures/ekomilk_bond_ultra_pro_kit_brochure.jpg',
     'assets/brochures/eko_bond_combo_brochure.jpg',
@@ -105,6 +107,64 @@ class ProductCatalog {
       ],
       applications:
       'Milk Collection Centers, Dairy Cooperatives, Milk Testing Laboratories and Quality Control Centers.',
+      priceEstimate: 'Contact for Enterprise Pricing',
+    ),
+
+    Product(
+      id: 'platform-weighing-scale',
+      title: 'Platform Weighing Scale',
+      category: 'Platform Weighing Scale',
+      categoryId: 'Platform Weighing Scale',
+      imagePath: 'assets/platform_weighing_scale.jpg',
+      iconName: 'scale',
+      badgeText: 'Heavy Duty & Long Lasting',
+      brochurePath: 'assets/brochures/platform_weighing_scale_brochure.jpg',
+      overview:
+          'Built for industrial and commercial use, our platform weighing scale combines durability with precision to deliver accurate weight measurements every time.',
+      specs: [
+        ProductSpec(
+          label: 'Platform Size (L x W)',
+          value: 'Customizable (As per requirement)',
+        ),
+        ProductSpec(
+          label: 'Capacity',
+          value: '50 kg – 500 kg (Available in multiple ranges)',
+        ),
+        ProductSpec(
+          label: 'Accuracy',
+          value: '± 0.05% – 0.1% FS',
+        ),
+        ProductSpec(
+          label: 'Display',
+          value: 'LED / LCD (Red / White)',
+        ),
+        ProductSpec(
+          label: 'Power Supply',
+          value: 'AC 220V ±10%, 50Hz (or Rechargeable Battery)',
+        ),
+        ProductSpec(
+          label: 'Material',
+          value: 'MS Frame + SS Platform',
+        ),
+        ProductSpec(
+          label: 'Load Cell',
+          value: 'High Precision Load Cell',
+        ),
+        ProductSpec(
+          label: 'Operating Temperature',
+          value: '-10°C to 45°C',
+        ),
+      ],
+      features: [
+        'High Accuracy — Reliable and consistent weighing results',
+        'Sturdy Construction — Durable MS frame with SS platform top',
+        'High Load Capacity — Suitable for wide range of industrial applications',
+        'Digital Indicator — Clear LED display for easy reading & operation',
+        'Adjustable Feet — Ensures stability on uneven surfaces',
+        'Low Power Consumption — Energy efficient with long working hours',
+      ],
+      applications:
+          'Manufacturing, Warehousing, Logistics, Agriculture, Retail & Dairy Milk Collection Centers.',
       priceEstimate: 'Contact for Enterprise Pricing',
     ),
 
