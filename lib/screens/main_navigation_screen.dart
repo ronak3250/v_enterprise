@@ -62,7 +62,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(isDesktop ? 98 : 94),
+        preferredSize: Size.fromHeight(isDesktop ? 98 : 114),
         child: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -70,99 +70,132 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               // Top Contact Announcement Bar (Full Edge-to-Edge Width)
               Container(
                 width: double.infinity,
-                color: isDark ? const Color(0xFF040D1B) : const Color(0xFFF1F5F9),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                color: isDark
+                    ? const Color(0xFF040D1B)
+                    : const Color(0xFFF1F5F9),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
                 child: Center(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () => _launchUrl('tel:+919173251191'),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.phone, color: Color(0xFF0072CE), size: 12),
-                              const SizedBox(width: 4),
-                              Text(
-                                '+91 91732 51191',
-                                style: TextStyle(
-                                  color: isDark ? Colors.white : const Color(0xFF0A2540),
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        InkWell(
-                          onTap: () => _launchUrl('mailto:info@vinitenterprise.com'),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.email, color: Color(0xFF0072CE), size: 12),
-                              const SizedBox(width: 4),
-                              Text(
-                                'info@vinitenterprise.com',
-                                style: TextStyle(
-                                  color: isDark ? Colors.white : const Color(0xFF0A2540),
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Row(
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    spacing: 16,
+                    runSpacing: 6,
+                    children: [
+                      InkWell(
+                        onTap: () => _launchUrl('tel:+919173251191'),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(Icons.access_time, color: Color(0xFF0072CE), size: 12),
+                            const Icon(
+                              Icons.phone,
+                              color: Color(0xFF0072CE),
+                              size: 12,
+                            ),
                             const SizedBox(width: 4),
                             Text(
-                              'Mon - Fri: 10:00 AM - 6:00 PM',
+                              '+91 91732 51191',
                               style: TextStyle(
-                                color: isDark ? Colors.white70 : const Color(0xFF475569),
+                                color: isDark
+                                    ? Colors.white
+                                    : const Color(0xFF0A2540),
                                 fontSize: 11,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(width: 16),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          decoration: BoxDecoration(
-                            color: isDark
-                                ? const Color(0xFF10B981).withValues(alpha: 0.2)
-                                : const Color(0xFFD1FAE5),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
+                      ),
+
+                      InkWell(
+                        onTap: () => _launchUrl(
+                          'mailto:info@vinitenterprise.com',
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.email,
+                              color: Color(0xFF0072CE),
+                              size: 12,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              'info@vinitenterprise.com',
+                              style: TextStyle(
+                                color: isDark
+                                    ? Colors.white
+                                    : const Color(0xFF0A2540),
+                                fontSize: 11,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.access_time,
+                            color: Color(0xFF0072CE),
+                            size: 12,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            'Mon - Fri: 10:00 AM - 6:00 PM',
+                            style: TextStyle(
                               color: isDark
-                                  ? const Color(0xFF10B981).withValues(alpha: 0.3)
-                                  : const Color(0xFF6EE7B7),
+                                  ? Colors.white70
+                                  : const Color(0xFF475569),
+                              fontSize: 11,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.shield_outlined,
-                                color: isDark ? const Color(0xFF10B981) : const Color(0xFF059669),
-                                size: 12,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                'ISO Certified',
-                                style: TextStyle(
-                                  color: isDark ? const Color(0xFF10B981) : const Color(0xFF059669),
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                        ],
+                      ),
+
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: isDark
+                              ? const Color(0xFF10B981).withValues(alpha: 0.2)
+                              : const Color(0xFFD1FAE5),
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: isDark
+                                ? const Color(0xFF10B981).withValues(alpha: 0.3)
+                                : const Color(0xFF6EE7B7),
                           ),
                         ),
-                      ],
-                    ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.shield_outlined,
+                              color: isDark
+                                  ? const Color(0xFF10B981)
+                                  : const Color(0xFF059669),
+                              size: 12,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              'ISO Certified',
+                              style: TextStyle(
+                                color: isDark
+                                    ? const Color(0xFF10B981)
+                                    : const Color(0xFF059669),
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -216,14 +249,14 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                         ),
                       ),
 
-                    IconButton(
-                      icon: Icon(
-                        isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
-                        color: isDark ? Colors.white : const Color(0xFF0A2540),
-                      ),
-                      onPressed: () => themeProvider.toggleTheme(),
-                      tooltip: 'Toggle Theme',
-                    ),
+                    // IconButton(
+                    //   icon: Icon(
+                    //     isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
+                    //     color: isDark ? Colors.white : const Color(0xFF0A2540),
+                    //   ),
+                    //   onPressed: () => themeProvider.toggleTheme(),
+                    //   tooltip: 'Toggle Theme',
+                    // ),
 
                     if (isDesktop) ...[
                       const SizedBox(width: 6),
@@ -252,52 +285,193 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ),
       ),
 
-      // Drawer ONLY on mobile view
+      // Drawer ONLY on mobile view - Redesigned with premium executive styling
       drawer: isDesktop
           ? null
           : Drawer(
-              backgroundColor: isDark ? const Color(0xFF1E293B) : Colors.white,
-              child: ListView(
-                padding: EdgeInsets.zero,
+              elevation: 16,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(24),
+                  bottomRight: Radius.circular(24),
+                ),
+              ),
+              backgroundColor: isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC),
+              child: Column(
                 children: [
-                  DrawerHeader(
-                    decoration: const BoxDecoration(
+                  // Premium Executive Header
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Color(0xFF0A2540), Color(0xFF0072CE)],
+                        colors: isDark
+                            ? [const Color(0xFF020617), const Color(0xFF0F172A)]
+                            : [const Color(0xFF0A192F), const Color(0xFF00529B)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xFF0072CE).withValues(alpha: 0.2),
+                          blurRadius: 16,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
+                    padding: const EdgeInsets.fromLTRB(20, 48, 20, 24),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        AdaptiveLogo(height: 34),
-                        SizedBox(height: 12),
-                        Text(
-                          'Milk & Dairy Equipment Specialist',
-                          style: TextStyle(fontSize: 12, color: Color(0xFFFFC107), fontWeight: FontWeight.bold),
+                      children: [
+                        // White Frosted Container for Logo
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.15),
+                                blurRadius: 10,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: const AdaptiveLogoTop(height: 38),
+                        ),
+                        const SizedBox(height: 14),
+
+                        // Subtitle Pill Badge
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF38BDF8).withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: const Color(0xFF38BDF8).withValues(alpha: 0.35),
+                            ),
+                          ),
+                          child: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.verified,
+                                color: Color(0xFF38BDF8),
+                                size: 13,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Milk & Dairy Equipment Specialist',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.2,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                  _buildDrawerTile(context, index: 0, title: 'Home', icon: Icons.home_outlined),
-                  _buildDrawerTile(context, index: 1, title: 'About Us', icon: Icons.info_outline),
-                  _buildDrawerTile(context, index: 2, title: 'Services', icon: Icons.handshake_outlined),
-                  _buildDrawerTile(context, index: 3, title: 'Products', icon: Icons.inventory_2_outlined),
-                  _buildDrawerTile(context, index: 4, title: 'Contact Us', icon: Icons.phone_in_talk_outlined),
-                  const Divider(),
-                  Padding(
+
+                  const SizedBox(height: 12),
+
+                  // Navigation Links
+                  Expanded(
+                    child: ListView(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      children: [
+                        _buildDrawerTile(context, index: 0, title: 'Home', icon: Icons.home_rounded),
+                        _buildDrawerTile(context, index: 1, title: 'About Us', icon: Icons.info_rounded),
+                        _buildDrawerTile(context, index: 2, title: 'Services', icon: Icons.handshake_rounded),
+                        _buildDrawerTile(context, index: 3, title: 'Products', icon: Icons.inventory_2_rounded),
+                        _buildDrawerTile(context, index: 4, title: 'Contact Us', icon: Icons.phone_in_talk_rounded),
+                      ],
+                    ),
+                  ),
+
+                  // Bottom Action Area & Quote Button
+                  Container(
                     padding: const EdgeInsets.all(16),
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        QuoteRequestSheet.show(context);
-                      },
-                      icon: const Icon(Icons.send, color: Colors.white),
-                      label: const Text('Request Equipment Quote', style: TextStyle(color: Colors.white)),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF0072CE),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    decoration: BoxDecoration(
+                      color: isDark ? const Color(0xFF1E293B) : Colors.white,
+                      border: Border(
+                        top: BorderSide(
+                          color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
+                          width: 1,
+                        ),
                       ),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // CTA Quote Button
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF0072CE), Color(0xFF0284C7)],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFF0072CE).withValues(alpha: 0.3),
+                                blurRadius: 12,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              QuoteRequestSheet.show(context);
+                            },
+                            icon: const Icon(Icons.send_rounded, color: Colors.white, size: 16),
+                            label: const Text(
+                              'Request Equipment Quote',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              padding: const EdgeInsets.symmetric(vertical: 13),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(height: 10),
+
+                        // ISO & Quick Info Badge
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.shield_outlined,
+                              size: 13,
+                              color: isDark ? const Color(0xFF10B981) : const Color(0xFF059669),
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              'ISO Certified Standard',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -376,23 +550,81 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     final isSel = _currentIndex == index;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return ListTile(
-      leading: Icon(icon, color: isSel ? const Color(0xFF0072CE) : (isDark ? Colors.grey[400] : Colors.grey[700])),
-      title: Text(
-        title,
-        style: TextStyle(
-          fontWeight: isSel ? FontWeight.bold : FontWeight.normal,
-          color: isSel ? const Color(0xFF0072CE) : (isDark ? Colors.white : const Color(0xFF0A2540)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 3),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(12),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(12),
+          onTap: () {
+            Navigator.of(context).pop();
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            decoration: BoxDecoration(
+              color: isSel
+                  ? (isDark
+                      ? const Color(0xFF0072CE).withValues(alpha: 0.25)
+                      : const Color(0xFF0072CE).withValues(alpha: 0.10))
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(12),
+              border: isSel
+                  ? Border.all(
+                      color: const Color(0xFF0072CE).withValues(alpha: 0.3),
+                      width: 1,
+                    )
+                  : null,
+            ),
+            child: Row(
+              children: [
+                // Active Bar Indicator
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  width: isSel ? 4 : 0,
+                  height: 18,
+                  margin: EdgeInsets.only(right: isSel ? 10 : 0),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF0072CE),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+                Icon(
+                  icon,
+                  size: 20,
+                  color: isSel
+                      ? const Color(0xFF0072CE)
+                      : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: isSel ? FontWeight.bold : FontWeight.w500,
+                      color: isSel
+                          ? const Color(0xFF0072CE)
+                          : (isDark ? Colors.white : const Color(0xFF0F172A)),
+                    ),
+                  ),
+                ),
+                Icon(
+                  Icons.chevron_right_rounded,
+                  size: 18,
+                  color: isSel
+                      ? const Color(0xFF0072CE)
+                      : (isDark ? const Color(0xFF475569) : const Color(0xFFCBD5E1)),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
-      selected: isSel,
-      selectedTileColor: const Color(0xFF0072CE).withValues(alpha: 0.1),
-      onTap: () {
-        Navigator.of(context).pop();
-        setState(() {
-          _currentIndex = index;
-        });
-      },
     );
   }
 }

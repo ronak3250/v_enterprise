@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'mobile-dairy-app': {
       title: 'Mobile Dairy App',
       category: 'Dairy Management Software',
-      image: 'assets/mobile_dairy_app.jpg',
+      image: 'assets/mobile_dairy_app.jpeg',
       brochure: 'assets/brochures/mobile_dairy_app_brochure.jpg',
       overview: 'Smart mobile dairy management application for digitalizing milk collection, transportation, quality management and dairy operations.',
       specs: [

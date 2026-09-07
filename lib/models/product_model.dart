@@ -43,7 +43,7 @@ class Product {
 class ProductCatalog {
   static const List<String> categories = [
     'All Products',
-    'Milk Testing',
+    'Milk Analyzer',
     'Milk Collection & AMCU',
     'Sample Preparation',
     'Automation & DPUs',
@@ -62,8 +62,9 @@ class ProductCatalog {
     Product(
       id: 'ekomilk-ultra-pro',
       title: 'EKOMILK Bond Ultra Pro',
-      category: 'Milk Testing',
-      categoryId: 'Milk Testing',
+
+      category: 'Milk Collection & AMCU',
+      categoryId: 'Milk Collection & AMCU',
       imagePath: 'assets/ekomilk_bond.jpg',
       iconName: 'flask',
       badgeText: 'All-in-One Milk Testing',
@@ -163,7 +164,7 @@ class ProductCatalog {
       title: 'Mobile Dairy App',
       category: 'Dairy Management Software',
       categoryId: 'Dairy Management Software',
-      imagePath: 'assets/mobile_dairy_app.jpg',
+      imagePath: 'assets/mobile_dairy_app.jpeg',
       iconName: 'mobile',
       badgeText: 'Dairy Management',
       brochurePath: 'assets/brochures/mobile_dairy_app_brochure.jpg',
@@ -212,8 +213,9 @@ class ProductCatalog {
     Product(
       id: 'ekomilk-bond-ultra-pro-kit',
       title: 'EKOMILK Analyzer',
-      category: 'Milk Testing',
-      categoryId: 'Milk Testing',
+      category: 'Milk Analyzer',
+      categoryId: 'Milk Analyzer',
+
       imagePath: 'assets/milk_analyzer.jpg',
       iconName: 'flask',
       badgeText: 'Milk Analyzer',
