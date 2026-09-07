@@ -112,8 +112,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 const crossAxisSpacing = 20.0;
                 final totalSpacing = (crossAxisCount - 1) * crossAxisSpacing;
                 final itemWidth = (constraints.maxWidth - totalSpacing) / crossAxisCount;
-                // Target height is fixed to exact content height (~265px)
-                const targetHeight = 265.0;
+                // Target height is fixed to exact content height (~335px)
+                const targetHeight = 335.0;
                 final childAspectRatio = itemWidth / targetHeight;
 
                 return GridView.count(

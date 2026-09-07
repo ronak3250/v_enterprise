@@ -747,9 +747,9 @@ body.dark-mode .brand-logo-dark {
 
 .product-img-wrapper {
   position: relative;
-  height: 180px;
+  height: 260px;
   background: #F8FAFC;
-  padding: 1rem;
+  padding: 0.75rem;
   overflow: hidden;
 }
 

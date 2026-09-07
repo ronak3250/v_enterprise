@@ -123,7 +123,7 @@ class ProductDetailSheet extends StatelessWidget {
                   // Full Image Container (BoxFit.contain so full equipment is visible!)
                   FadeSlideTransition(
                     child: Container(
-                      height: screenWidth < 600 ? 200 : 240,
+                      height: screenWidth < 600 ? 260 : 320,
                       width: double.infinity,
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(

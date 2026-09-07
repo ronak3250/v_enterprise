@@ -31,9 +31,9 @@ class ProductCardWidget extends StatelessWidget {
           children: [
             // Equipment Image Container with subtle background tint
             Container(
-              height: 105,
+              height: 175,
               width: double.infinity,
-              padding: const EdgeInsets.all(4),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC),
                 borderRadius: BorderRadius.circular(10),

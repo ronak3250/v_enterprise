@@ -428,7 +428,7 @@ class HomeScreen extends StatelessWidget {
                     const crossAxisSpacing = 16.0;
                     final totalSpacing = (crossAxisCount - 1) * crossAxisSpacing;
                     final itemWidth = (constraints.maxWidth - totalSpacing) / crossAxisCount;
-                    const targetHeight = 265.0;
+                    const targetHeight = 335.0;
                     final childAspectRatio = itemWidth / targetHeight;
 
                     return GridView.count(
