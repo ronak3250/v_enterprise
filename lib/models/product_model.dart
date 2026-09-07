@@ -45,10 +45,11 @@ class ProductCatalog {
     'All Products',
     'Milk Analyzer',
     'Milk Collection & AMCU',
-    'Platform Weighing Scale',
-    'Sample Preparation',
-    'Automation & DPUs',
+    'Digital Strirrer',
+    'Smart DPU',
     'Dairy Management Software',
+    'Weighing Scale',
+
   ];
 
   static const List<String> allBrochurePaths = [
@@ -110,72 +111,16 @@ class ProductCatalog {
       priceEstimate: 'Contact for Enterprise Pricing',
     ),
 
-    Product(
-      id: 'platform-weighing-scale',
-      title: 'Platform Weighing Scale',
-      category: 'Platform Weighing Scale',
-      categoryId: 'Platform Weighing Scale',
-      imagePath: 'assets/platform_weighing_scale.jpg',
-      iconName: 'scale',
-      badgeText: 'Heavy Duty & Long Lasting',
-      brochurePath: 'assets/brochures/platform_weighing_scale_brochure.jpg',
-      overview:
-          'Built for industrial and commercial use, our platform weighing scale combines durability with precision to deliver accurate weight measurements every time.',
-      specs: [
-        ProductSpec(
-          label: 'Platform Size (L x W)',
-          value: 'Customizable (As per requirement)',
-        ),
-        ProductSpec(
-          label: 'Capacity',
-          value: '50 kg – 500 kg (Available in multiple ranges)',
-        ),
-        ProductSpec(
-          label: 'Accuracy',
-          value: '± 0.05% – 0.1% FS',
-        ),
-        ProductSpec(
-          label: 'Display',
-          value: 'LED / LCD (Red / White)',
-        ),
-        ProductSpec(
-          label: 'Power Supply',
-          value: 'AC 220V ±10%, 50Hz (or Rechargeable Battery)',
-        ),
-        ProductSpec(
-          label: 'Material',
-          value: 'MS Frame + SS Platform',
-        ),
-        ProductSpec(
-          label: 'Load Cell',
-          value: 'High Precision Load Cell',
-        ),
-        ProductSpec(
-          label: 'Operating Temperature',
-          value: '-10°C to 45°C',
-        ),
-      ],
-      features: [
-        'High Accuracy — Reliable and consistent weighing results',
-        'Sturdy Construction — Durable MS frame with SS platform top',
-        'High Load Capacity — Suitable for wide range of industrial applications',
-        'Digital Indicator — Clear LED display for easy reading & operation',
-        'Adjustable Feet — Ensures stability on uneven surfaces',
-        'Low Power Consumption — Energy efficient with long working hours',
-      ],
-      applications:
-          'Manufacturing, Warehousing, Logistics, Agriculture, Retail & Dairy Milk Collection Centers.',
-      priceEstimate: 'Contact for Enterprise Pricing',
-    ),
+
 
     Product(
       id: 'digital-ultrasonic-stirrer',
       title: 'Digital Ultrasonic Stirrer',
-      category: 'Sample Preparation',
-      categoryId: 'Sample Preparation',
+      category: 'Digital Strirrer',
+      categoryId: 'Digital Strirrer',
       imagePath: 'assets/digital_ultrasonic_stirrer.jpg',
       iconName: 'vial',
-      badgeText: 'Sample Preparation',
+      badgeText: 'Digital Strirrer',
       brochurePath: 'assets/brochures/digital_ultrasonic_stirrer_brochure.jpg',
       overview:
       'Digital ultrasonic stirrer designed for efficient and uniform mixing and sample homogenization using ultrasonic technology.',
@@ -390,8 +335,8 @@ class ProductCatalog {
     Product(
       id: 'vinit-smart-dpu',
       title: 'Smart DPU',
-      category: 'Automation & DPUs',
-      categoryId: 'Automation & DPUs',
+      category: 'Smart DPU',
+      categoryId: 'Smart DPU',
       imagePath: 'assets/dpu.jpg',
       iconName: 'database',
       badgeText: 'Smart DPU',
@@ -485,6 +430,63 @@ class ProductCatalog {
       ],
       applications:
           'Dairy Unions, Cooperative Societies, Bulk Milk Cooler (BMC) Hubs, Milk Processing Plants.',
+      priceEstimate: 'Contact for Enterprise Pricing',
+    ),
+    Product(
+      id: 'platform-weighing-scale',
+      title: 'Weighing Scale',
+      category: 'Weighing Scale',
+      categoryId: 'Weighing Scale',
+      imagePath: 'assets/platform_weighing_scale.jpg',
+      iconName: 'scale',
+      badgeText: 'Heavy Duty & Long Lasting',
+      brochurePath: 'assets/brochures/platform_weighing_scale_brochure.jpg',
+      overview:
+      'Built for industrial and commercial use, our Weighing Scale combines durability with precision to deliver accurate weight measurements every time.',
+      specs: [
+        ProductSpec(
+          label: 'Platform Size (L x W)',
+          value: 'Customizable (As per requirement)',
+        ),
+        ProductSpec(
+          label: 'Capacity',
+          value: '50 kg – 500 kg (Available in multiple ranges)',
+        ),
+        ProductSpec(
+          label: 'Accuracy',
+          value: '± 0.05% – 0.1% FS',
+        ),
+        ProductSpec(
+          label: 'Display',
+          value: 'LED / LCD (Red / White)',
+        ),
+        ProductSpec(
+          label: 'Power Supply',
+          value: 'AC 220V ±10%, 50Hz (or Rechargeable Battery)',
+        ),
+        ProductSpec(
+          label: 'Material',
+          value: 'MS Frame + SS Platform',
+        ),
+        ProductSpec(
+          label: 'Load Cell',
+          value: 'High Precision Load Cell',
+        ),
+        ProductSpec(
+          label: 'Operating Temperature',
+          value: '-10°C to 45°C',
+        ),
+      ],
+      features: [
+        'High Accuracy — Reliable and consistent weighing results',
+        'Sturdy Construction — Durable MS frame with SS platform top',
+        'High Load Capacity — Suitable for wide range of industrial applications',
+        'Digital Indicator — Clear LED display for easy reading & operation',
+        'Adjustable Feet — Ensures stability on uneven surfaces',
+        'Low Power Consumption — Energy efficient with long working hours',
+      ],
+      applications:
+      'Manufacturing, Warehousing, Logistics, Agriculture, Retail & Dairy Milk Collection Centers.',
       priceEstimate: 'Contact for Enterprise Pricing',
     ),
   ];

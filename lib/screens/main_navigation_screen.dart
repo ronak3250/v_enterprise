@@ -143,7 +143,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            'Mon - Fri: 10:00 AM - 6:00 PM',
+                            'Mon - Sat: 10:00 AM - 7:00 PM',
                             style: TextStyle(
                               color: isDark
                                   ? Colors.white70
@@ -155,46 +155,46 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                         ],
                       ),
 
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 2,
-                        ),
-                        decoration: BoxDecoration(
-                          color: isDark
-                              ? const Color(0xFF10B981).withValues(alpha: 0.2)
-                              : const Color(0xFFD1FAE5),
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: isDark
-                                ? const Color(0xFF10B981).withValues(alpha: 0.3)
-                                : const Color(0xFF6EE7B7),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.shield_outlined,
-                              color: isDark
-                                  ? const Color(0xFF10B981)
-                                  : const Color(0xFF059669),
-                              size: 12,
-                            ),
-                            const SizedBox(width: 4),
-                            Text(
-                              'ISO Certified',
-                              style: TextStyle(
-                                color: isDark
-                                    ? const Color(0xFF10B981)
-                                    : const Color(0xFF059669),
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      // Container(
+                      //   padding: const EdgeInsets.symmetric(
+                      //     horizontal: 8,
+                      //     vertical: 2,
+                      //   ),
+                      //   decoration: BoxDecoration(
+                      //     color: isDark
+                      //         ? const Color(0xFF10B981).withValues(alpha: 0.2)
+                      //         : const Color(0xFFD1FAE5),
+                      //     borderRadius: BorderRadius.circular(10),
+                      //     border: Border.all(
+                      //       color: isDark
+                      //           ? const Color(0xFF10B981).withValues(alpha: 0.3)
+                      //           : const Color(0xFF6EE7B7),
+                      //     ),
+                      //   ),
+                      //   child: Row(
+                      //     mainAxisSize: MainAxisSize.min,
+                      //     children: [
+                      //       // Icon(
+                      //       //   Icons.shield_outlined,
+                      //       //   color: isDark
+                      //       //       ? const Color(0xFF10B981)
+                      //       //       : const Color(0xFF059669),
+                      //       //   size: 12,
+                      //       // ),
+                      //       const SizedBox(width: 4),
+                      //       // Text(
+                      //       //   'ISO Certified',
+                      //       //   style: TextStyle(
+                      //       //     color: isDark
+                      //       //         ? const Color(0xFF10B981)
+                      //       //         : const Color(0xFF059669),
+                      //       //     fontSize: 10,
+                      //       //     fontWeight: FontWeight.bold,
+                      //       //   ),
+                      //       // ),
+                      //     ],
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
@@ -461,14 +461,14 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                               color: isDark ? const Color(0xFF10B981) : const Color(0xFF059669),
                             ),
                             const SizedBox(width: 4),
-                            Text(
-                              'ISO Certified Standard',
-                              style: TextStyle(
-                                fontSize: 11,
-                                color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                            // Text(
+                            //   'ISO Certified Standard',
+                            //   style: TextStyle(
+                            //     fontSize: 11,
+                            //     color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                            //     fontWeight: FontWeight.w600,
+                            //   ),
+                            // ),
                           ],
                         ),
                       ],

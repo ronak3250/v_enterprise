@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
     },
 
     'platform-weighing-scale': {
-      title: 'Platform Weighing Scale',
+      title: 'Weighing Scale',
       category: 'Heavy Duty Weighing System',
       image: 'assets/platform_weighing_scale.jpg',
       brochure: 'assets/brochures/platform_weighing_scale_brochure.jpg',
-      overview: 'Built for industrial and commercial use, our platform weighing scale combines durability with precision to deliver accurate weight measurements every time.',
+      overview: 'Built for industrial and commercial use, our Weighing Scale combines durability with precision to deliver accurate weight measurements every time.',
       specs: [
         { label: 'Platform Size (L x W)', value: 'Customizable (As per requirement)' },
         { label: 'Capacity', value: '50 kg – 500 kg (Available in multiple ranges)' },
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     'digital-ultrasonic-stirrer': {
       title: 'Digital Ultrasonic Stirrer',
-      category: 'Sample Preparation Instrument',
+      category: 'Digital Strirrer Instrument',
       image: 'assets/digital_ultrasonic_stirrer.jpg',
       brochure: 'assets/brochures/digital_ultrasonic_stirrer_brochure.jpg',
       overview: 'Digital ultrasonic stirrer designed for efficient and uniform mixing and sample homogenization using ultrasonic technology.',

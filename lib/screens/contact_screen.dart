@@ -228,7 +228,7 @@ Platform: Vinit Enterprise Mobile/Web Portal
                               _buildInfoTile(
                                 Icons.email_outlined,
                                 'Email Addresses',
-                                'sales@vinitenterprise.com\nsupport@vinitenterprise.com',
+                                'sales@vinitenterprise.com\n info@vinitenterprise.com',
                                 isDark,
                                 onTap: () => _launchUrl('mailto:sales@vinitenterprise.com'),
                               ),
@@ -236,7 +236,7 @@ Platform: Vinit Enterprise Mobile/Web Portal
                               _buildInfoTile(
                                 Icons.access_time_outlined,
                                 'Business Hours',
-                                'Monday - Friday: 10:00 AM - 6:00 PM\n Saturday,Sunday: Closed',
+                                'Monday - Saturday: 10:00 AM - 7:00 PM\n Sunday: Closed',
                                 isDark,
                               ),
                             ],
