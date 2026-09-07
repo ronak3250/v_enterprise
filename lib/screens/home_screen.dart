@@ -5,7 +5,7 @@ import 'package:vinit_enterprise/widgets/app_footer.dart';
 import 'package:vinit_enterprise/widgets/dairy_domain_ui.dart';
 import 'package:vinit_enterprise/widgets/dairy_lottie_widget.dart';
 import 'package:vinit_enterprise/widgets/innovative_equipment_graphics.dart';
-import 'package:vinit_enterprise/widgets/product_detail_sheet.dart';
+import 'package:vinit_enterprise/widgets/product_card_widget.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -400,21 +400,28 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
 
-                // Stainless Steel Cards with Tight Dynamic Aspect Ratio (0.95 on Desktop, 0.88 on Mobile)
-                GridView.count(
-                  crossAxisCount: screenWidth > 850 ? 3 : (screenWidth > 550 ? 2 : 1),
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: screenWidth > 850 ? 0.95 : (screenWidth > 550 ? 0.88 : 0.82),
-                  children: ProductCatalog.sampleProducts.take(3).map((product) {
-                    return StainlessSteelEquipmentCard(
-                      badgeTag: product.badgeText,
-                      onTap: () => ProductDetailSheet.show(context, product),
-                      child: _buildProductCardContent(context, product, isDark),
+                // Product Cards Grid with Dynamic Aspect Ratio (FIXED 238px HEIGHT ON ANY SCREEN)
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final crossAxisCount = constraints.maxWidth > 850 ? 3 : (constraints.maxWidth > 550 ? 2 : 1);
+                    const crossAxisSpacing = 16.0;
+                    final totalSpacing = (crossAxisCount - 1) * crossAxisSpacing;
+                    final itemWidth = (constraints.maxWidth - totalSpacing) / crossAxisCount;
+                    const targetHeight = 265.0;
+                    final childAspectRatio = itemWidth / targetHeight;
+
+                    return GridView.count(
+                      crossAxisCount: crossAxisCount,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisSpacing: crossAxisSpacing,
+                      mainAxisSpacing: 16,
+                      childAspectRatio: childAspectRatio,
+                      children: ProductCatalog.sampleProducts.take(3).map((product) {
+                        return ProductCardWidget(product: product);
+                      }).toList(),
                     );
-                  }).toList(),
+                  },
                 ),
 
                 const SizedBox(height: 20),
@@ -728,89 +735,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProductCardContent(BuildContext context, Product product, bool isDark) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Equipment Image Container
-        Container(
-          height: 100,
-          width: double.infinity,
-          padding: const EdgeInsets.all(8),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              product.imagePath,
-              fit: BoxFit.contain,
-              errorBuilder: (ctx, e, st) => const Icon(Icons.image, size: 48, color: Colors.grey),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 4, 12, 12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                product.title,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: isDark ? Colors.white : const Color(0xFF0A2540)),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                product.overview,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 11.5, color: isDark ? const Color(0xFFCBD5E1) : Colors.grey[600]),
-              ),
-              const SizedBox(height: 8),
 
-              // Domain-Specific LCD Measurement Meter Badges
-              Row(
-                children: const [
-                  DigitalLcdSpecBadge(label: 'Speed', value: '< 30s', icon: Icons.timer_outlined),
-                  SizedBox(width: 6),
-                  DigitalLcdSpecBadge(label: 'Accuracy', value: '±0.06%', icon: Icons.precision_manufacturing_outlined),
-                ],
-              ),
-
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: () => ProductDetailSheet.show(context, product),
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: Color(0xFF0072CE)),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                      ),
-                      child: const Text('View Specs', style: TextStyle(color: Color(0xFF0072CE), fontSize: 11)),
-                    ),
-                  ),
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () => QuoteRequestSheet.show(context, initialProduct: product.title),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF0072CE),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                      ),
-                      child: const Text('Request Quote', style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
 
   Widget _buildDarkFeatureCard(IconData icon, String title, String desc) {
     return AnimatedHoverCard(

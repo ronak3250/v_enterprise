@@ -28,127 +28,106 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Product Database for Modals
   const productData = {
-    'milk-analyzer': {
-      title: 'Ultrasonic Milk Analyzer',
+    'ekomilk-bond': {
+      title: 'EKOMILK Bond',
       category: 'Milk Testing Equipment',
-      image: 'assets/milk_analyzer.jpg',
-      overview: 'Vinit Enterprise Ultrasonic Milk Analyzer is designed for rapid, non-chemical composition analysis of raw cow, buffalo, and mixed milk samples. It provides high precision results in under 30 seconds, making it ideal for daily milk collection centers and dairy labs.',
+      image: 'assets/ekomilk_bond.jpg',
+      overview: 'Vinit Enterprise EKOMILK Bond is a compact, high-speed ultrasonic milk analyzer with integrated sample chamber and LCD display for accurate, non-chemical Fat & SNF analysis.',
       specs: [
         { label: 'Measuring Speed', value: '30 - 40 seconds per sample' },
-        { label: 'Fat Range', value: '0.01% to 12.00% (Accuracy ±0.06%)' },
-        { label: 'SNF Range', value: '3.00% to 15.00% (Accuracy ±0.15%)' },
-        { label: 'Density Range', value: '1015 to 1040 kg/m³' },
-        { label: 'Added Water Range', value: '0% to 70%' },
-        { label: 'Sample Volume', value: '12 mL to 15 mL' },
-        { label: 'Data Output', value: 'RS232 Interface / USB Serial Port' },
-        { label: 'Power Supply', value: '12V DC / 220V AC with Battery Backup' }
+        { label: 'Parameters', value: 'Fat, SNF, Density, Added Water, Protein' },
+        { label: 'Sample Volume', value: '10 mL to 15 mL' },
+        { label: 'Power Supply', value: '12V DC / 220V AC with Battery Backup' },
+        { label: 'Connectivity', value: 'RS232 / USB Serial Output' }
       ],
       features: [
-        'High reliability ultrasonic measurement probe with automatic cleaning prompt',
-        'Built-in memory to store up to 500 testing records',
-        'Compact stainless steel corrosion-resistant chassis',
-        'Direct interface with electronic weighing scales and thermal printers'
+        'Fast non-chemical ultrasonic measurement probe',
+        'User-friendly keypad with clear LCD display',
+        'Built-in sample lid chamber for clean operation',
+        'Direct interface with scales and printers'
       ],
-      applications: 'Milk Collection Centers, Dairy Cooperatives, Raw Milk Purchasing Facilities, Dairy Testing Laboratories.'
+      applications: 'Milk Collection Centers, Dairy Cooperatives, Raw Milk Purchasing Facilities.'
     },
 
-    'amcu': {
-      title: 'Automatic Milk Collection Unit (AMCU)',
-      category: 'Integrated Collection Kiosk',
-      image: 'assets/automatic_milk_collection_unit.jpg',
-      overview: 'The Vinit Enterprise AMCU is an all-in-one automated collection terminal that integrates the milk weighing scale, ultrasonic analyzer, member smart card reader, and thermal slip printer into a single streamlined system.',
+    'ekomilk-bond-ultra-pro': {
+      title: 'EKOMILK Bond Ultra Pro',
+      category: 'Integrated Collection Kiosk (AMCU)',
+      image: 'assets/ekomilk_bond_ultra_pro.jpg',
+      overview: 'The EKOMILK Bond Ultra Pro is an all-in-one stainless steel Automated Milk Collection Unit (AMCU) integrating the milk analyzer, ultrasonic stirrer, data processor, weight display, and printer interface.',
       specs: [
-        { label: 'System Hardware', value: 'Embedded Microcontroller / Industrial PC' },
-        { label: 'Printer Type', value: 'High-speed 2-inch Thermal Slip Printer' },
-        { label: 'Display Screen', value: '7-inch High Contrast Color LCD Display' },
-        { label: 'Card Reader', value: 'Contactless RFID Member Card Scanner' },
-        { label: 'Connectivity', value: 'GSM/GPRS Cloud Gateway, USB, RS232' },
-        { label: 'Rate Chart Storage', value: 'Up to 50 Custom Rate Charts' }
+        { label: 'Cabinet Material', value: 'SS-304 Heavy Duty Industrial Stainless Steel' },
+        { label: 'Integrated Modules', value: 'Milk Analyzer + Ultrasonic Stirrer + Smart DPU + Weight Display' },
+        { label: 'Display Panel', value: 'Multi-line LCD & Digital LED Display System' },
+        { label: 'Keypad', value: 'Industrial Numeric Keypad with Function Keys' },
+        { label: 'Connectivity', value: 'GPRS Cloud Gateway, USB, RS232 Interface' }
       ],
       features: [
-        'Instant slip printout with Farmer ID, Weight, Fat %, SNF %, and Total Amount',
-        'Zero manual tampering — direct automated measurement transfer',
-        'Rugged food-grade stainless steel bowl platform included',
-        'Automatic data synchronization to central cooperative cloud server'
+        'All-in-one milk intake and quality testing workstation',
+        'Integrated ultrasonic stirrer probe for sample de-aeration',
+        'Simultaneous multi-parameter readout and receipt printing',
+        'Heavy-duty stainless steel splash-proof build'
       ],
-      applications: 'Village Milk Collection Centers, Dairy Unions, Private Milk Procurement Hubs.'
+      applications: 'Village Milk Collection Centers (AMCU), Dairy Cooperatives, High-Volume Procurement Plants.'
     },
 
-    'dpu-collection': {
-      title: 'Data Processing Milk Collection Unit (DPU)',
-      category: 'Data Management System',
-      image: 'assets/automatic_milk_collection_unit.jpg',
-      overview: 'A specialized heavy-duty data processing unit built for dairy cooperative societies to manage daily morning and evening shift transactions with instant member ledger reporting.',
+    'digital-ultrasonic-stirrer': {
+      title: 'Digital Ultrasonic Stirrer',
+      category: 'Sample Preparation Instrument',
+      image: 'assets/digital_ultrasonic_stirrer.jpg',
+      overview: 'Digital ultrasonic sample stirrer engineered to eliminate trapped air bubbles in raw milk before testing, ensuring accurate fat and SNF analyzer readings.',
       specs: [
-        { label: 'Memory Capacity', value: 'Stores up to 10,000 transaction records' },
-        { label: 'Keyboard', value: 'Waterproof Dustproof Industrial Keypad' },
-        { label: 'Display', value: 'Multi-lingual Graphic Display (English / Hindi / Regional)' },
-        { label: 'Power Input', value: '160V - 270V AC with in-built Battery Charger' }
+        { label: 'Display', value: '2-Digit RED LED Digital Display' },
+        { label: 'Timer Control', value: '5 to 10 Seconds Auto-Timer Control' },
+        { label: 'Probe Material', value: 'Titanium / SS-316 Ultrasonic Transducer' },
+        { label: 'Operating Buttons', value: 'START/STOP & UP/DOWN Timer Adjustment' }
       ],
       features: [
-        'Automatic calculation of member payments based on fat/SNF rate matrix',
-        'Shift summary reporting and monthly member payment statements',
-        'Pen-drive data backup export facility'
+        'High efficiency ultrasonic cavitation for sample de-aeration',
+        'Bright 2-digit LED timer display',
+        'Safety warning & dry-run operation protection',
+        'Powder-coated stainless housing with beaker holder'
+      ],
+      applications: 'Milk Testing Counters, Dairy Laboratories, Quality Control Facilities.'
+    },
+
+    'milk-analyzer': {
+      title: 'Milk Analyzer',
+      category: 'Milk Testing Equipment',
+      image: 'assets/milk_analyzer.jpg',
+      overview: 'Multi-parameter EKOMILK Ultra Pro ultrasonic raw milk analyzer for rapid measurement of Fat, SNF, Density, Added Water, and Protein.',
+      specs: [
+        { label: 'Measuring Parameters', value: 'FAT%, SNF%, DENSITY, ADDED WATER%, PROTEIN%' },
+        { label: 'Measuring Speed', value: '30 - 45 seconds per sample' },
+        { label: 'Intake System', value: 'Automatic Peristaltic Intake Pump' },
+        { label: 'Display', value: '2-Line Blue Backlit Graphic LCD Display' }
+      ],
+      features: [
+        'Measures 5 key milk composition parameters in seconds',
+        'Automatic peristaltic intake pump',
+        'Rugged compact metal chassis with top handles',
+        'RS232 serial interface for DPU / Printer'
+      ],
+      applications: 'Raw Milk Collection Counters, Dairy Cooperatives, Testing Laboratories.'
+    },
+
+    'dpu': {
+      title: 'Data Processing Unit (DPU)',
+      category: 'Data Management & Automation',
+      image: 'assets/dpu.jpg',
+      overview: 'Smart data processing terminal with built-in thermal receipt printer, graphic LCD, and tactile keyboard designed for daily shift intake logging and member receipts.',
+      specs: [
+        { label: 'Printer Type', value: 'Built-in High Speed Thermal Slip Printer' },
+        { label: 'Display', value: 'Wide Graphic LCD Display Panel' },
+        { label: 'Keyboard', value: 'Tactile ABC/Numeric Keypad (1-9, PRINT, CANCEL, MENU, ENTER)' },
+        { label: 'Memory', value: 'High Capacity Non-Volatile Transaction Storage' }
+      ],
+      features: [
+        'Built-in thermal receipt printer for instant milk collection slips',
+        'Automatic rate chart payment calculation based on Fat/SNF',
+        'Multi-lingual display support (English, Hindi, Regional)',
+        'VINIT Enterprise custom branded heavy-duty console'
       ],
       applications: 'Cooperative Milk Societies, Chilling Centers, Milk Purchasing Units.'
-    },
-
-    'weighing-system': {
-      title: 'Electronic Milk Weighing System',
-      category: 'Industrial Weighing Platform',
-      image: 'assets/milk_weighing_system.jpg',
-      overview: 'Heavy-duty industrial milk weighing scale featuring a food-grade stainless steel bowl and wall-mountable LED indicator, engineered for harsh dairy washing environments.',
-      specs: [
-        { label: 'Available Capacities', value: '100 kg / 200 kg / 500 kg' },
-        { label: 'Accuracy Class', value: 'Class III High Accuracy Load Cell' },
-        { label: 'Bowl Material', value: 'SS-304 Food-Grade Stainless Steel' },
-        { label: 'Indicator Display', value: '1-inch Bright Red LED Digital Display' },
-        { label: 'Protection Rating', value: 'IP65 Waterproof Load Cell Housing' }
-      ],
-      features: [
-        'Fast response time with tare/zero facility',
-        'Heavy-gauge stainless steel base frame resisting corrosion',
-        'Direct serial output interface to AMCU & Data Processing Units'
-      ],
-      applications: 'Milk Reception Counters, Chilling Plants, Processing Factories.'
-    },
-
-    'milk-stirrer': {
-      title: 'Ultrasonic Milk Stirrer',
-      category: 'Sample Preparation Instrument',
-      image: 'assets/ultrasonic_milk_stirrer.jpg',
-      overview: 'Essential pre-testing device that uses high-frequency ultrasonic waves to quickly de-aerate raw milk samples, removing trapped air bubbles to guarantee accurate analyzer readings.',
-      specs: [
-        { label: 'Operating Frequency', value: '40 kHz High Power Ultrasonic Cavitation' },
-        { label: 'Stirring Duration', value: 'Programmable Auto-Timer (5 to 10 seconds)' },
-        { label: 'Probe Material', value: 'Titanium / SS-316 Ultrasonic Transducer' },
-        { label: 'Beaker Compatibility', value: 'Standard 100mL to 250mL Sample Beakers' }
-      ],
-      features: [
-        'Prevents falsely low fat/SNF readings caused by air bubbles',
-        'Quiet, maintenance-free solid-state ultrasonic generator',
-        'Adjustable beaker stand height'
-      ],
-      applications: 'Milk Testing Bench Counters, Quality Control Labs.'
-    },
-
-    'dairy-automation': {
-      title: 'Dairy Automation System Panel',
-      category: 'Plant Automation & Control',
-      image: 'assets/dairy_automation_system.jpg',
-      overview: 'Custom-engineered PLC automation panel with HMI touchscreen interface designed to monitor and automate chilling tanks, pasteurization lines, and pump valves.',
-      specs: [
-        { label: 'PLC Hardware', value: 'Industrial Grade Programmable Logic Controller' },
-        { label: 'HMI Screen', value: '7-inch / 10-inch Color Touchscreen Display' },
-        { label: 'Enclosure Material', value: 'SS-304 / Powder-Coated IP65 Enclosure' },
-        { label: 'Temperature Sensors', value: 'RTD Pt100 High Precision Sensors' }
-      ],
-      features: [
-        'Real-time temperature, flow rate, and storage level monitoring',
-        'Automatic audio-visual safety alarms and emergency shutdown',
-        'Data logging and process trend graph history display'
-      ],
-      applications: 'Milk Processing Plants, Bulk Milk Coolers (BMC), Pasteurization Units.'
     }
   };
 

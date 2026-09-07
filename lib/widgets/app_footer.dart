@@ -53,7 +53,7 @@ class AppFooter extends StatelessWidget {
                             ],
                           ),
                           child: Image.asset(
-                            'assets/company_logo.png',
+                            'assets/company_logo.jpeg',
                             height: 42,
                             fit: BoxFit.contain,
                             errorBuilder: (ctx, e, st) => const Text(
