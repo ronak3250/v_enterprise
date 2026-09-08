@@ -403,7 +403,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (brochureModalTitle) brochureModalTitle.textContent = title;
       if (brochureModalImg) brochureModalImg.src = brochurePath;
-      if (brochureDownloadLink) brochureDownloadLink.href = brochurePath;
+      const pdfPath = brochurePath.replace(/\.(jpg|jpeg|png)$/i, '.pdf');
+      if (brochureDownloadLink) {
+        brochureDownloadLink.href = pdfPath;
+        brochureDownloadLink.setAttribute('download', pdfPath.split('/').pop() || 'brochure.pdf');
+      }
 
       // Close product modal if open
       if (productModal) productModal.classList.remove('active');

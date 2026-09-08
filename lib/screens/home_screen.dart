@@ -5,7 +5,6 @@ import 'package:vinit_enterprise/widgets/app_footer.dart';
 import 'package:vinit_enterprise/widgets/brochure_viewer.dart';
 import 'package:vinit_enterprise/widgets/dairy_domain_ui.dart';
 import 'package:vinit_enterprise/widgets/dairy_lottie_widget.dart';
-import 'package:vinit_enterprise/widgets/innovative_equipment_graphics.dart';
 import 'package:vinit_enterprise/widgets/product_card_widget.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
 

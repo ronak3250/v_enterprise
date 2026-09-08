@@ -39,6 +39,8 @@ dependencies:
   url_launcher: ^6.3.2
   provider: ^6.1.5+1
   lottie: ^3.5.1
+  web: ^1.0.0
+  pdf: ^3.11.1
 
 dev_dependencies:
   flutter_test:

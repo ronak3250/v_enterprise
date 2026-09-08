@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:vinit_enterprise/utils/download_helper.dart';
 
 class BrochureViewerDialog extends StatefulWidget {
   final String title;
@@ -59,10 +59,15 @@ class _BrochureViewerDialogState extends State<BrochureViewerDialog> {
   }
 
   Future<void> _downloadOrOpenBrochure(String path) async {
-    final uri = Uri.parse(path);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
+    String pdfPath = path;
+    if (path.endsWith('.jpg') || path.endsWith('.jpeg') || path.endsWith('.png')) {
+      pdfPath = path.replaceAll(RegExp(r'\.(jpg|jpeg|png)$'), '.pdf');
     }
+    await downloadOrOpenAsset(pdfPath);
+  }
+
+  Future<void> _downloadFullCatalogPdf() async {
+    await downloadOrOpenAsset('assets/brochures/vinit_enterprise_complete_catalog.pdf');
   }
 
   @override
@@ -76,7 +81,7 @@ class _BrochureViewerDialogState extends State<BrochureViewerDialog> {
       backgroundColor: Colors.transparent,
       insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       child: Container(
-        width: isDesktop ? 780 : double.infinity,
+        width: isDesktop ? 880 : double.infinity,
         constraints: const BoxConstraints(maxHeight: 850),
         decoration: BoxDecoration(
           color: isDark ? const Color(0xFF0F172A) : Colors.white,
@@ -143,9 +148,9 @@ class _BrochureViewerDialogState extends State<BrochureViewerDialog> {
                   ),
                   ElevatedButton.icon(
                     onPressed: () => _downloadOrOpenBrochure(_brochureList[_currentIndex]),
-                    icon: const Icon(Icons.download_rounded, size: 16, color: Colors.white),
+                    icon: const Icon(Icons.picture_as_pdf_rounded, size: 16, color: Colors.white),
                     label: Text(
-                      isDesktop ? 'Download Brochure' : 'Download',
+                      isDesktop ? 'Download Page PDF' : 'Page PDF',
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -154,7 +159,27 @@ class _BrochureViewerDialogState extends State<BrochureViewerDialog> {
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF0072CE),
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  ElevatedButton.icon(
+                    onPressed: _downloadFullCatalogPdf,
+                    icon: const Icon(Icons.file_download_rounded, size: 16, color: Colors.white),
+                    label: Text(
+                      isDesktop ? 'Download Full Catalog (PDF)' : 'Full Catalog PDF',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF059669),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
