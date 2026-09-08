@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'eko-bond-combo': {
       title: 'EKO Bond Combo',
       category: 'Milk Collection Kiosk (AMCU)',
-      image: 'assets/ekomilk_bond_ultra_pro.jpg',
+      image: 'assets/ekomilk_bond_ultra_pro.jpeg',
       brochure: 'assets/brochures/eko_bond_combo_brochure.jpg',
       overview: 'All-in-one milk testing and collection solution combining a milk analyzer, digital ultrasonic stirrer, DPU, weighing scale and thermal printer.',
       specs: [
@@ -173,8 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'vinit-smart-dpu': {
       title: 'smart DPU',
       category: 'Smart DPU',
-      image: 'assets/smart_dpu_touch.jpg',
-      brochure: 'assets/brochures/eko_bond_combo_brochure.jpg',
+      image: 'assets/smart_dpu_touch.png',
+      brochure: 'assets/brochures/smart_dpu_brochure.jpeg',
       overview: 'Intelligent milk collection and data processing unit designed for milk collection management, reporting, payment processing and system connectivity.',
       specs: [
         { label: 'Processor', value: '32-bit High-Performance Microcontroller' },
@@ -222,8 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'dairy-portal': {
       title: 'Dairy Portal',
       category: 'Dairy Management Software',
-      image: 'assets/dairy_portal.jpg',
-      brochure: 'assets/brochures/mobile_dairy_app_brochure.jpg',
+      image: 'assets/dairy_portal.jpeg',
+      brochure: 'assets/brochures/dairy_portal_bochure.jpeg',
       overview: 'Web-based cloud dairy management portal providing centralized real-time monitoring of milk procurement, cooperative ledgers, rate charts, and member payouts.',
       specs: [
         { label: 'Platform', value: 'Cloud Web Application (Browser & Tablet)' },
