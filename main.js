@@ -553,6 +553,109 @@ Platform: Vinit Enterprise Web Portal
     }, 4500);
   }
 
+  // 10. Ecosystem Solutions Tab Switcher
+  const ecoTabBtns = document.querySelectorAll('.ecosystem-tab-btn');
+  const ecoPanes = document.querySelectorAll('.ecosystem-pane');
+
+  ecoTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetEco = btn.getAttribute('data-eco');
+      ecoTabBtns.forEach(b => b.classList.remove('active'));
+      ecoPanes.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetPane = document.getElementById(`eco-pane-${targetEco}`);
+      if (targetPane) targetPane.classList.add('active');
+    });
+  });
+
+  // 11. IoT & Software Showcase Tab Switcher
+  const iotTabBtns = document.querySelectorAll('.iot-tab-btn');
+  const iotPanes = document.querySelectorAll('.iot-pane');
+
+  iotTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetIot = btn.getAttribute('data-iot');
+      iotTabBtns.forEach(b => b.classList.remove('active'));
+      iotPanes.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetPane = document.getElementById(`iot-pane-${targetIot}`);
+      if (targetPane) targetPane.classList.add('active');
+    });
+  });
+
+  // 12. Interactive Dairy ROI & Savings Calculator Logic
+  const roiSamplesRange = document.getElementById('roi-samples-range');
+  const roiCentersRange = document.getElementById('roi-centers-range');
+  const roiSamplesVal = document.getElementById('roi-samples-val');
+  const roiCentersVal = document.getElementById('roi-centers-val');
+
+  const roiTimeSaved = document.getElementById('roi-time-saved');
+  const roiSlipSavings = document.getElementById('roi-slip-savings');
+  const roiLeakageSaved = document.getElementById('roi-leakage-saved');
+  const roiTotalAnnual = document.getElementById('roi-total-annual');
+
+  function calculateDairyROI() {
+    if (!roiSamplesRange || !roiCentersRange) return;
+
+    const samples = parseInt(roiSamplesRange.value, 10) || 300;
+    const centers = parseInt(roiCentersRange.value, 10) || 10;
+
+    roiSamplesVal.textContent = `${samples} Samples`;
+    roiCentersVal.textContent = `${centers} Center${centers > 1 ? 's' : ''}`;
+
+    // 1. Time Saved Per Shift (Saving 33 sec per sample: 60s manual vs 27s EKOMILK)
+    const totalSecSavedPerShift = samples * 33;
+    const hoursSavedPerShift = (totalSecSavedPerShift / 3600).toFixed(2);
+    roiTimeSaved.textContent = `${hoursSavedPerShift} Hrs`;
+
+    // 2. Paper & Slip Savings per year (₹0.15 saved per SMS/digital slip vs manual paper receipt)
+    const slipSavingsYear = Math.round(samples * centers * 0.15 * 2 * 365); // 2 shifts/day
+    roiSlipSavings.textContent = `₹ ${slipSavingsYear.toLocaleString('en-IN')}`;
+
+    // 3. Measurement Error & Milk Spillage Saved per year (₹45/liter avg milk, 0.2% precision error eliminated)
+    const litersPerDay = samples * 1.5 * centers; // 1.5 liters average per sample
+    const leakageSavingsYear = Math.round(litersPerDay * 0.002 * 45 * 365);
+    
+    if (leakageSavingsYear >= 100000) {
+      roiLeakageSaved.textContent = `₹ ${(leakageSavingsYear / 100000).toFixed(2)} Lakhs`;
+    } else {
+      roiLeakageSaved.textContent = `₹ ${leakageSavingsYear.toLocaleString('en-IN')}`;
+    }
+
+    // 4. Total Annual ROI
+    const totalAnnualSavings = slipSavingsYear + leakageSavingsYear;
+    if (totalAnnualSavings >= 100000) {
+      roiTotalAnnual.textContent = `₹ ${(totalAnnualSavings / 100000).toFixed(2)} Lakhs`;
+    } else {
+      roiTotalAnnual.textContent = `₹ ${totalAnnualSavings.toLocaleString('en-IN')}`;
+    }
+  }
+
+  if (roiSamplesRange && roiCentersRange) {
+    roiSamplesRange.addEventListener('input', calculateDairyROI);
+    roiCentersRange.addEventListener('input', calculateDairyROI);
+    calculateDairyROI();
+  }
+
+  // 13. Interactive FAQ Accordion
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  faqQuestions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const faqItem = btn.parentElement;
+      const isActive = faqItem.classList.contains('active');
+
+      // Close all active items
+      document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+
+      // Toggle clicked item
+      if (!isActive) {
+        faqItem.classList.add('active');
+      }
+    });
+  });
+
   // 9. Floating WhatsApp Widget Handler
   if (whatsappBtn) {
     whatsappBtn.addEventListener('click', () => {
@@ -562,3 +665,4 @@ Platform: Vinit Enterprise Web Portal
     });
   }
 });
+

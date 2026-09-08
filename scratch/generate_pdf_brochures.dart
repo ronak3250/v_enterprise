@@ -3,7 +3,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 void main() async {
-  print('Generating PDF brochure files...');
+  print('Generating 300 DPI Ultra High-Quality PDF brochure files...');
   
   final brochureDir = Directory('assets/brochures');
   if (!brochureDir.existsSync()) {
@@ -11,7 +11,6 @@ void main() async {
     return;
   }
 
-  // Get image files in assets/brochures
   final imageFiles = brochureDir
       .listSync()
       .whereType<File>()
@@ -20,13 +19,13 @@ void main() async {
 
   imageFiles.sort((a, b) => a.path.compareTo(b.path));
 
-  print('Found ${imageFiles.length} brochure sheet images.');
+  print('Processing ${imageFiles.length} brochure sheet images at 300 DPI high resolution...');
 
-  // 1. Generate individual PDF for each image
+  // 1. Generate individual 300 DPI High-Quality PDF for each brochure sheet
   for (final file in imageFiles) {
     final pdf = pw.Document();
-    final imageBytes = file.readAsBytesSync();
-    final pdfImage = pw.MemoryImage(imageBytes);
+    final bytes = file.readAsBytesSync();
+    final pdfImage = pw.MemoryImage(bytes, dpi: 300);
 
     pdf.addPage(
       pw.Page(
@@ -36,7 +35,7 @@ void main() async {
           return pw.FullPage(
             ignoreMargins: true,
             child: pw.Center(
-              child: pw.Image(pdfImage, fit: pw.BoxFit.contain),
+              child: pw.Image(pdfImage, fit: pw.BoxFit.contain, dpi: 300),
             ),
           );
         },
@@ -46,18 +45,18 @@ void main() async {
     final baseName = file.uri.pathSegments.last.replaceAll(RegExp(r'\.(jpg|jpeg|png)$'), '');
     final pdfFile = File('assets/brochures/$baseName.pdf');
     await pdfFile.writeAsBytes(await pdf.save());
-    print('Generated individual PDF: ${pdfFile.path}');
+    print('Generated 300 DPI High-Quality PDF: ${pdfFile.path} (${pdfFile.lengthSync()} bytes)');
   }
 
-  // 2. Generate Complete Multi-Page PDF Catalog containing ALL brochure sheets
+  // 2. Generate Complete Multi-Page 300 DPI High-Quality PDF Catalog
   final catalogPdf = pw.Document(
     title: 'Vinit Enterprise Complete Product Catalog',
     author: 'Vinit Enterprise',
   );
 
   for (final file in imageFiles) {
-    final imageBytes = file.readAsBytesSync();
-    final pdfImage = pw.MemoryImage(imageBytes);
+    final bytes = file.readAsBytesSync();
+    final pdfImage = pw.MemoryImage(bytes, dpi: 300);
 
     catalogPdf.addPage(
       pw.Page(
@@ -67,7 +66,7 @@ void main() async {
           return pw.FullPage(
             ignoreMargins: true,
             child: pw.Center(
-              child: pw.Image(pdfImage, fit: pw.BoxFit.contain),
+              child: pw.Image(pdfImage, fit: pw.BoxFit.contain, dpi: 300),
             ),
           );
         },
@@ -77,5 +76,5 @@ void main() async {
 
   final fullCatalogFile = File('assets/brochures/vinit_enterprise_complete_catalog.pdf');
   await fullCatalogFile.writeAsBytes(await catalogPdf.save());
-  print('SUCCESS: Generated full catalog PDF at: ${fullCatalogFile.path} (${fullCatalogFile.lengthSync()} bytes)');
+  print('SUCCESS: Generated 300 DPI Full Catalog PDF at: ${fullCatalogFile.path} (${fullCatalogFile.lengthSync()} bytes)');
 }

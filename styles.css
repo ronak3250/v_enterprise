@@ -1363,6 +1363,581 @@ textarea.form-control {
 }
 
 /* ==========================================================================
+   COW TO CONSUMER ECOSYSTEM ARCHITECTURE
+   ========================================================================== */
+.ecosystem-section {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 100%);
+}
+
+.ecosystem-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.ecosystem-tab-btn {
+  padding: 0.85rem 1.75rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.ecosystem-tab-btn i {
+  color: var(--royal-blue);
+  font-size: 1.1rem;
+}
+
+.ecosystem-tab-btn.active, .ecosystem-tab-btn:hover {
+  background: var(--royal-blue);
+  color: var(--bg-white);
+  border-color: var(--royal-blue);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+.ecosystem-tab-btn.active i, .ecosystem-tab-btn:hover i {
+  color: var(--bg-white);
+}
+
+.ecosystem-pane {
+  display: none;
+}
+
+.ecosystem-pane.active {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.ecosystem-info h3 {
+  font-size: 1.8rem;
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.ecosystem-info p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.ecosystem-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.eco-feat-card {
+  background: var(--bg-white);
+  padding: 1.2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.eco-feat-card i {
+  font-size: 1.5rem;
+  color: var(--royal-blue);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.eco-feat-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.eco-feat-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+.ecosystem-visual {
+  background: var(--primary);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  color: var(--bg-white);
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.ecosystem-visual::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ecosystem-visual h4 {
+  font-size: 1.25rem;
+  color: #60A5FA;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.eco-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.eco-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.eco-list li i {
+  color: var(--accent-green);
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   SMART IOT & MOBILE ECOSYSTEM SHOWCASE
+   ========================================================================== */
+.iot-showcase-section {
+  padding: 5rem 0;
+  background: var(--bg-white);
+}
+
+.iot-nav-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.iot-tab-btn {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: -0.65rem;
+}
+
+.iot-tab-btn.active, .iot-tab-btn:hover {
+  color: var(--royal-blue);
+  border-bottom-color: var(--royal-blue);
+}
+
+.iot-pane {
+  display: none;
+}
+
+.iot-pane.active {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.iot-card-preview {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  padding: 2.5rem;
+  border-radius: 24px;
+  color: white;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.iot-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(37, 99, 235, 0.2);
+  color: #60A5FA;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.iot-card-preview h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.iot-card-preview p {
+  color: #94A3B8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.iot-feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.iot-tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: #E2E8F0;
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   INTERACTIVE DAIRY ROI & SAVINGS CALCULATOR
+   ========================================================================== */
+.roi-calculator-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #0B192C 0%, #1E3E62 100%);
+  color: white;
+}
+
+.roi-calculator-section .section-title {
+  color: white;
+}
+
+.roi-calculator-section .section-subtitle {
+  color: #60A5FA;
+}
+
+.roi-calculator-section .section-description {
+  color: #94A3B8;
+}
+
+.roi-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.roi-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.slider-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.slider-val-badge {
+  background: var(--royal-blue);
+  color: white;
+  padding: 0.25rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.roi-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  cursor: pointer;
+  accent-color: var(--royal-blue);
+}
+
+.roi-outputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.roi-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.roi-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.roi-card-icon {
+  font-size: 1.8rem;
+  color: #60A5FA;
+  margin-bottom: 0.5rem;
+}
+
+.roi-card-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #38BDF8;
+  margin-bottom: 0.25rem;
+}
+
+.roi-card-label {
+  font-size: 0.85rem;
+  color: #CBD5E1;
+  font-weight: 600;
+}
+
+.roi-card-highlight {
+  grid-column: span 2;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.4) 0%, rgba(16, 185, 129, 0.4) 100%);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+.roi-card-highlight .roi-card-value {
+  font-size: 2.5rem;
+  color: #34D399;
+}
+
+/* ==========================================================================
+   COMPETITOR BENCHMARK / COMPARISON MATRIX
+   ========================================================================== */
+.comparison-section {
+  padding: 5rem 0;
+  background: var(--bg-light);
+}
+
+.comparison-table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-white);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.comparison-table th {
+  padding: 1.25rem 1.5rem;
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.comparison-table th.highlight-col {
+  background: var(--royal-blue);
+  color: white;
+  text-align: center;
+}
+
+.comparison-table td {
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.comparison-table tr:nth-child(even) {
+  background: #F8FAFC;
+}
+
+.comparison-table tr:hover {
+  background: #EFF6FF;
+}
+
+.comparison-table td.highlight-cell {
+  background: rgba(37, 99, 235, 0.06);
+  font-weight: 700;
+  color: var(--royal-blue);
+  text-align: center;
+}
+
+.comparison-table i.check-icon {
+  color: var(--accent-green);
+  font-size: 1.1rem;
+  margin-right: 0.4rem;
+}
+
+.comparison-table i.cross-icon {
+  color: #EF4444;
+  font-size: 1.1rem;
+  margin-right: 0.4rem;
+}
+
+/* ==========================================================================
+   QUALITY & CERTIFICATION BADGES
+   ========================================================================== */
+.certifications-section {
+  padding: 4rem 0;
+  background: var(--bg-white);
+  border-top: 1px solid var(--border-color);
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+.cert-card {
+  background: #F8FAFC;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--royal-blue);
+}
+
+.cert-card i {
+  font-size: 2.2rem;
+  color: var(--royal-blue);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.cert-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.2rem;
+}
+
+.cert-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   INTERACTIVE FAQ ACCORDION
+   ========================================================================== */
+.faq-section {
+  padding: 5rem 0;
+  background: #F8FAFC;
+}
+
+.faq-container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.faq-item.active {
+  border-color: var(--royal-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.faq-question i {
+  color: var(--royal-blue);
+  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px;
+  padding: 0 1.5rem 1.25rem 1.5rem;
+}
+
+/* ==========================================================================
    RESPONSIVE LAYOUT (TABLET & MOBILE)
    ========================================================================== */
 @media (max-width: 1024px) {
@@ -1394,6 +1969,21 @@ textarea.form-control {
 
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ecosystem-pane.active, .iot-pane.active {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .roi-box {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .cert-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1482,4 +2072,17 @@ textarea.form-control {
   .form-row {
     grid-template-columns: 1fr;
   }
+
+  .cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .roi-outputs {
+    grid-template-columns: 1fr;
+  }
+
+  .roi-card-highlight {
+    grid-column: span 1;
+  }
 }
+
