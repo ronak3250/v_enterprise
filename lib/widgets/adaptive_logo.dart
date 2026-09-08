@@ -171,35 +171,35 @@ class AdaptiveLogoTop extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          height: height,
-          width: height,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFF0072CE).withValues(alpha: 0.15),
-                blurRadius: 6,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              'assets/ve_logo_icon.png',
-              height: height,
-              width: height,
-              fit: BoxFit.cover,
-              errorBuilder: (ctx, e, st) => Image.asset(
-                'assets/company_logo.jpeg',
-                height: height,
-                width: height,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
+        // Container(
+        //   height: height,
+        //   width: height,
+        //   decoration: BoxDecoration(
+        //     borderRadius: BorderRadius.circular(8),
+        //     boxShadow: [
+        //       BoxShadow(
+        //         color: const Color(0xFF0072CE).withValues(alpha: 0.15),
+        //         blurRadius: 6,
+        //         offset: const Offset(0, 2),
+        //       ),
+        //     ],
+        //   ),
+        //   child: ClipRRect(
+        //     borderRadius: BorderRadius.circular(8),
+        //     child: Image.asset(
+        //       'assets/ve_logo_icon.png',
+        //       height: height,
+        //       width: height,
+        //       fit: BoxFit.cover,
+        //       errorBuilder: (ctx, e, st) => Image.asset(
+        //         'assets/company_logo.jpeg',
+        //         height: height,
+        //         width: height,
+        //         fit: BoxFit.cover,
+        //       ),
+        //     ),
+        //   ),
+        // ),
         const SizedBox(width: 10),
         Image.asset(
           logoAsset,

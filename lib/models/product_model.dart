@@ -439,7 +439,7 @@ class ProductCatalog {
       categoryId: 'Weighing Scale',
       imagePath: 'assets/platform_weighing_scale.jpg',
       iconName: 'scale',
-      badgeText: 'Heavy Duty & Long Lasting',
+      badgeText: 'Weighing Scale',
       brochurePath: 'assets/brochures/platform_weighing_scale_brochure.jpg',
       overview:
       'Built for industrial and commercial use, our Weighing Scale combines durability with precision to deliver accurate weight measurements every time.',
