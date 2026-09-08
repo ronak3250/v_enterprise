@@ -259,7 +259,7 @@ class ProductCatalog {
       category: 'Milk Analyzer',
       categoryId: 'Milk Analyzer',
 
-      imagePath: 'assets/ekomilk_ultra_pro_metal_body.jpg',
+      imagePath: 'assets/ekomilk_ultra_pro_metal_body.png',
       iconName: 'flask',
       badgeText: 'Milk Analyzer',
       brochurePath: 'assets/brochures/ekomilk_ultra_brochure_metal.jpeg',
