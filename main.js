@@ -171,9 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
 
     'vinit-smart-dpu': {
-      title: 'Vinit Smart DPU',
-      category: 'Data Management & Automation',
-      image: 'assets/dpu.jpg',
+      title: 'smart DPU',
+      category: 'Smart DPU',
+      image: 'assets/smart_dpu_touch.jpg',
       brochure: 'assets/brochures/eko_bond_combo_brochure.jpg',
       overview: 'Intelligent milk collection and data processing unit designed for milk collection management, reporting, payment processing and system connectivity.',
       specs: [
@@ -189,6 +189,34 @@ document.addEventListener('DOMContentLoaded', () => {
         'Built-in Thermal Printer & Secure Data Storage'
       ],
       applications: 'Cooperative Milk Societies, Milk Collection Centers, Chilling Centers.'
+    },
+
+    'vinit-dpu-unit': {
+      title: 'Data Processing Unit (DPU)',
+      category: 'Smart DPU',
+      image: 'assets/dpu.jpg',
+      brochure: 'assets/brochures/data_processing_unit_dpu_brochure.jpg',
+      overview: 'Micro-controller based Data Processing Unit (DPU) engineered for accurate, reliable, and efficient milk collection operations. Features direct milk analyzer interface, in-built thermal printer, keypad, RFID customer identification, and 12-month data storage capacity.',
+      specs: [
+        { label: 'Display', value: '95mm x 55mm Jumbo LCD Display' },
+        { label: 'Printer', value: 'Thermal Printed - 2.0" Panel Mounted' },
+        { label: 'Keyboard', value: 'In-built Keypad' },
+        { label: 'Data Storage', value: 'Up to 12 Months' },
+        { label: 'Communication', value: 'USB Flash Drive / GSM / GPRS' },
+        { label: 'Milk Parameters', value: 'Weight (Kg/Ltr), FAT%, SNF%, Added Water%' },
+        { label: 'Rate Charts', value: '2 Rate Chart Storage Facility' }
+      ],
+      features: [
+        'Micro-Controller based embedded design',
+        'RFID for customer identification (Optional)',
+        'Direct interface with Milk Analyzer & Weighing Scale',
+        'Milk Analyzer sync: Date, Weight (Kg/Ltr), FAT%, SNF%, Added water%',
+        'In-built Keypad & 2.0" Panel Mounted Thermal Printer',
+        'Data transfer through USB Flash drive / GSM / GPRS',
+        '2 Rate chart storage facility & shift report with weighted average',
+        'Store data up to 12 months & optional Android app integration'
+      ],
+      applications: 'Village Milk Collection Centers (VLC), Cooperative Milk Societies, Chilling Centers, and Dairy Plants.'
     },
 
     'dairy-portal': {

@@ -58,6 +58,7 @@ class ProductCatalog {
     'assets/brochures/digital_ultrasonic_stirrer_brochure.jpg',
     'assets/brochures/ekomilk_bond_ultra_pro_kit_brochure.jpg',
     'assets/brochures/eko_bond_combo_brochure.jpg',
+    'assets/brochures/data_processing_unit_dpu_brochure.jpg',
     'assets/brochures/mobile_dairy_app_brochure.jpg',
   ];
 
@@ -71,7 +72,7 @@ class ProductCatalog {
       imagePath: 'assets/ekomilk_bond.jpg',
       iconName: 'flask',
       badgeText: 'All-in-One Milk Testing',
-      brochurePath: 'assets/brochures/ekomilk_ultra_pro_brochure.jpg',
+      brochurePath: 'assets/brochures/eko_bond_combo_brochure.jpg',
 
       overview:
       'Compact and reliable ultrasonic milk analyzer designed for fast and accurate real-time milk quality analysis.',
@@ -282,10 +283,11 @@ class ProductCatalog {
       title: 'EKO Bond Combo',
       category: 'Milk Collection & AMCU',
       categoryId: 'Milk Collection & AMCU',
-      imagePath: 'assets/ekomilk_bond_ultra_pro.jpg',
+      imagePath: 'assets/ekomilk_bond_ultra_pro.jpeg',
       iconName: 'microchip',
       badgeText: 'All-in-One Milk Testing',
-      brochurePath: 'assets/brochures/eko_bond_combo_brochure.jpg',
+      brochurePath: 'assets/brochures/ekomilk_ultra_pro_brochure.jpg',
+
       overview:
       'All-in-one milk testing and collection solution combining a milk analyzer, digital ultrasonic stirrer, DPU, weighing scale and thermal printer.',
       specs: [
@@ -334,15 +336,15 @@ class ProductCatalog {
 
     Product(
       id: 'vinit-smart-dpu',
-      title: 'Smart DPU',
+      title: 'smart DPU',
       category: 'Smart DPU',
       categoryId: 'Smart DPU',
-      imagePath: 'assets/dpu.jpg',
+      imagePath: 'assets/smart_dpu_touch.png',
       iconName: 'database',
       badgeText: 'Smart DPU',
       brochurePath: 'assets/brochures/eko_bond_combo_brochure.jpg',
       overview:
-      'Intelligent milk collection and data processing unit designed for milk collection management, reporting, payment processing and system connectivity.',
+          'Intelligent milk collection and data processing unit designed for milk collection management, reporting, payment processing and system connectivity.',
       specs: [
         ProductSpec(
           label: 'Processor',
@@ -384,7 +386,64 @@ class ProductCatalog {
         'Multiple Connectivity Options',
       ],
       applications:
-      'Cooperative Milk Societies, Milk Collection Centers, Chilling Centers and Milk Procurement Nodes.',
+          'Cooperative Milk Societies, Milk Collection Centers, Chilling Centers and Milk Procurement Nodes.',
+      priceEstimate: 'Contact for Enterprise Pricing',
+    ),
+    Product(
+      id: 'vinit-dpu-unit',
+      title: 'Data Processing Unit (DPU)',
+      category: 'Smart DPU',
+      categoryId: 'Smart DPU',
+      imagePath: 'assets/dpu.jpg',
+      iconName: 'database',
+      badgeText: 'Smart DPU',
+      brochurePath: 'assets/brochures/data_processing_unit_dpu_brochure.jpg',
+      overview:
+          'Micro-controller based Data Processing Unit (DPU) engineered for accurate, reliable, and efficient milk collection operations with built-in thermal printer, keypad, RFID support, and 12 months data storage.',
+      specs: [
+        ProductSpec(
+          label: 'Display',
+          value: '95mm x 55mm Jumbo LCD Display',
+        ),
+        ProductSpec(
+          label: 'Printer',
+          value: 'Thermal Printed - 2.0" Panel Mounted',
+        ),
+        ProductSpec(
+          label: 'Keyboard',
+          value: 'In-built Keypad',
+        ),
+        ProductSpec(
+          label: 'Data Storage',
+          value: 'Up to 12 Months',
+        ),
+        ProductSpec(
+          label: 'Communication',
+          value: 'USB Flash Drive / GSM / GPRS',
+        ),
+        ProductSpec(
+          label: 'Milk Parameters',
+          value: 'Weight (Kg/Ltr), FAT%, SNF%, Added Water%',
+        ),
+        ProductSpec(
+          label: 'Model',
+          value: 'Available in different models as per customer requirements',
+        ),
+      ],
+      features: [
+        'Micro-Controller based embedded design',
+        'RFID for customer identification (Optional)',
+        'Direct interface with Milk Analyzer & Weighing Scale',
+        'Milk Analyzer sync: Date, Weight (Kg/Ltr), FAT%, SNF%, Added water%',
+        'In-built Keypad & Panel Mounted Thermal Printer',
+        'Data transfer through USB Flash drive / GSM / GPRS',
+        '2 Rate chart storage facility',
+        'Print/view shift report with weighted average',
+        'Store data up to 12 months',
+        'Available Android-based integration option',
+      ],
+      applications:
+          'Cooperative Milk Societies, Village Milk Collection Centers (VLC), Chilling Centers and Milk Procurement Nodes.',
       priceEstimate: 'Contact for Enterprise Pricing',
     ),
     Product(
@@ -392,7 +451,7 @@ class ProductCatalog {
       title: 'Dairy Portal',
       category: 'Dairy Management Software',
       categoryId: 'Dairy Management Software',
-      imagePath: 'assets/dairy_portal.jpg',
+      imagePath: 'assets/dairy_portal.jpeg',
       iconName: 'cloud',
       badgeText: 'Dairy Cloud Portal',
       brochurePath: 'assets/brochures/mobile_dairy_app_brochure.jpg',

@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/wasm .wasm
+  AddType application/json .json
+  AddType font/ttf .ttf
+  AddType font/woff .woff
+  AddType font/woff2 .woff2
+  AddType image/webp .webp
+</IfModule>
