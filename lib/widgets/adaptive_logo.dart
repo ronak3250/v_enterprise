@@ -154,7 +154,7 @@ class AdaptiveLogoTop extends StatelessWidget {
 
   const AdaptiveLogoTop({
     super.key,
-    this.height = 45,
+    this.height = 40,
     this.showSubtitle = true,
     this.forceDark,
   });
@@ -165,35 +165,57 @@ class AdaptiveLogoTop extends StatelessWidget {
     final isDark = forceDark ?? (theme.brightness == Brightness.dark);
     final logoAsset = isDark
         ? 'assets/company_logo_dark.png'
-        : 'assets/company_logo_light.jpg';
+        : 'assets/company_logo_light.png';
 
-    return Image.asset(
-      logoAsset,
-      height: 45,
-      width: 130,
-      fit: BoxFit.cover,
-      errorBuilder: (ctx, e, st) => Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color: const Color(0xFF0072CE),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(Icons.science, color: Colors.white, size: 20),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          height: height,
+          width: height,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF0072CE).withValues(alpha: 0.15),
+                blurRadius: 6,
+                offset: const Offset(0, 2),
+              ),
+            ],
           ),
-          const SizedBox(width: 8),
-          Text(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset(
+              'assets/ve_logo_icon.png',
+              height: height,
+              width: height,
+              fit: BoxFit.cover,
+              errorBuilder: (ctx, e, st) => Image.asset(
+                'assets/company_logo.jpeg',
+                height: height,
+                width: height,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 10),
+        Image.asset(
+          logoAsset,
+          height: height,
+          fit: BoxFit.contain,
+          errorBuilder: (ctx, e, st) => Text(
             'VINIT ENTERPRISE',
             style: TextStyle(
-              fontSize: 15,
+              fontSize: height * 0.42,
               fontWeight: FontWeight.w800,
               color: isDark ? Colors.white : const Color(0xFF0A2540),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
+
