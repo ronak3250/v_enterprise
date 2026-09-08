@@ -211,9 +211,16 @@ Platform: Vinit Enterprise Mobile/Web Portal
                               ),
                               const SizedBox(height: 24),
                               _buildInfoTile(
+                                Icons.factory_outlined,
+                                'Factory Address',
+                                'Sr. No. 7081, Umta-Visnagar Road, At Umta - 384320,\nTal. Visnagar, Dist. Mehsana, Gujarat, India.',
+                                isDark,
+                              ),
+                              const SizedBox(height: 16),
+                              _buildInfoTile(
                                 Icons.location_on_outlined,
-                                'Office & Factory Address',
-                                '[Vinit Enterprise Plot / Industrial Estate Address]\n[City, District, State - PIN Code]',
+                                'Communication Address',
+                                '8-1/B, Suraxa Society, Near ITI Cross Road,\nVisnagar - 384315, Dist. Mehsana, Gujarat, India.',
                                 isDark,
                               ),
                               const SizedBox(height: 16),

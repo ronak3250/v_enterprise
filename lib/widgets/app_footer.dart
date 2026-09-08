@@ -116,7 +116,7 @@ class AppFooter extends StatelessWidget {
 
                   // Contact Sales Column
                   SizedBox(
-                    width: isWide ? 240 : double.infinity,
+                    width: isWide ? 300 : double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -129,8 +129,16 @@ class AppFooter extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 14),
-                        _buildContactRow(Icons.location_on_outlined, '[Vinit Enterprise Industrial Estate Address]'),
-                        _buildContactRow(Icons.phone_outlined, '+91 91732 51191', onTap: () => _launchUrl('tel:+919173251191')),
+                        _buildContactRow(
+                          Icons.factory_outlined,
+                          'Factory: Sr. No. 7081, Umta-Visnagar Road, At Umta - 384320, '
+                              'Tal. Visnagar, Dist. Mehsana, Gujarat, India.',
+                        ),
+                        _buildContactRow(
+                          Icons.location_on_outlined,
+                          'Comm.: 8-1/B, Suraxa Society, Near ITI Cross Road, '
+                              'Visnagar - 384315, Dist. Mehsana, Gujarat, India.',
+                        ),_buildContactRow(Icons.phone_outlined, '+91 91732 51191', onTap: () => _launchUrl('tel:+919173251191')),
                         _buildContactRow(Icons.email_outlined, 'sales@vinitenterprise.com', onTap: () => _launchUrl('mailto:sales@vinitenterprise.com')),
                         const SizedBox(height: 16),
                         ElevatedButton.icon(
