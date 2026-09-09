@@ -88,7 +88,7 @@ class ServicesScreen extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       crossAxisSpacing: 18,
                       mainAxisSpacing: 18,
-                      childAspectRatio: crossAxisCount >= 3 ? 1.2 : 1.35,
+                      childAspectRatio: crossAxisCount >= 3 ? 2.2 : (crossAxisCount == 2 ? 1.8 : 2.0),
                   children: [
                     _buildServiceCard(
                       context,

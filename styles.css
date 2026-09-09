@@ -2303,7 +2303,7 @@ textarea.form-control {
 /* 5. LARGE LAPTOP / ULTRA-WIDE DISPLAY (17.3 inch - Viewport >= 1728px) */
 @media (min-width: 1728px) {
   .container {
-    max-width: 1680px;
+    max-width: 100%;
     padding: 0 3rem;
   }
   .hero-title {

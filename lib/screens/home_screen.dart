@@ -88,19 +88,19 @@ class HomeScreen extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: screenWidth < 600
                                             ? 24
-                                            : (screenWidth < 1200 ? 28 : 34),
+                                            : (screenWidth >= 1600 ? 42 : (screenWidth < 1200 ? 28 : 34)),
                                         fontWeight: FontWeight.w800,
                                         color: Colors.white,
                                         height: 1.2,
                                       ),
                                     ),
-                                    const SizedBox(height: 12),
+                                    const SizedBox(height: 14),
                                     Text(
                                       'Comprehensive product suite including Milk Analyzers, Portable Milk Analyzers, Sample Testing Equipment, Milk Weighing Scales, Ultrasonic Stirrers, and Smart DPU engineered for 99.8% measurement accuracy.',
                                       style: TextStyle(
                                         fontSize: screenWidth < 600
                                             ? 13
-                                            : (screenWidth < 1200 ? 14 : 15),
+                                            : (screenWidth >= 1600 ? 17.5 : (screenWidth < 1200 ? 14 : 15)),
                                         color: Colors.white.withValues(alpha: 0.90),
                                         height: 1.45,
                                       ),
@@ -139,17 +139,17 @@ class HomeScreen extends StatelessWidget {
                                         ElevatedButton.icon(
                                           onPressed: () =>
                                               QuoteRequestSheet.show(context),
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.send_rounded,
                                             color: Colors.white,
-                                            size: 17,
+                                            size: screenWidth >= 1600 ? 19 : 17,
                                           ),
-                                          label: const Text(
+                                          label: Text(
                                             'Get Quote & Pricing',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,
-                                              fontSize: 14,
+                                              fontSize: screenWidth >= 1600 ? 15.5 : 14,
                                             ),
                                           ),
                                           style: ElevatedButton.styleFrom(
@@ -157,10 +157,10 @@ class HomeScreen extends StatelessWidget {
                                               0xFF0072CE,
                                             ),
                                             padding: EdgeInsets.symmetric(
-                                              horizontal: screenWidth < 1200
-                                                  ? 18
-                                                  : 22,
-                                              vertical: 14,
+                                              horizontal: screenWidth >= 1600
+                                                  ? 26
+                                                  : (screenWidth < 1200 ? 18 : 22),
+                                              vertical: screenWidth >= 1600 ? 16 : 14,
                                             ),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -172,17 +172,17 @@ class HomeScreen extends StatelessWidget {
                                         ElevatedButton.icon(
                                           onPressed: () =>
                                               _downloadCorporateCatalog(context),
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.picture_as_pdf_rounded,
                                             color: Colors.white,
-                                            size: 17,
+                                            size: screenWidth >= 1600 ? 19 : 17,
                                           ),
-                                          label: const Text(
+                                          label: Text(
                                             'Download Brochure',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,
-                                              fontSize: 14,
+                                              fontSize: screenWidth >= 1600 ? 15.5 : 14,
                                             ),
                                           ),
                                           style: ElevatedButton.styleFrom(
@@ -190,10 +190,10 @@ class HomeScreen extends StatelessWidget {
                                               0xFF10B981,
                                             ),
                                             padding: EdgeInsets.symmetric(
-                                              horizontal: screenWidth < 1200
-                                                  ? 18
-                                                  : 22,
-                                              vertical: 14,
+                                              horizontal: screenWidth >= 1600
+                                                  ? 26
+                                                  : (screenWidth < 1200 ? 18 : 22),
+                                              vertical: screenWidth >= 1600 ? 16 : 14,
                                             ),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -204,17 +204,17 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                         OutlinedButton.icon(
                                           onPressed: () => onNavigateToTab(3),
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.inventory_2_outlined,
                                             color: Colors.white,
-                                            size: 17,
+                                            size: screenWidth >= 1600 ? 19 : 17,
                                           ),
-                                          label: const Text(
+                                          label: Text(
                                             'Explore Catalog',
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 14,
+                                              fontSize: screenWidth >= 1600 ? 15.5 : 14,
                                             ),
                                           ),
                                           style: OutlinedButton.styleFrom(
@@ -223,10 +223,10 @@ class HomeScreen extends StatelessWidget {
                                               width: 1.5,
                                             ),
                                             padding: EdgeInsets.symmetric(
-                                              horizontal: screenWidth < 1200
-                                                  ? 18
-                                                  : 22,
-                                              vertical: 14,
+                                              horizontal: screenWidth >= 1600
+                                                  ? 26
+                                                  : (screenWidth < 1200 ? 18 : 22),
+                                              vertical: screenWidth >= 1600 ? 16 : 14,
                                             ),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -243,7 +243,7 @@ class HomeScreen extends StatelessWidget {
 
                             if (!isWide) const SizedBox(height: 32),
 
-                            // Right Hero Equipment Graphic Showcase (Constrained & Centered)
+                            // Right Hero Equipment Graphic Showcase (Enlarged on 17.3"+ displays)
                             _buildResponsiveFlexChild(
                               isWide: isWide,
                               flex: 5,
@@ -251,7 +251,7 @@ class HomeScreen extends StatelessWidget {
                                 child: Container(
                                   constraints: BoxConstraints(
                                     maxHeight: isWide
-                                        ? (screenWidth < 1200 ? 390 : 460)
+                                        ? (screenWidth >= 1600 ? 580 : (screenWidth < 1200 ? 390 : 460))
                                         : 360,
                                     maxWidth: double.infinity,
                                   ),
@@ -499,7 +499,7 @@ class HomeScreen extends StatelessWidget {
                   'Complete Dairy Equipment & Support Solutions',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: screenWidth < 600 ? 20 : 24,
+                    fontSize: screenWidth < 600 ? 20 : (screenWidth >= 1600 ? 28 : 24),
                     fontWeight: FontWeight.bold,
                     color: isDark ? Colors.white : const Color(0xFF0A2540),
                   ),
@@ -509,7 +509,7 @@ class HomeScreen extends StatelessWidget {
                   'End-to-end services tailored to village milk collection centers and processing plants.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: screenWidth >= 1600 ? 14.5 : 13,
                     color: isDark ? const Color(0xFF94A3B8) : Colors.grey[600],
                   ),
                 ),
@@ -524,9 +524,9 @@ class HomeScreen extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
-                  childAspectRatio: screenWidth > 800
-                      ? 2.1
-                      : (screenWidth > 550 ? 1.8 : 2.0),
+                  childAspectRatio: screenWidth >= 1600
+                      ? 3.2
+                      : (screenWidth > 800 ? 2.6 : (screenWidth > 550 ? 2.2 : 2.4)),
                   children: [
                     _buildServiceCard(
                       context,
@@ -596,7 +596,7 @@ class HomeScreen extends StatelessWidget {
                 Text(
                   'Our Featured Dairy Equipment',
                   style: TextStyle(
-                    fontSize: screenWidth < 600 ? 20 : 24,
+                    fontSize: screenWidth < 600 ? 20 : (screenWidth >= 1600 ? 28 : 24),
                     fontWeight: FontWeight.bold,
                     color: isDark ? Colors.white : const Color(0xFF0A2540),
                   ),
@@ -606,7 +606,7 @@ class HomeScreen extends StatelessWidget {
                   'High precision milk analyzers, automated collection terminals, electronic scales, and accessories.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: screenWidth >= 1600 ? 14.5 : 13,
                     color: isDark ? const Color(0xFF94A3B8) : Colors.grey[600],
                   ),
                 ),
@@ -725,9 +725,9 @@ class HomeScreen extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
-                  childAspectRatio: screenWidth > 800
-                      ? 2.5
-                      : (screenWidth > 550 ? 2.2 : 2.6),
+                  childAspectRatio: screenWidth >= 1600
+                      ? 3.0
+                      : (screenWidth > 800 ? 2.5 : (screenWidth > 550 ? 2.2 : 2.6)),
                   children: [
                     _buildDarkFeatureCard(
                       Icons.verified_outlined,
@@ -801,9 +801,9 @@ class HomeScreen extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   crossAxisSpacing: 14,
                   mainAxisSpacing: 14,
-                  childAspectRatio: screenWidth > 800
-                      ? 1.8
-                      : (screenWidth > 500 ? 1.8 : 2.6),
+                  childAspectRatio: screenWidth >= 1600
+                      ? 2.2
+                      : (screenWidth > 800 ? 1.8 : (screenWidth > 500 ? 1.8 : 2.6)),
                   children: [
                     _buildStepCard(
                       context,
@@ -1160,7 +1160,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               padding: const EdgeInsets.all(10),
@@ -1174,7 +1174,7 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     title,
@@ -1215,14 +1215,14 @@ class HomeScreen extends StatelessWidget {
           border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(icon, color: const Color(0xFF38BDF8), size: 22),
             const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     title,
@@ -1269,6 +1269,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               padding: const EdgeInsets.all(8),
@@ -1289,7 +1290,7 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     title,

@@ -23,14 +23,9 @@ class ResponsiveLayout {
     return LaptopCategory.large;                       // 17.3 inch
   }
 
-  /// Calculates dynamic maximum container width for current laptop screen
+  /// Calculates dynamic maximum container width for current screen (full-width 100% edge-to-edge)
   static double getMaxContainerWidth(double screenWidth) {
-    if (screenWidth >= 1728) return 1680.0; // 17.3 inch large laptop
-    if (screenWidth >= 1600) return 1540.0; // 16 inch larger laptop
-    if (screenWidth >= 1440) return 1400.0; // 15.6 inch standard laptop
-    if (screenWidth >= 1200) return 1260.0; // 14 inch portable laptop
-    if (screenWidth >= 1024) return 1080.0; // 13.3 inch compact laptop
-    return screenWidth;
+    return double.infinity;
   }
 
   /// Returns grid column count based on available width
