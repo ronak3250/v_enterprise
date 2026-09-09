@@ -3,6 +3,7 @@ import 'package:vinit_enterprise/models/product_model.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
 import 'package:vinit_enterprise/widgets/product_card_widget.dart';
+import 'package:vinit_enterprise/utils/responsive.dart';
 
 class ProductsScreen extends StatefulWidget {
   final Function(int)? onNavigateToTab;
@@ -69,65 +70,73 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
           const SizedBox(height: 24),
 
-          // Category Filter Chips
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              children: ProductCatalog.categories.map((category) {
-                final isSelected = _selectedCategory == category;
-                return Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: ChoiceChip(
-                    label: Text(category),
-                    selected: isSelected,
-                    selectedColor: const Color(0xFF0072CE),
-                    backgroundColor: isDark ? const Color(0xFF1E293B) : Colors.grey[100],
-                    labelStyle: TextStyle(
-                      fontSize: 13,
-                      fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      color: isSelected ? Colors.white : (isDark ? const Color(0xFFE2E8F0) : const Color(0xFF334155)),
+          // Category Filter Chips & Grid Container
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
+              child: Column(
+                children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: ProductCatalog.categories.map((category) {
+                        final isSelected = _selectedCategory == category;
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: ChoiceChip(
+                            label: Text(category),
+                            selected: isSelected,
+                            selectedColor: const Color(0xFF0072CE),
+                            backgroundColor: isDark ? const Color(0xFF1E293B) : Colors.grey[100],
+                            labelStyle: TextStyle(
+                              fontSize: 13,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                              color: isSelected ? Colors.white : (isDark ? const Color(0xFFE2E8F0) : const Color(0xFF334155)),
+                            ),
+                            onSelected: (selected) {
+                              if (selected) {
+                                setState(() {
+                                  _selectedCategory = category;
+                                });
+                              }
+                            },
+                          ),
+                        );
+                      }).toList(),
                     ),
-                    onSelected: (selected) {
-                      if (selected) {
-                        setState(() {
-                          _selectedCategory = category;
-                        });
-                      }
-                    },
                   ),
-                );
-              }).toList(),
-            ),
-          ),
 
-          const SizedBox(height: 32),
+                  const SizedBox(height: 32),
 
-          // Product Grid with Tight Aspect Ratio (ZERO UNNECESSARY EMPTY SPACE)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final crossAxisCount = constraints.maxWidth > 850 ? 3 : (constraints.maxWidth > 550 ? 2 : 1);
-                const crossAxisSpacing = 20.0;
-                final totalSpacing = (crossAxisCount - 1) * crossAxisSpacing;
-                final itemWidth = (constraints.maxWidth - totalSpacing) / crossAxisCount;
-                // Target height is fixed to exact content height (~335px)
-                const targetHeight = 335.0;
-                final childAspectRatio = itemWidth / targetHeight;
+                  // Product Grid with Responsive Aspect Ratio & Dynamic Laptop Columns
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        final crossAxisCount = ResponsiveLayout.getGridColumnCount(constraints.maxWidth);
+                        const crossAxisSpacing = 20.0;
+                        final totalSpacing = (crossAxisCount - 1) * crossAxisSpacing;
+                        final itemWidth = (constraints.maxWidth - totalSpacing) / crossAxisCount;
+                        const targetHeight = 335.0;
+                        final childAspectRatio = itemWidth / targetHeight;
 
-                return GridView.count(
-                  crossAxisCount: crossAxisCount,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  crossAxisSpacing: crossAxisSpacing,
-                  mainAxisSpacing: 20,
-                  childAspectRatio: childAspectRatio,
-                  children: filteredProducts.map((product) {
-                    return ProductCardWidget(product: product);
-                  }).toList(),
-                );
-              },
+                        return GridView.count(
+                          crossAxisCount: crossAxisCount,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          crossAxisSpacing: crossAxisSpacing,
+                          mainAxisSpacing: 20,
+                          childAspectRatio: childAspectRatio,
+                          children: filteredProducts.map((product) {
+                            return ProductCardWidget(product: product);
+                          }).toList(),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
 

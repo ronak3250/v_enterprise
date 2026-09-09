@@ -2207,3 +2207,127 @@ textarea.form-control {
   }
 }
 
+/* ==========================================================================
+   LAPTOP DISPLAY PROFILES & RESPONSIVE SCALING (13.3", 14", 15.6", 16", 17.3")
+   ========================================================================== */
+
+/* 1. COMPACT LAPTOP (13.3 inch - Viewport 1024px to 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .container {
+    max-width: 1080px;
+    padding: 0 1.25rem;
+  }
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  .products-grid, .services-grid, .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .stats-card {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* 2. PORTABLE LAPTOP (14 inch - Viewport 1200px to 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .container {
+    max-width: 1260px;
+    padding: 0 1.5rem;
+  }
+  .hero-title {
+    font-size: 3.2rem;
+  }
+  .products-grid, .services-grid, .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* 3. STANDARD LAPTOP (15.6 inch - Viewport 1440px to 1599px) */
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .container {
+    max-width: 1400px;
+    padding: 0 2rem;
+  }
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  .products-grid, .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.75rem;
+  }
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .footer-grid {
+    grid-template-columns: 2.5fr repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* 4. LARGER MODERN LAPTOP (16 inch - Viewport 1600px to 1727px) */
+@media (min-width: 1600px) and (max-width: 1727px) {
+  .container {
+    max-width: 1540px;
+    padding: 0 2.5rem;
+  }
+  .hero-title {
+    font-size: 3.8rem;
+  }
+  .products-grid, .features-grid, .process-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.25rem;
+  }
+  .footer-grid {
+    grid-template-columns: 2.5fr repeat(3, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* 5. LARGE LAPTOP / ULTRA-WIDE DISPLAY (17.3 inch - Viewport >= 1728px) */
+@media (min-width: 1728px) {
+  .container {
+    max-width: 1680px;
+    padding: 0 3rem;
+  }
+  .hero-title {
+    font-size: 4.2rem;
+    line-height: 1.15;
+  }
+  .hero-subtitle {
+    font-size: 1.35rem;
+  }
+  .products-grid, .features-grid, .process-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.25rem;
+  }
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.25rem;
+  }
+  .footer-grid {
+    grid-template-columns: 3fr repeat(3, 1fr);
+    gap: 3.5rem;
+  }
+  .stats-card {
+    padding: 2.5rem 3rem;
+  }
+}
+
+

@@ -10,6 +10,7 @@ import 'package:vinit_enterprise/screens/products_screen.dart';
 import 'package:vinit_enterprise/screens/services_screen.dart';
 import 'package:vinit_enterprise/widgets/adaptive_logo.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
+import 'package:vinit_enterprise/utils/responsive.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -215,7 +216,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                 child: Center(
                   child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 1280),
+                    constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
                     child: Row(
                       children: [
                         // Mobile Hamburger Drawer Icon

@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
 import 'package:vinit_enterprise/widgets/toast_service.dart';
+import 'package:vinit_enterprise/utils/responsive.dart';
 
 class ContactScreen extends StatefulWidget {
   final Function(int)? onNavigateToTab;
@@ -167,11 +168,14 @@ Platform: Vinit Enterprise Mobile/Web Portal
           const SizedBox(height: 36),
 
           // Main Form and Contact Details Row
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final isWide = constraints.maxWidth > 800;
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final isWide = constraints.maxWidth > 800;
                 return Flex(
                   direction: isWide ? Axis.horizontal : Axis.vertical,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -450,6 +454,8 @@ Platform: Vinit Enterprise Mobile/Web Portal
               },
             ),
           ),
+        ),
+      ),
 
           const SizedBox(height: 48),
 

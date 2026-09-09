@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/widgets/dairy_lottie_widget.dart';
+import 'package:vinit_enterprise/utils/responsive.dart';
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({super.key});
@@ -73,12 +74,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           // Header Card
           Container(
             padding: const EdgeInsets.all(20),
@@ -345,8 +350,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           const SizedBox(height: 24),
         ],
       ),
-    );
-  }
+    ),
+  ),
+);
+}
 
   Widget _buildResultRow(String label, String val, bool isDark) {
     return Padding(

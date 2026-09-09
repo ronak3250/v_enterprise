@@ -8,6 +8,7 @@ import 'package:vinit_enterprise/widgets/dairy_domain_ui.dart';
 import 'package:vinit_enterprise/widgets/dairy_lottie_widget.dart';
 import 'package:vinit_enterprise/widgets/product_card_widget.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
+import 'package:vinit_enterprise/utils/responsive.dart';
 
 class HomeScreen extends StatelessWidget {
   final Function(int) onNavigateToTab;
@@ -57,7 +58,7 @@ class HomeScreen extends StatelessWidget {
             ),
             child: Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1280),
+                constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
                 child: LayoutBuilder(
                   builder: (context, constraints) {
                     final isWide = constraints.maxWidth >= 850;
@@ -614,9 +615,7 @@ class HomeScreen extends StatelessWidget {
                 // Product Cards Grid with Dynamic Aspect Ratio (FIXED 238px HEIGHT ON ANY SCREEN)
                 LayoutBuilder(
                   builder: (context, constraints) {
-                    final crossAxisCount = constraints.maxWidth > 850
-                        ? 3
-                        : (constraints.maxWidth > 550 ? 2 : 1);
+                    final crossAxisCount = ResponsiveLayout.getGridColumnCount(constraints.maxWidth);
                     const crossAxisSpacing = 16.0;
                     final totalSpacing =
                         (crossAxisCount - 1) * crossAxisSpacing;
@@ -624,6 +623,7 @@ class HomeScreen extends StatelessWidget {
                         (constraints.maxWidth - totalSpacing) / crossAxisCount;
                     const targetHeight = 335.0;
                     final childAspectRatio = itemWidth / targetHeight;
+                    final productCount = crossAxisCount >= 4 ? 4 : 3;
 
                     return GridView.count(
                       crossAxisCount: crossAxisCount,
@@ -632,7 +632,7 @@ class HomeScreen extends StatelessWidget {
                       crossAxisSpacing: crossAxisSpacing,
                       mainAxisSpacing: 16,
                       childAspectRatio: childAspectRatio,
-                      children: ProductCatalog.sampleProducts.take(3).map((
+                      children: ProductCatalog.sampleProducts.take(productCount).map((
                         product,
                       ) {
                         return ProductCardWidget(product: product);

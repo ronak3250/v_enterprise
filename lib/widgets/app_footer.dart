@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
+import 'package:vinit_enterprise/utils/responsive.dart';
 
 import 'adaptive_logo.dart';
 
@@ -21,12 +22,17 @@ class AppFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
       color: const Color(0xFF071328),
       padding: const EdgeInsets.fromLTRB(24, 40, 24, 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           LayoutBuilder(
             builder: (context, constraints) {
               final isWide = constraints.maxWidth > 768;
@@ -184,8 +190,10 @@ class AppFooter extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
+    ),
+  ),
+);
+}
 
   Widget _buildFooterLink(String text, VoidCallback onTap) {
     return Padding(

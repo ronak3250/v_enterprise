@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
+import 'package:vinit_enterprise/utils/responsive.dart';
 
 class ServicesScreen extends StatelessWidget {
   final Function(int)? onNavigateToTab;
@@ -73,18 +74,21 @@ class ServicesScreen extends StatelessWidget {
           const SizedBox(height: 36),
 
           // Services Grid
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final isWide = constraints.maxWidth > 768;
-                return GridView.count(
-                  crossAxisCount: isWide ? 3 : (constraints.maxWidth > 550 ? 2 : 1),
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  crossAxisSpacing: 18,
-                  mainAxisSpacing: 18,
-                  childAspectRatio: isWide ? 1.15 : 1.35,
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final crossAxisCount = ResponsiveLayout.getGridColumnCount(constraints.maxWidth, maxColumns: 3);
+                    return GridView.count(
+                      crossAxisCount: crossAxisCount,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisSpacing: 18,
+                      mainAxisSpacing: 18,
+                      childAspectRatio: crossAxisCount >= 3 ? 1.2 : 1.35,
                   children: [
                     _buildServiceCard(
                       context,
@@ -133,19 +137,24 @@ class ServicesScreen extends StatelessWidget {
               },
             ),
           ),
+        ),
+      ),
 
           const SizedBox(height: 48),
 
           // CTA Box
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            padding: const EdgeInsets.all(28),
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF0072CE), Color(0xFF0A2540)],
-              ),
-              borderRadius: BorderRadius.circular(16),
-            ),
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.all(28),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF0072CE), Color(0xFF0A2540)],
+                  ),
+                  borderRadius: BorderRadius.circular(16),
+                ),
             child: Row(
               children: [
                 Expanded(
@@ -176,6 +185,8 @@ class ServicesScreen extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
 
           const SizedBox(height: 48),
 

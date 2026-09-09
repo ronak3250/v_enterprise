@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
+import 'package:vinit_enterprise/utils/responsive.dart';
 
 class AboutScreen extends StatelessWidget {
   final Function(int)? onNavigateToTab;
@@ -106,11 +107,14 @@ class AboutScreen extends StatelessWidget {
           const SizedBox(height: 48),
 
           // Detailed Company Overview
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final isWide = constraints.maxWidth > 800;
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final isWide = constraints.maxWidth > 800;
                 return Flex(
                   direction: isWide ? Axis.horizontal : Axis.vertical,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -177,15 +181,20 @@ class AboutScreen extends StatelessWidget {
               },
             ),
           ),
+        ),
+      ),
 
           const SizedBox(height: 48),
 
           // Mission, Vision & Values Cards
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final isWide = constraints.maxWidth > 768;
+          Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final isWide = constraints.maxWidth > 768;
                 return Flex(
                   direction: isWide ? Axis.horizontal : Axis.vertical,
                   children: [
@@ -231,6 +240,8 @@ class AboutScreen extends StatelessWidget {
               },
             ),
           ),
+        ),
+      ),
 
           const SizedBox(height: 48),
 
