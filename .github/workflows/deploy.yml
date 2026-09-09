@@ -3,12 +3,22 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ master, main ]
+  workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
@@ -26,8 +36,24 @@ jobs:
       - name: Build Web Bundle
         run: flutter build web --release --base-href "/v_enterprise/"
 
+      - name: Create .nojekyll
+        run: touch build/web/.nojekyll
+
       - name: Deploy to gh-pages Branch
         uses: PeaceIris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './build/web'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
