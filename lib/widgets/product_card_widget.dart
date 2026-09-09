@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/models/product_model.dart';
+import 'package:vinit_enterprise/services/pdf_service.dart';
 import 'package:vinit_enterprise/widgets/dairy_domain_ui.dart';
 import 'package:vinit_enterprise/widgets/product_detail_sheet.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
@@ -38,17 +39,53 @@ class ProductCardWidget extends StatelessWidget {
                 color: isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
-                  product.imagePath,
-                  fit: BoxFit.contain,
-                  errorBuilder: (ctx, e, st) => const Icon(
-                    Icons.inventory_2_outlined,
-                    size: 48,
-                    color: Colors.grey,
+              child: Stack(
+                children: [
+                  Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        product.imagePath,
+                        fit: BoxFit.contain,
+                        errorBuilder: (ctx, e, st) => const Icon(
+                          Icons.inventory_2_outlined,
+                          size: 48,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned(
+                    right: 4,
+                    bottom: 4,
+                    child: Tooltip(
+                      message: 'Direct Download Product PDF Brochure',
+                      child: InkWell(
+                        onTap: () => PdfService.downloadProductPdf(product),
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF059669),
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.25),
+                                blurRadius: 4,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: const Icon(
+                            Icons.picture_as_pdf_rounded,
+                            color: Colors.white,
+                            size: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 10),

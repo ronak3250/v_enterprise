@@ -213,41 +213,44 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   ),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                child: Row(
-                  children: [
-                    // Mobile Hamburger Drawer Icon
-                    if (!isDesktop)
-                      Builder(
-                        builder: (context) => IconButton(
-                          icon: Icon(Icons.menu, color: isDark ? Colors.white : const Color(0xFF0A2540)),
-                          onPressed: () => Scaffold.of(context).openDrawer(),
-                        ),
-                      ),
-
-                    // Official Adaptive & Animated Logo
-                    InkWell(
-                      onTap: () => _onTabTapped(0),
-                      child: AdaptiveLogoTop(height: isDesktop ? 34 : 26),
-                    ),
-
-                    const Spacer(),
-
-                    // Full Desktop Header Links
-                    if (isDesktop)
-                      Flexible(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              _buildDesktopNavBtn('Home', 0, isDark),
-                              _buildDesktopNavBtn('About Us', 1, isDark),
-                              _buildDesktopNavBtn('Services', 2, isDark),
-                              _buildDesktopNavBtn('Products', 3, isDark),
-                              _buildDesktopNavBtn('Contact', 4, isDark),
-                            ],
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 1280),
+                    child: Row(
+                      children: [
+                        // Mobile Hamburger Drawer Icon
+                        if (!isDesktop)
+                          Builder(
+                            builder: (context) => IconButton(
+                              icon: Icon(Icons.menu, color: isDark ? Colors.white : const Color(0xFF0A2540)),
+                              onPressed: () => Scaffold.of(context).openDrawer(),
+                            ),
                           ),
+
+                        // Official Adaptive & Animated Logo
+                        InkWell(
+                          onTap: () => _onTabTapped(0),
+                          child: AdaptiveLogoTop(height: isDesktop ? 34 : 26),
                         ),
-                      ),
+
+                        const Spacer(),
+
+                        // Full Desktop Header Links
+                        if (isDesktop)
+                          Flexible(
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  _buildDesktopNavBtn('Home', 0, isDark),
+                                  _buildDesktopNavBtn('About Us', 1, isDark),
+                                  _buildDesktopNavBtn('Services', 2, isDark),
+                                  _buildDesktopNavBtn('Products', 3, isDark),
+                                  _buildDesktopNavBtn('Contact', 4, isDark),
+                                ],
+                              ),
+                            ),
+                          ),
 
                     // IconButton(
                     //   icon: Icon(
@@ -280,6 +283,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   ],
                 ),
               ),
+            ),
+          ),
             ],
           ),
         ),

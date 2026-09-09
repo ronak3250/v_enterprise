@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vinit_enterprise/models/product_model.dart';
+import 'package:vinit_enterprise/services/pdf_service.dart';
 import 'package:vinit_enterprise/utils/download_helper.dart';
 
 class BrochureViewerDialog extends StatefulWidget {
@@ -59,15 +61,18 @@ class _BrochureViewerDialogState extends State<BrochureViewerDialog> {
   }
 
   Future<void> _downloadOrOpenBrochure(String path) async {
-    String pdfPath = path;
-    if (path.endsWith('.jpg') || path.endsWith('.jpeg') || path.endsWith('.png')) {
-      pdfPath = path.replaceAll(RegExp(r'\.(jpg|jpeg|png)$'), '.pdf');
+    try {
+      final product = ProductCatalog.sampleProducts.firstWhere(
+        (p) => p.brochurePath == path,
+      );
+      await PdfService.downloadProductPdf(product);
+    } catch (_) {
+      await downloadAssetDirectly(path);
     }
-    await downloadOrOpenAsset(pdfPath);
   }
 
   Future<void> _downloadFullCatalogPdf() async {
-    await downloadOrOpenAsset('assets/brochures/vinit_enterprise_complete_catalog.pdf');
+    await PdfService.downloadFullCatalogPdf(ProductCatalog.sampleProducts);
   }
 
   @override

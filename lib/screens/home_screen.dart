@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/models/product_model.dart';
+import 'package:vinit_enterprise/services/pdf_service.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
 import 'package:vinit_enterprise/widgets/brochure_viewer.dart';
@@ -12,6 +13,10 @@ class HomeScreen extends StatelessWidget {
   final Function(int) onNavigateToTab;
 
   const HomeScreen({super.key, required this.onNavigateToTab});
+
+  void _downloadCorporateCatalog(BuildContext context) {
+    PdfService.downloadFullCatalogPdf(ProductCatalog.sampleProducts);
+  }
 
   void _openCorporateBrochure(BuildContext context) {
     BrochureViewerDialog.show(
@@ -45,209 +50,230 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             padding: EdgeInsets.fromLTRB(
-              20,
-              screenWidth < 600 ? 28 : 44,
-              20,
-              screenWidth < 600 ? 36 : 60,
+              screenWidth < 600 ? 16 : 24,
+              screenWidth < 600 ? 24 : 40,
+              screenWidth < 600 ? 16 : 24,
+              screenWidth < 600 ? 32 : 52,
             ),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final isWide = constraints.maxWidth > 800;
-                return Column(
-                  children: [
-                    Flex(
-                      direction: isWide ? Axis.horizontal : Axis.vertical,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 1280),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final isWide = constraints.maxWidth >= 850;
+                    return Column(
                       children: [
-                        // Left Content
-                        _buildResponsiveFlexChild(
-                          isWide: isWide,
-                          flex: 5,
-                          child: FadeSlideTransition(
-                            duration: const Duration(milliseconds: 700),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const DairyMilkDropBadge(
-                                  text:
-                                      'Food-Grade SS-304 Certified Dairy Equipment',
-                                  icon: Icons.water_drop,
-                                ),
-                                const SizedBox(height: 18),
-                                Text(
-                                  'Innovative Solutions for a\nHealthier Dairy Future',
-                                  style: TextStyle(
-                                    fontSize: screenWidth < 600 ? 26 : 34,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.white,
-                                    height: 1.2,
-                                  ),
-                                ),
-                                const SizedBox(height: 14),
-                                Text(
-                                  'Comprehensive product suite including Milk Analyzers, Portable Milk Analyzers, Sample Testing Equipment, Milk Weighing Scales, Ultrasonic Stirrers, and Smart DPU engineered for 99.8% measurement accuracy.',
-                                  style: TextStyle(
-                                    fontSize: screenWidth < 600 ? 13.5 : 15,
-                                    color: Colors.white.withValues(alpha: 0.90),
-                                    height: 1.5,
-                                  ),
-                                ),
-                                const SizedBox(height: 20),
-
-                                // Feature Highlight Chips
-                                Wrap(
-                                  spacing: 8,
-                                  runSpacing: 8,
+                        Flex(
+                          direction: isWide ? Axis.horizontal : Axis.vertical,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            // Left Content
+                            _buildResponsiveFlexChild(
+                              isWide: isWide,
+                              flex: 5,
+                              child: FadeSlideTransition(
+                                duration: const Duration(milliseconds: 700),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    _buildHeroHighlightChip('Milk Analyzer'),
-                                    _buildHeroHighlightChip(
-                                      'Portable Milk Analyzer',
+                                    const DairyMilkDropBadge(
+                                      text:
+                                          'Food-Grade SS-304 Certified Dairy Equipment',
+                                      icon: Icons.water_drop,
                                     ),
-                                    _buildHeroHighlightChip(
-                                      'Sample Testing Equipment',
+                                    const SizedBox(height: 16),
+                                    Text(
+                                      'Innovative Solutions for a\nHealthier Dairy Future',
+                                      style: TextStyle(
+                                        fontSize: screenWidth < 600
+                                            ? 24
+                                            : (screenWidth < 1200 ? 28 : 34),
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.white,
+                                        height: 1.2,
+                                      ),
                                     ),
-                                    _buildHeroHighlightChip(
-                                      'Milk Weighing Scale',
+                                    const SizedBox(height: 12),
+                                    Text(
+                                      'Comprehensive product suite including Milk Analyzers, Portable Milk Analyzers, Sample Testing Equipment, Milk Weighing Scales, Ultrasonic Stirrers, and Smart DPU engineered for 99.8% measurement accuracy.',
+                                      style: TextStyle(
+                                        fontSize: screenWidth < 600
+                                            ? 13
+                                            : (screenWidth < 1200 ? 14 : 15),
+                                        color: Colors.white.withValues(alpha: 0.90),
+                                        height: 1.45,
+                                      ),
                                     ),
-                                    _buildHeroHighlightChip(
-                                      'Ultrasonic Stirrer',
+                                    const SizedBox(height: 18),
+
+                                    // Feature Highlight Chips
+                                    Wrap(
+                                      spacing: 8,
+                                      runSpacing: 8,
+                                      children: [
+                                        _buildHeroHighlightChip('Milk Analyzer'),
+                                        _buildHeroHighlightChip(
+                                          'Portable Milk Analyzer',
+                                        ),
+                                        _buildHeroHighlightChip(
+                                          'Sample Testing Equipment',
+                                        ),
+                                        _buildHeroHighlightChip(
+                                          'Milk Weighing Scale',
+                                        ),
+                                        _buildHeroHighlightChip(
+                                          'Ultrasonic Stirrer',
+                                        ),
+                                        _buildHeroHighlightChip(
+                                          'DPU / Data Processor Unit',
+                                        ),
+                                      ],
                                     ),
-                                    _buildHeroHighlightChip(
-                                      'DPU / Data Processor Unit',
+
+                                    const SizedBox(height: 24),
+                                    Wrap(
+                                      spacing: 12,
+                                      runSpacing: 12,
+                                      children: [
+                                        ElevatedButton.icon(
+                                          onPressed: () =>
+                                              QuoteRequestSheet.show(context),
+                                          icon: const Icon(
+                                            Icons.send_rounded,
+                                            color: Colors.white,
+                                            size: 17,
+                                          ),
+                                          label: const Text(
+                                            'Get Quote & Pricing',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: const Color(
+                                              0xFF0072CE,
+                                            ),
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: screenWidth < 1200
+                                                  ? 18
+                                                  : 22,
+                                              vertical: 14,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            elevation: 4,
+                                          ),
+                                        ),
+                                        ElevatedButton.icon(
+                                          onPressed: () =>
+                                              _downloadCorporateCatalog(context),
+                                          icon: const Icon(
+                                            Icons.picture_as_pdf_rounded,
+                                            color: Colors.white,
+                                            size: 17,
+                                          ),
+                                          label: const Text(
+                                            'Download Brochure',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: const Color(
+                                              0xFF10B981,
+                                            ),
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: screenWidth < 1200
+                                                  ? 18
+                                                  : 22,
+                                              vertical: 14,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            elevation: 4,
+                                          ),
+                                        ),
+                                        OutlinedButton.icon(
+                                          onPressed: () => onNavigateToTab(3),
+                                          icon: const Icon(
+                                            Icons.inventory_2_outlined,
+                                            color: Colors.white,
+                                            size: 17,
+                                          ),
+                                          label: const Text(
+                                            'Explore Catalog',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                          style: OutlinedButton.styleFrom(
+                                            side: const BorderSide(
+                                              color: Colors.white,
+                                              width: 1.5,
+                                            ),
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: screenWidth < 1200
+                                                  ? 18
+                                                  : 22,
+                                              vertical: 14,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-
-                                const SizedBox(height: 28),
-                                Wrap(
-                                  spacing: 14,
-                                  runSpacing: 14,
-                                  children: [
-                                    ElevatedButton.icon(
-                                      onPressed: () =>
-                                          QuoteRequestSheet.show(context),
-                                      icon: const Icon(
-                                        Icons.send_rounded,
-                                        color: Colors.white,
-                                        size: 18,
-                                      ),
-                                      label: const Text(
-                                        'Get Quote & Pricing',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: const Color(
-                                          0xFF0072CE,
-                                        ),
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 24,
-                                          vertical: 16,
-                                        ),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            10,
-                                          ),
-                                        ),
-                                        elevation: 4,
-                                      ),
-                                    ),
-                                    ElevatedButton.icon(
-                                      onPressed: () =>
-                                          _openCorporateBrochure(context),
-                                      icon: const Icon(
-                                        Icons.picture_as_pdf_rounded,
-                                        color: Colors.white,
-                                        size: 18,
-                                      ),
-                                      label: const Text(
-                                        'Download Brochure',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: const Color(
-                                          0xFF10B981,
-                                        ),
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 22,
-                                          vertical: 16,
-                                        ),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            10,
-                                          ),
-                                        ),
-                                        elevation: 4,
-                                      ),
-                                    ),
-                                    OutlinedButton.icon(
-                                      onPressed: () => onNavigateToTab(3),
-                                      // Go to Products
-                                      icon: const Icon(
-                                        Icons.inventory_2_outlined,
-                                        color: Colors.white,
-                                        size: 18,
-                                      ),
-                                      label: const Text(
-                                        'Explore Catalog',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                      style: OutlinedButton.styleFrom(
-                                        side: const BorderSide(
-                                          color: Colors.white,
-                                          width: 1.5,
-                                        ),
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 22,
-                                          vertical: 16,
-                                        ),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            10,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
 
-                        if (!isWide) const SizedBox(height: 32),
+                            if (!isWide) const SizedBox(height: 32),
 
-                        // Right Hero Equipment Graphic Showcase
-                        _buildResponsiveFlexChild(
-                          isWide: isWide,
-                          flex: 5,
-                          child: Image.asset(
-
-                            'assets/hero_dairy_equipment.png',
-                            fit: BoxFit.contain,
-                            errorBuilder: (ctx, e, st) =>
-                                DairyLottieWidget.milkTesting(
-                                  width: 140,
-                                  height: 140,
+                            // Right Hero Equipment Graphic Showcase (Constrained & Centered)
+                            _buildResponsiveFlexChild(
+                              isWide: isWide,
+                              flex: 5,
+                              child: Center(
+                                child: Container(
+                                  constraints: BoxConstraints(
+                                    maxHeight: isWide
+                                        ? (screenWidth < 1200 ? 390 : 460)
+                                        : 360,
+                                    maxWidth: double.infinity,
+                                  ),
+                                  child: Image.asset(
+                                    'assets/hero_dairy_equipment.png',
+                                    fit: BoxFit.contain,
+                                    alignment: Alignment.center,
+                                    errorBuilder: (ctx, e, st) =>
+                                        DairyLottieWidget.milkTesting(
+                                      width: 140,
+                                      height: 140,
+                                    ),
+                                  ),
                                 ),
-                          ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
-                    ),
-                  ],
-                );
-              },
+                    );
+                  },
+                ),
+              ),
             ),
           ),
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/models/product_model.dart';
+import 'package:vinit_enterprise/services/pdf_service.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/brochure_viewer.dart';
 import 'package:vinit_enterprise/widgets/quote_request_sheet.dart';
@@ -272,72 +273,95 @@ class ProductDetailSheet extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Brochure & Request Quote Action Buttons
-                  Row(
+                  Column(
                     children: [
-                      if (product.brochurePath.isNotEmpty) ...[
-                        Expanded(
-                          child: OutlinedButton.icon(
-                            onPressed: () {
-                              BrochureViewerDialog.show(
-                                context,
-                                title: '${product.title} Brochure',
-                                brochurePath: product.brochurePath,
-                                allBrochures: ProductCatalog.allBrochurePaths,
-                              );
-                            },
-                            icon: const Icon(Icons.picture_as_pdf_rounded, color: Color(0xFF0072CE), size: 18),
-                            label: const Text(
-                              'View Brochure',
-                              style: TextStyle(
-                                fontSize: 13.5,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF0072CE),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton.icon(
+                              onPressed: () => PdfService.downloadProductPdf(product),
+                              icon: const Icon(Icons.picture_as_pdf_rounded, color: Colors.white, size: 18),
+                              label: const Text(
+                                'Download PDF Brochure',
+                                style: TextStyle(
+                                  fontSize: 12.5,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF059669),
+                                padding: const EdgeInsets.symmetric(vertical: 14),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                               ),
                             ),
-                            style: OutlinedButton.styleFrom(
-                              side: const BorderSide(color: Color(0xFF0072CE), width: 1.5),
-                              padding: const EdgeInsets.symmetric(vertical: 14),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                            ),
                           ),
+                          if (product.brochurePath.isNotEmpty) ...[
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: OutlinedButton.icon(
+                                onPressed: () {
+                                  BrochureViewerDialog.show(
+                                    context,
+                                    title: '${product.title} Brochure',
+                                    brochurePath: product.brochurePath,
+                                    allBrochures: ProductCatalog.allBrochurePaths,
+                                  );
+                                },
+                                icon: const Icon(Icons.visibility_rounded, color: Color(0xFF0072CE), size: 18),
+                                label: const Text(
+                                  'View Brochure Sheet',
+                                  style: TextStyle(
+                                    fontSize: 12.5,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF0072CE),
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                  side: const BorderSide(color: Color(0xFF0072CE), width: 1.5),
+                                  padding: const EdgeInsets.symmetric(vertical: 14),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Container(
+                        width: double.infinity,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFF0072CE), Color(0xFF0A2540)],
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0xFF0072CE).withValues(alpha: 0.3),
+                              blurRadius: 10,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
                         ),
-                        const SizedBox(width: 12),
-                      ],
-                      Expanded(
-                        child: Container(
-                          height: 48,
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [Color(0xFF0072CE), Color(0xFF0A2540)],
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            QuoteRequestSheet.show(context, initialProduct: product.title);
+                          },
+                          icon: const Icon(Icons.send_rounded, color: Colors.white, size: 16),
+                          label: const Text(
+                            'Request Quote for Equipment',
+                            style: TextStyle(
+                              fontSize: 13.5,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: [
-                              BoxShadow(
-                                color: const Color(0xFF0072CE).withValues(alpha: 0.3),
-                                blurRadius: 10,
-                                offset: const Offset(0, 4),
-                              ),
-                            ],
                           ),
-                          child: ElevatedButton.icon(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                              QuoteRequestSheet.show(context, initialProduct: product.title);
-                            },
-                            icon: const Icon(Icons.send_rounded, color: Colors.white, size: 16),
-                            label: const Text(
-                              'Request Quote',
-                              style: TextStyle(
-                                fontSize: 13.5,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              shadowColor: Colors.transparent,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                            ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                           ),
                         ),
                       ),

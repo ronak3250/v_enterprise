@@ -54,10 +54,10 @@ class ProductCatalog {
     'assets/brochures/mobile_dairy_app_brochure.jpg',
     'assets/brochures/ekomilk_ultra_pro_brochure.jpg',
     'assets/brochures/eko_bond_combo_brochure.jpg',
-    'assets/brochures/smart_dpu_brochure.jpeg',
+    'assets/brochures/smart_dpu_brochure.jpg',
     'assets/brochures/data_processing_unit_dpu_brochure.jpg',
-    'assets/brochures/dairy_portal_bochure.jpeg',
-    'assets/brochures/ekomilk_ultra_brochure_metal.jpeg',
+    'assets/brochures/dairy_portal_bochure.jpg',
+    'assets/brochures/ekomilk_ultra_brochure_metal.jpg',
     'assets/brochures/platform_weighing_scale_brochure.jpg',
   ];
 
@@ -262,7 +262,7 @@ class ProductCatalog {
       imagePath: 'assets/ekomilk_ultra_pro_metal_body.png',
       iconName: 'flask',
       badgeText: 'Milk Analyzer',
-      brochurePath: 'assets/brochures/ekomilk_ultra_brochure_metal.jpeg',
+      brochurePath: 'assets/brochures/ekomilk_ultra_brochure_metal.jpg',
       overview:
           'Fast and efficient milk analyzer kit designed for accurate milk quality testing with a compact and user-friendly design.',
       specs: [
@@ -299,7 +299,7 @@ class ProductCatalog {
       imagePath: 'assets/smart_dpu_touch.png',
       iconName: 'database',
       badgeText: 'Smart DPU',
-      brochurePath: 'assets/brochures/smart_dpu_brochure.jpeg',
+      brochurePath: 'assets/brochures/smart_dpu_brochure.jpg',
       overview:
           'Intelligent milk collection and data processing unit designed for milk collection management, reporting, payment processing and system connectivity.',
       specs: [
@@ -390,7 +390,7 @@ class ProductCatalog {
       imagePath: 'assets/dairy_portal.jpeg',
       iconName: 'cloud',
       badgeText: 'Dairy Cloud Portal',
-      brochurePath: 'assets/brochures/dairy_portal_bochure.jpeg',
+      brochurePath: 'assets/brochures/dairy_portal_bochure.jpg',
       overview:
           'Web-based cloud dairy management portal providing centralized real-time monitoring of milk procurement, cooperative ledgers, rate charts, and member payouts.',
       specs: [
