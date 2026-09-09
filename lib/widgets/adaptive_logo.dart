@@ -8,7 +8,7 @@ class AdaptiveLogo extends StatefulWidget {
 
   const AdaptiveLogo({
     super.key,
-    this.height = 36,
+    this.height = 42,
     this.showSubtitle = true,
   });
 
@@ -154,7 +154,7 @@ class AdaptiveLogoTop extends StatelessWidget {
 
   const AdaptiveLogoTop({
     super.key,
-    this.height = 40,
+    this.height = 36,
     this.showSubtitle = true,
     this.forceDark,
   });
@@ -167,54 +167,19 @@ class AdaptiveLogoTop extends StatelessWidget {
         ? 'assets/company_logo_dark.png'
         : 'assets/company_logo_light.png';
 
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        // Container(
-        //   height: height,
-        //   width: height,
-        //   decoration: BoxDecoration(
-        //     borderRadius: BorderRadius.circular(8),
-        //     boxShadow: [
-        //       BoxShadow(
-        //         color: const Color(0xFF0072CE).withValues(alpha: 0.15),
-        //         blurRadius: 6,
-        //         offset: const Offset(0, 2),
-        //       ),
-        //     ],
-        //   ),
-        //   child: ClipRRect(
-        //     borderRadius: BorderRadius.circular(8),
-        //     child: Image.asset(
-        //       'assets/ve_logo_icon.png',
-        //       height: height,
-        //       width: height,
-        //       fit: BoxFit.cover,
-        //       errorBuilder: (ctx, e, st) => Image.asset(
-        //         'assets/company_logo.jpeg',
-        //         height: height,
-        //         width: height,
-        //         fit: BoxFit.cover,
-        //       ),
-        //     ),
-        //   ),
-        // ),
-        const SizedBox(width: 10),
-        Image.asset(
-          logoAsset,
-          height: height,
-          fit: BoxFit.contain,
-          errorBuilder: (ctx, e, st) => Text(
-            'VINIT ENTERPRISE',
-            style: TextStyle(
-              fontSize: height * 0.42,
-              fontWeight: FontWeight.w800,
-              color: isDark ? Colors.white : const Color(0xFF0A2540),
-            ),
-          ),
+    return Image.asset(
+      logoAsset,
+      height: height,
+      fit: BoxFit.contain,
+      filterQuality: FilterQuality.high,
+      errorBuilder: (ctx, e, st) => Text(
+        'VINIT ENTERPRISE',
+        style: TextStyle(
+          fontSize: height * 0.42,
+          fontWeight: FontWeight.w800,
+          color: isDark ? Colors.white : const Color(0xFF0A2540),
         ),
-      ],
+      ),
     );
   }
 }

@@ -52,6 +52,67 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     final isDark = themeProvider.isDarkMode;
     final screenWidth = MediaQuery.of(context).size.width;
     final isDesktop = screenWidth >= 900;
+    // Dynamic Responsive Scaling based on Display Size (17.3", 15.6", 13.3", Mobile)
+    final double logoHeight;
+    final double headerVerticalPadding;
+    final double announcementVerticalPadding;
+    final double announcementFontSize;
+    final double announcementIconSize;
+    final double navFontSize;
+    final double preferredHeaderHeight;
+    final double quoteBtnFontSize;
+    final double quoteBtnIconSize;
+    final EdgeInsets quoteBtnPadding;
+
+    if (screenWidth >= 1600) {
+      // 17.3 inch & Ultra-Large Desktop Displays (screenWidth >= 1600) -> BIG
+      logoHeight = 60.0;
+      headerVerticalPadding = 18.0;
+      announcementVerticalPadding = 11.0;
+      announcementFontSize = 17.5;
+      announcementIconSize = 19.0;
+      navFontSize = 19.5;
+      preferredHeaderHeight = 146.0;
+      quoteBtnFontSize = 17.0;
+      quoteBtnIconSize = 19.0;
+      quoteBtnPadding = const EdgeInsets.symmetric(horizontal: 22, vertical: 14);
+    } else if (screenWidth >= 1200) {
+      // 14" - 15.6" Standard Laptops (1200 <= screenWidth < 1600) -> MEDIUM
+      logoHeight = 44.0;
+      headerVerticalPadding = 10.0;
+      announcementVerticalPadding = 7.5;
+      announcementFontSize = 15.5;
+      announcementIconSize = 17.0;
+      navFontSize = 15.5;
+      preferredHeaderHeight = 114.0;
+      quoteBtnFontSize = 14.5;
+      quoteBtnIconSize = 15.0;
+      quoteBtnPadding = const EdgeInsets.symmetric(horizontal: 18, vertical: 11);
+    } else if (screenWidth >= 900) {
+      // 13.3" Compact Laptops & Small Desktops (900 <= screenWidth < 1200) -> SMALL
+      logoHeight = 36.0;
+      headerVerticalPadding = 7.0;
+      announcementVerticalPadding = 6.0;
+      announcementFontSize = 15.5;
+      announcementIconSize = 17.0;
+      navFontSize = 14.0;
+      preferredHeaderHeight = 100.0;
+      quoteBtnFontSize = 13.5;
+      quoteBtnIconSize = 14.0;
+      quoteBtnPadding = const EdgeInsets.symmetric(horizontal: 15, vertical: 9);
+    } else {
+      // Mobile & Tablet screens (< 900) -> MOBILE COMPACT
+      logoHeight = 30.0;
+      headerVerticalPadding = 6.0;
+      announcementVerticalPadding = 6.0;
+      announcementFontSize = 11.5;
+      announcementIconSize = 13.0;
+      navFontSize = 14.0;
+      preferredHeaderHeight = 112.0;
+      quoteBtnFontSize = 13.5;
+      quoteBtnIconSize = 14.0;
+      quoteBtnPadding = const EdgeInsets.symmetric(horizontal: 14, vertical: 8);
+    }
 
     final List<Widget> pages = [
       HomeScreen(onNavigateToTab: _onTabTapped),
@@ -63,7 +124,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(isDesktop ? 98 : 114),
+        preferredSize: Size.fromHeight(preferredHeaderHeight),
         child: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -74,32 +135,32 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 color: isDark
                     ? const Color(0xFF040D1B)
                     : const Color(0xFFF1F5F9),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: announcementVerticalPadding),
                 child: Center(
                   child: Wrap(
                     alignment: WrapAlignment.center,
                     crossAxisAlignment: WrapCrossAlignment.center,
-                    spacing: 16,
-                    runSpacing: 6,
+                    spacing: screenWidth >= 1600 ? 24 : 16,
+                    runSpacing: 4,
                     children: [
                       InkWell(
                         onTap: () => _launchUrl('tel:+919173251191'),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.phone,
-                              color: Color(0xFF0072CE),
-                              size: 12,
+                              color: const Color(0xFF0072CE),
+                              size: announcementIconSize,
                             ),
-                            const SizedBox(width: 4),
+                            const SizedBox(width: 5),
                             Text(
                               '+91 91732 51191',
                               style: TextStyle(
                                 color: isDark
                                     ? Colors.white
                                     : const Color(0xFF0A2540),
-                                fontSize: 11,
+                                fontSize: announcementFontSize,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -114,19 +175,19 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.email,
-                              color: Color(0xFF0072CE),
-                              size: 12,
+                              color: const Color(0xFF0072CE),
+                              size: announcementIconSize,
                             ),
-                            const SizedBox(width: 4),
+                            const SizedBox(width: 5),
                             Text(
                               'info@vinitenterprise.in',
                               style: TextStyle(
                                 color: isDark
                                     ? Colors.white
                                     : const Color(0xFF0A2540),
-                                fontSize: 11,
+                                fontSize: announcementFontSize,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -137,65 +198,24 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.access_time,
-                            color: Color(0xFF0072CE),
-                            size: 12,
+                            color: const Color(0xFF0072CE),
+                            size: announcementIconSize,
                           ),
-                          const SizedBox(width: 4),
+                          const SizedBox(width: 5),
                           Text(
                             'Mon - Sat: 10:00 AM - 7:00 PM',
                             style: TextStyle(
                               color: isDark
                                   ? Colors.white70
                                   : const Color(0xFF475569),
-                              fontSize: 11,
+                              fontSize: announcementFontSize,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
                       ),
-
-                      // Container(
-                      //   padding: const EdgeInsets.symmetric(
-                      //     horizontal: 8,
-                      //     vertical: 2,
-                      //   ),
-                      //   decoration: BoxDecoration(
-                      //     color: isDark
-                      //         ? const Color(0xFF10B981).withValues(alpha: 0.2)
-                      //         : const Color(0xFFD1FAE5),
-                      //     borderRadius: BorderRadius.circular(10),
-                      //     border: Border.all(
-                      //       color: isDark
-                      //           ? const Color(0xFF10B981).withValues(alpha: 0.3)
-                      //           : const Color(0xFF6EE7B7),
-                      //     ),
-                      //   ),
-                      //   child: Row(
-                      //     mainAxisSize: MainAxisSize.min,
-                      //     children: [
-                      //       // Icon(
-                      //       //   Icons.shield_outlined,
-                      //       //   color: isDark
-                      //       //       ? const Color(0xFF10B981)
-                      //       //       : const Color(0xFF059669),
-                      //       //   size: 12,
-                      //       // ),
-                      //       const SizedBox(width: 4),
-                      //       // Text(
-                      //       //   'ISO Certified',
-                      //       //   style: TextStyle(
-                      //       //     color: isDark
-                      //       //         ? const Color(0xFF10B981)
-                      //       //         : const Color(0xFF059669),
-                      //       //     fontSize: 10,
-                      //       //     fontWeight: FontWeight.bold,
-                      //       //   ),
-                      //       // ),
-                      //     ],
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
@@ -213,7 +233,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     ),
                   ),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                padding: EdgeInsets.symmetric(horizontal: screenWidth >= 1600 ? 28 : 16, vertical: headerVerticalPadding),
                 child: Center(
                   child: ConstrainedBox(
                     constraints: BoxConstraints(maxWidth: ResponsiveLayout.getMaxContainerWidth(screenWidth)),
@@ -223,15 +243,15 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                         if (!isDesktop)
                           Builder(
                             builder: (context) => IconButton(
-                              icon: Icon(Icons.menu, color: isDark ? Colors.white : const Color(0xFF0A2540)),
+                              icon: Icon(Icons.menu, size: 26, color: isDark ? Colors.white : const Color(0xFF0A2540)),
                               onPressed: () => Scaffold.of(context).openDrawer(),
                             ),
                           ),
 
-                        // Official Adaptive & Animated Logo
+                        // Official Adaptive & Animated Logo (Scales with display size)
                         InkWell(
                           onTap: () => _onTabTapped(0),
-                          child: AdaptiveLogoTop(height: isDesktop ? 34 : 26),
+                          child: AdaptiveLogoTop(height: logoHeight),
                         ),
 
                         const Spacer(),
@@ -243,40 +263,31 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                               scrollDirection: Axis.horizontal,
                               child: Row(
                                 children: [
-                                  _buildDesktopNavBtn('Home', 0, isDark),
-                                  _buildDesktopNavBtn('About Us', 1, isDark),
-                                  _buildDesktopNavBtn('Services', 2, isDark),
-                                  _buildDesktopNavBtn('Products', 3, isDark),
-                                  _buildDesktopNavBtn('Contact', 4, isDark),
+                                  _buildDesktopNavBtn('Home', 0, isDark, navFontSize),
+                                  _buildDesktopNavBtn('About Us', 1, isDark, navFontSize),
+                                  _buildDesktopNavBtn('Services', 2, isDark, navFontSize),
+                                  _buildDesktopNavBtn('Products', 3, isDark, navFontSize),
+                                  _buildDesktopNavBtn('Contact', 4, isDark, navFontSize),
                                 ],
                               ),
                             ),
                           ),
 
-                    // IconButton(
-                    //   icon: Icon(
-                    //     isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
-                    //     color: isDark ? Colors.white : const Color(0xFF0A2540),
-                    //   ),
-                    //   onPressed: () => themeProvider.toggleTheme(),
-                    //   tooltip: 'Toggle Theme',
-                    // ),
-
                     if (isDesktop) ...[
-                      const SizedBox(width: 6),
+                      SizedBox(width: screenWidth >= 1600 ? 14 : 8),
                       ElevatedButton.icon(
                         onPressed: () => QuoteRequestSheet.show(context),
-                        icon: const Icon(Icons.send_rounded, size: 14, color: Colors.white),
-                        label: const Text('Get a Quote', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13)),
+                        icon: Icon(Icons.send_rounded, size: quoteBtnIconSize, color: Colors.white),
+                        label: Text('Get a Quote', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: quoteBtnFontSize)),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF0072CE),
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          padding: quoteBtnPadding,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(screenWidth >= 1600 ? 10 : 8)),
                         ),
                       ),
                     ] else ...[
                       IconButton(
-                        icon: const Icon(Icons.send_rounded, color: Color(0xFF0072CE)),
+                        icon: const Icon(Icons.send_rounded, size: 22, color: Color(0xFF0072CE)),
                         onPressed: () => QuoteRequestSheet.show(context),
                         tooltip: 'Get a Quote',
                       ),
@@ -342,7 +353,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                               ),
                             ],
                           ),
-                          child: const AdaptiveLogoTop(height: 38),
+                          child: const AdaptiveLogoTop(height: 44),
                         ),
                         const SizedBox(height: 14),
 
@@ -522,29 +533,37 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     );
   }
 
-  Widget _buildDesktopNavBtn(String title, int index, bool isDark) {
+  Widget _buildDesktopNavBtn(String title, int index, bool isDark, double fontSize) {
     final isSel = _currentIndex == index;
+    final isLarge = fontSize >= 17;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      padding: EdgeInsets.symmetric(horizontal: isLarge ? 8 : 4),
       child: TextButton(
         onPressed: () => _onTabTapped(index),
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.symmetric(horizontal: isLarge ? 12 : 8, vertical: isLarge ? 8 : 4),
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               title,
               style: TextStyle(
-                color: isSel ? const Color(0xFF0072CE) : (isDark ? Colors.grey[300] : const Color(0xFF334155)),
-                fontWeight: isSel ? FontWeight.bold : FontWeight.w600,
-                fontSize: 14,
+                color: isSel ? const Color(0xFF0072CE) : (isDark ? Colors.grey[200] : const Color(0xFF1E293B)),
+                fontWeight: isSel ? FontWeight.w800 : FontWeight.w600,
+                fontSize: fontSize,
+                letterSpacing: isLarge ? 0.2 : 0,
               ),
             ),
-            const SizedBox(height: 2),
+            const SizedBox(height: 3),
             AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              height: 2,
-              width: isSel ? 24 : 0,
-              color: isSel ? const Color(0xFF0072CE) : Colors.transparent,
+              height: isLarge ? 3.5 : 2.5,
+              width: isSel ? (isLarge ? 32 : 24) : 0,
+              decoration: BoxDecoration(
+                color: isSel ? const Color(0xFF0072CE) : Colors.transparent,
+                borderRadius: BorderRadius.circular(2),
+              ),
             ),
           ],
         ),
