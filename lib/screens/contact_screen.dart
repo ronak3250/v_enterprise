@@ -81,7 +81,7 @@ Platform: Vinit Enterprise Mobile/Web Portal
 ''';
 
       final subjectStr = '[SALES INQUIRY] $requirement - $name';
-      final mailtoUrl = 'mailto:sales@vinitenterprise.com?subject=${Uri.encodeComponent(subjectStr)}&body=${Uri.encodeComponent(emailBody)}';
+      final mailtoUrl = 'mailto:sales@vinitenterprise.in?subject=${Uri.encodeComponent(subjectStr)}&body=${Uri.encodeComponent(emailBody)}';
       final Uri emailUri = Uri.parse(mailtoUrl);
 
       try {
@@ -95,7 +95,7 @@ Platform: Vinit Enterprise Mobile/Web Portal
       if (mounted) {
         ToastService.showToast(
           context,
-          'Thank you $name! Sales enquiry sent to sales@vinitenterprise.com',
+          'Thank you $name! Sales enquiry sent to sales@vinitenterprise.in',
         );
         _nameController.clear();
         _companyController.clear();
@@ -235,9 +235,9 @@ Platform: Vinit Enterprise Mobile/Web Portal
                               _buildInfoTile(
                                 Icons.email_outlined,
                                 'Email Addresses',
-                                'sales@vinitenterprise.com\n info@vinitenterprise.com',
+                                'sales@vinitenterprise.in\n info@vinitenterprise.in',
                                 isDark,
-                                onTap: () => _launchUrl('mailto:sales@vinitenterprise.com'),
+                                onTap: () => _launchUrl('mailto:sales@vinitenterprise.in'),
                               ),
                               const SizedBox(height: 16),
                               _buildInfoTile(

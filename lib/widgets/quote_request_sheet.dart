@@ -101,7 +101,7 @@ Platform: Vinit Enterprise Mobile/Web Portal
 ''';
 
       final subjectStr = '[EQUIPMENT QUOTE REQUEST] $productName - $customerName';
-      final mailtoUrl = 'mailto:info@vinitenterprise.com?subject=${Uri.encodeComponent(subjectStr)}&body=${Uri.encodeComponent(emailBody)}';
+      final mailtoUrl = 'mailto:info@vinitenterprise.in?subject=${Uri.encodeComponent(subjectStr)}&body=${Uri.encodeComponent(emailBody)}';
       final Uri emailUri = Uri.parse(mailtoUrl);
 
       try {
@@ -116,7 +116,7 @@ Platform: Vinit Enterprise Mobile/Web Portal
         Navigator.of(context).pop();
         ToastService.showToast(
           context,
-          'Thank you $customerName! Quote request sent to info@vinitenterprise.com',
+          'Thank you $customerName! Quote request sent to info@vinitenterprise.in',
         );
       }
     }

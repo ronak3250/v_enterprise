@@ -487,11 +487,11 @@ Platform: Vinit Enterprise Web Portal
 --------------------------------------------------`;
 
       const subject = `[EQUIPMENT QUOTE REQUEST] ${product} - ${name}`;
-      const mailtoUrl = `mailto:info@vinitenterprise.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+      const mailtoUrl = `mailto:info@vinitenterprise.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
       
       quoteModal.classList.remove('active');
       window.location.href = mailtoUrl;
-      showToast(`Thank you ${name}! Opening email client to send quote request to info@vinitenterprise.com`);
+      showToast(`Thank you ${name}! Opening email client to send quote request to info@vinitenterprise.in`);
       quoteForm.reset();
     });
   }
@@ -529,10 +529,10 @@ Platform: Vinit Enterprise Web Portal
 --------------------------------------------------`;
 
       const subject = `[SALES INQUIRY] ${requirement} - ${name}`;
-      const mailtoUrl = `mailto:sales@vinitenterprise.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+      const mailtoUrl = `mailto:sales@vinitenterprise.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
 
       window.location.href = mailtoUrl;
-      showToast(`Enquiry Sent! Opening email client to send sales inquiry to sales@vinitenterprise.com`);
+      showToast(`Enquiry Sent! Opening email client to send sales inquiry to sales@vinitenterprise.in`);
       contactForm.reset();
     });
   }

@@ -108,7 +108,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
                       InkWell(
                         onTap: () => _launchUrl(
-                          'mailto:info@vinitenterprise.com',
+                          'mailto:info@vinitenterprise.in',
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -120,7 +120,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                             ),
                             const SizedBox(width: 4),
                             Text(
-                              'info@vinitenterprise.com',
+                              'info@vinitenterprise.in',
                               style: TextStyle(
                                 color: isDark
                                     ? Colors.white

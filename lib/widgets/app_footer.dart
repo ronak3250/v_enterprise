@@ -139,7 +139,7 @@ class AppFooter extends StatelessWidget {
                           'Comm.: 8-1/B, Suraxa Society, Near ITI Cross Road, '
                               'Visnagar - 384315, Dist. Mehsana, Gujarat, India.',
                         ),_buildContactRow(Icons.phone_outlined, '+91 91732 51191', onTap: () => _launchUrl('tel:+919173251191')),
-                        _buildContactRow(Icons.email_outlined, 'sales@vinitenterprise.com', onTap: () => _launchUrl('mailto:sales@vinitenterprise.com')),
+                        _buildContactRow(Icons.email_outlined, 'sales@vinitenterprise.in', onTap: () => _launchUrl('mailto:sales@vinitenterprise.in')),
                         const SizedBox(height: 16),
                         ElevatedButton.icon(
                           onPressed: () => QuoteRequestSheet.show(context),

@@ -650,6 +650,10 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 44),
+
+          // LIVE VIDEO DEMONSTRATION SECTION (EKOMILK & WEIGHING SCALE MOBILE SYNC)
+          _buildVideoDemoSection(context, isDark, screenWidth),
 
           const SizedBox(height: 44),
 
@@ -1289,4 +1293,250 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildVideoDemoSection(BuildContext context, bool isDark, double screenWidth) {
+    final isWide = screenWidth > 800;
+    return Container(
+      width: double.infinity,
+      color: isDark ? const Color(0xFF0F172A) : const Color(0xFFF1F5F9),
+      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.play_circle_fill_rounded, color: Colors.red, size: 20),
+              const SizedBox(width: 8),
+              const Text(
+                'LIVE VIDEO DEMONSTRATION',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF0072CE),
+                  letterSpacing: 1,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(
+            'Direct Ekomilk & Weighing Scale Mobile Data Sync',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: screenWidth < 600 ? 20 : 24,
+              fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0A2540),
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            'Watch how our mobile app connects via Bluetooth to capture weight & milk testing parameters (Fat, SNF, Water) with zero manual typing.',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 13,
+              color: isDark ? const Color(0xFF94A3B8) : Colors.grey[600],
+            ),
+          ),
+          const SizedBox(height: 28),
+
+          Flex(
+            direction: isWide ? Axis.horizontal : Axis.vertical,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Left Video Showcase Box
+              _buildResponsiveFlexChild(
+                isWide: isWide,
+                flex: 6,
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF07142A),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.25),
+                        blurRadius: 20,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.red.withValues(alpha: 0.15),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
+                        ),
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.bluetooth_connected, color: Colors.redAccent, size: 14),
+                            SizedBox(width: 6),
+                            Text(
+                              'Live Hardware Bluetooth Sync',
+                              style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.redAccent),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: AspectRatio(
+                          aspectRatio: 16 / 9,
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/vinit_dairy_product_suite.jpg',
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                errorBuilder: (ctx, e, st) => Container(color: Colors.black),
+                              ),
+                              Container(
+                                color: Colors.black.withValues(alpha: 0.45),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.all(16),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF0072CE),
+                                      shape: BoxShape.circle,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: const Color(0xFF0072CE).withValues(alpha: 0.6),
+                                          blurRadius: 20,
+                                        ),
+                                      ],
+                                    ),
+                                    child: const Icon(
+                                      Icons.play_arrow_rounded,
+                                      color: Colors.white,
+                                      size: 36,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  const Text(
+                                    'Click to Play Live Video Demo',
+                                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Demo: EKOMILK Analyzer + Weighing Scale Machine → Instant Mobile App Transfer',
+                        style: TextStyle(fontSize: 11.5, color: Color(0xFF94A3B8)),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              if (!isWide) const SizedBox(height: 24),
+              if (isWide) const SizedBox(width: 28),
+
+              // Right Steps List
+              _buildResponsiveFlexChild(
+                isWide: isWide,
+                flex: 5,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildVideoStepItem(
+                      Icons.bluetooth_rounded,
+                      '1. Automatic Bluetooth Pairing',
+                      'App connects automatically to weighing scale load cell & EKOMILK analyzer.',
+                      isDark,
+                    ),
+                    const SizedBox(height: 12),
+                    _buildVideoStepItem(
+                      Icons.science_rounded,
+                      '2. Real-Time Fat & SNF Transfer',
+                      'Fat%, SNF%, and Added Water% parameters populate directly on phone screen.',
+                      isDark,
+                    ),
+                    const SizedBox(height: 12),
+                    _buildVideoStepItem(
+                      Icons.scale_rounded,
+                      '3. Zero-Error Weight Sync',
+                      'Milk weight locks automatically from scale without manual operator typing.',
+                      isDark,
+                    ),
+                    const SizedBox(height: 12),
+                    _buildVideoStepItem(
+                      Icons.receipt_long_rounded,
+                      '4. Instant Slip & Cloud Record',
+                      'Calculates payout per rate chart, prints receipt & sends farmer SMS alert.',
+                      isDark,
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton.icon(
+                      onPressed: () => QuoteRequestSheet.show(context, initialProduct: 'Mobile App & Scale Sync Setup'),
+                      icon: const Icon(Icons.videocam_rounded, color: Colors.white, size: 18),
+                      label: const Text('Request Live Demo Setup', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF0072CE),
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildVideoStepItem(IconData icon, String title, String desc, bool isDark) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: const Color(0xFF0072CE).withValues(alpha: 0.12),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(icon, color: const Color(0xFF0072CE), size: 18),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.bold,
+                  color: isDark ? Colors.white : const Color(0xFF0A2540),
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                desc,
+                style: TextStyle(
+                  fontSize: 11.5,
+                  color: isDark ? const Color(0xFFCBD5E1) : Colors.grey[600],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
 }
+

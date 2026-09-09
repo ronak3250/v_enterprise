@@ -1619,6 +1619,127 @@ textarea.form-control {
 }
 
 /* ==========================================================================
+   LIVE VIDEO DEMONSTRATION SECTION
+   ========================================================================== */
+.video-showcase-section {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.video-player-box {
+  background: var(--primary);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.video-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(239, 68, 68, 0.15);
+  color: #F87171;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.demo-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  display: block;
+}
+
+.video-caption {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.video-highlights h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.video-highlights p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.video-steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.video-steps-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.step-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--royal-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.video-steps-list h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.2rem;
+}
+
+.video-steps-list p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
    INTERACTIVE DAIRY ROI & SAVINGS CALCULATOR
    ========================================================================== */
 .roi-calculator-section {
@@ -1971,7 +2092,7 @@ textarea.form-control {
     grid-template-columns: 1fr;
   }
 
-  .ecosystem-pane.active, .iot-pane.active {
+  .ecosystem-pane.active, .iot-pane.active, .video-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
