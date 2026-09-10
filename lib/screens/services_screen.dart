@@ -88,48 +88,48 @@ class ServicesScreen extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       crossAxisSpacing: 18,
                       mainAxisSpacing: 18,
-                      childAspectRatio: crossAxisCount >= 3 ? 2.2 : (crossAxisCount == 2 ? 1.8 : 2.0),
+                      childAspectRatio: crossAxisCount >= 3 ? 1.4 : (crossAxisCount == 2 ? 1.25 : 1.5),
                   children: [
                     _buildServiceCard(
                       context,
                       title: 'Customer & Tech Support',
                       icon: Icons.headset_mic_outlined,
-                      desc: '24/7 helpline and field assistance addressing hardware inquiries, software troubleshooting, and operational guidance.',
+                      desc: '24/7 dedicated helpline and rapid on-field technical support. Our engineers assist village operators with hardware inquiries, software rate chart setups, and step-by-step operational troubleshooting to keep your milk intake smooth.',
                       isDark: isDark,
                     ),
                     _buildServiceCard(
                       context,
                       title: 'Training & Education',
                       icon: Icons.school_outlined,
-                      desc: 'On-site training workshops for village secretaries and operators to optimize equipment usage, cleaning, and rate chart handling.',
+                      desc: 'Interactive on-site training workshops for village secretaries and collection staff. Covers proper equipment operation, daily ultrasonic cleaning routines, sensor handling, and accurate rate chart maintenance to prevent errors.',
                       isDark: isDark,
                     ),
                     _buildServiceCard(
                       context,
                       title: 'Maintenance & AMC',
                       icon: Icons.build_circle_outlined,
-                      desc: 'Comprehensive and non-comprehensive Annual Maintenance Contracts (AMC), channel cleaning, and sensor alignments.',
+                      desc: 'Comprehensive and non-comprehensive Annual Maintenance Contracts (AMC) tailored for milk collection centers. Includes routine sensor recalibration, tubing replacements, channel flushing, and priority emergency repair visits.',
                       isDark: isDark,
                     ),
                     _buildServiceCard(
                       context,
                       title: 'Remote Monitoring',
                       icon: Icons.cell_tower_outlined,
-                      desc: 'Proactive remote health monitoring of AMCUs & DPUs, minimizing downtime through instant telemetry diagnostics.',
+                      desc: 'Proactive remote health tracking for AMCUs, DPUs, and milk testing terminals. Utilizes smart telemetry diagnostics to monitor device performance, detect sensor drift, and resolve system anomalies before downtime occurs.',
                       isDark: isDark,
                     ),
                     _buildServiceCard(
                       context,
                       title: 'Data Analytics & Reporting',
                       icon: Icons.analytics_outlined,
-                      desc: 'Comprehensive shift intake reports, farmer ledgers, RMRD dock automation, and rate chart updates for dairy unions.',
+                      desc: 'Automated shift collection reports, member payment ledgers, and RMRD dock intake analytics. Provides dairy unions and management with real-time milk quantity, average fat/SNF trends, and seamless ERP data exports.',
                       isDark: isDark,
                     ),
                     _buildServiceCard(
                       context,
                       title: 'Calibration & QA',
                       icon: Icons.tune_outlined,
-                      desc: 'Precision channel calibration using certified reference milk samples for ultrasonic and FTIR milk analyzers.',
+                      desc: 'Precision multi-point channel calibration using certified reference milk samples. Ensures ultrasonic and FTIR milk analyzers adhere strictly to ISO and dairy union quality control parameters for uncompromised accuracy.',
                       isDark: isDark,
                     ),
                   ],
@@ -221,36 +221,40 @@ class ServicesScreen extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: const Color(0xFF0072CE).withValues(alpha: 0.12),
-                shape: BoxShape.circle,
+        child: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF0072CE).withValues(alpha: 0.12),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(icon, color: const Color(0xFF0072CE), size: 22),
               ),
-              child: Icon(icon, color: const Color(0xFF0072CE), size: 22),
-            ),
-            const SizedBox(height: 14),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : const Color(0xFF0A2540),
+              const SizedBox(height: 14),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: isDark ? Colors.white : const Color(0xFF0A2540),
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              desc,
-              style: TextStyle(
-                fontSize: 12.5,
-                height: 1.5,
-                color: isDark ? const Color(0xFFCBD5E1) : Colors.grey[600],
+              const SizedBox(height: 8),
+              Text(
+                desc,
+                style: TextStyle(
+                  fontSize: 12.5,
+                  height: 1.5,
+                  color: isDark ? const Color(0xFFCBD5E1) : Colors.grey[600],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

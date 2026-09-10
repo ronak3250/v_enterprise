@@ -333,37 +333,7 @@ class AboutScreen extends StatelessWidget {
     return child;
   }
 
-  Widget _buildStatItem(String number, String label, bool isDark) {
-    return Column(
-      children: [
-        Text(
-          number,
-          style: const TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF0072CE),
-          ),
-        ),
-        const SizedBox(height: 2),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-            color: isDark ? Colors.grey[400] : Colors.grey[600],
-          ),
-        ),
-      ],
-    );
-  }
 
-  Widget _buildStatDivider(bool isDark) {
-    return Container(
-      height: 30,
-      width: 1,
-      color: isDark ? Colors.grey[800] : Colors.grey[300],
-    );
-  }
 
   Widget _buildInfoBox(
     BuildContext context, {

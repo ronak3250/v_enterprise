@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/models/product_model.dart';
-import 'package:vinit_enterprise/services/pdf_service.dart';
+
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
 import 'package:vinit_enterprise/widgets/brochure_viewer.dart';
@@ -15,9 +15,7 @@ class HomeScreen extends StatelessWidget {
 
   const HomeScreen({super.key, required this.onNavigateToTab});
 
-  void _downloadCorporateCatalog(BuildContext context) {
-    PdfService.downloadFullCatalogPdf(ProductCatalog.sampleProducts);
-  }
+
 
   void _openCorporateBrochure(BuildContext context) {
     BrochureViewerDialog.show(
@@ -171,14 +169,14 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                         ElevatedButton.icon(
                                           onPressed: () =>
-                                              _downloadCorporateCatalog(context),
+                                              _openCorporateBrochure(context),
                                           icon: Icon(
                                             Icons.picture_as_pdf_rounded,
                                             color: Colors.white,
                                             size: screenWidth >= 1600 ? 19 : 17,
                                           ),
                                           label: Text(
-                                            'Download Brochure',
+                                            'View Brochure',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,
@@ -525,49 +523,49 @@ class HomeScreen extends StatelessWidget {
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
                   childAspectRatio: screenWidth >= 1600
-                      ? 3.2
-                      : (screenWidth > 800 ? 2.6 : (screenWidth > 550 ? 2.2 : 2.4)),
+                      ? 1.9
+                      : (screenWidth > 800 ? 1.4 : (screenWidth > 550 ? 1.2 : 1.5)),
                   children: [
                     _buildServiceCard(
                       context,
                       Icons.science_outlined,
                       'Milk Testing Solutions',
-                      'Reliable ultrasonic equipment for raw milk composition testing.',
+                      'High-precision ultrasonic analyzers for instant, automated testing of Fat, SNF, Added Water, Density, and Protein. Delivers tamper-proof quality results in under 30 seconds per sample with minimal upkeep.',
                       () => onNavigateToTab(2),
                     ),
                     _buildServiceCard(
                       context,
                       Icons.memory_outlined,
                       'Milk Collection Systems',
-                      'Turnkey setup of Automatic Milk Collection Units (AMCU).',
+                      'Turnkey AMCU & DPU integration connecting milk analyzers, weighing scales, smart thermal printers, and cloud servers. Eliminates manual logbook entry errors while printing instant farmer payment receipts.',
                       () => onNavigateToTab(2),
                     ),
                     _buildServiceCard(
                       context,
                       Icons.build_circle_outlined,
                       'Dairy Equipment Installation',
-                      'Skilled technicians perform complete hardware mounting & cabling.',
+                      'Hassle-free on-site commissioning by experienced field engineers. Handles complete hardware mounting, electrical wiring, network setup, sensor calibration, and hands-on staff training.',
                       () => onNavigateToTab(2),
                     ),
                     _buildServiceCard(
                       context,
                       Icons.settings_outlined,
                       'Equipment Maintenance',
-                      'Periodic maintenance visits, cleaning of ultrasonic channels.',
+                      'Preventive care programs and ultrasonic channel cleaning services. Keeps your testing sensors and scales operating flawlessly during peak morning and evening intake cycles to prevent unexpected downtime.',
                       () => onNavigateToTab(2),
                     ),
                     _buildServiceCard(
                       context,
                       Icons.support_agent_outlined,
                       'Technical Support',
-                      'Prompt hotline assistance and rapid spare part delivery.',
+                      'Dedicated hotline assistance and rapid field technician dispatch for quick troubleshooting. Priority availability of genuine spare parts guarantees continuous, uninterrupted collection operations year-round.',
                       () => onNavigateToTab(2),
                     ),
                     _buildServiceCard(
                       context,
                       Icons.tune_outlined,
                       'Customized Dairy Solutions',
-                      'Tailored automation panel configurations & rate charts.',
+                      'Tailor-made automation panel configurations, rate chart formulas, and localized software setups. Designed to align perfectly with regional society guidelines and central dairy cooperative ERP systems.',
                       () => onNavigateToTab(2),
                     ),
                   ],
@@ -726,38 +724,38 @@ class HomeScreen extends StatelessWidget {
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
                   childAspectRatio: screenWidth >= 1600
-                      ? 3.0
-                      : (screenWidth > 800 ? 2.5 : (screenWidth > 550 ? 2.2 : 2.6)),
+                      ? 1.8
+                      : (screenWidth > 800 ? 1.35 : (screenWidth > 550 ? 1.15 : 1.45)),
                   children: [
                     _buildDarkFeatureCard(
                       Icons.verified_outlined,
                       'Uncompromising Accuracy',
-                      'Calibrated sensors with 99.8% repeat accuracy under continuous operation.',
+                      'Calibrated ultrasonic sensors engineered for 99.8% repeat measurement accuracy. Built to maintain continuous precision during morning milk rushes, ensuring transparent and fair farmer payouts.',
                     ),
                     _buildDarkFeatureCard(
                       Icons.shield_outlined,
                       'Reliable Quality',
-                      'Food-grade SS-304 housing resisting milk acid washdown corrosion.',
+                      'Fabricated with food-grade SS-304 stainless steel and industrial-grade circuitry. Resists acidic milk washdown solutions, dust, humidity, and daily wear in tough rural collection environments.',
                     ),
                     _buildDarkFeatureCard(
                       Icons.workspace_premium_outlined,
                       'Industry Expertise',
-                      '10+ years of dedicated dairy automation engineering experience.',
+                      'Over 10 years of specialized engineering experience in dairy collection automation. Deep operational knowledge of village collection centers, cooperative workflows, and industrial dairy needs.',
                     ),
                     _buildDarkFeatureCard(
                       Icons.support_agent_outlined,
                       'Complete Support',
-                      'On-site installation, training, and 24/7 rapid technical helpdesk.',
+                      'Comprehensive operational guidance from field installation and operator training to preventive care. Backed by a responsive 24/7 technical helpdesk and prompt on-site field services.',
                     ),
                     _buildDarkFeatureCard(
                       Icons.memory_outlined,
                       'Customized Solutions',
-                      'Tailored software rate charts and cloud ERP API gateways.',
+                      'Flexible hardware layouts and adaptable software options built for your workflow. Includes custom rate charts, Bluetooth/USB data logging, and seamless cloud ERP API integrations.',
                     ),
                     _buildDarkFeatureCard(
                       Icons.handshake_outlined,
                       'Long-term Partnership',
-                      'Dependable after-sales service and spare parts availability.',
+                      'We prioritize transparent communication, honest pricing, and dedicated after-sales service. Readily available genuine spare parts and long-term AMCs keep your investment yielding value for years.',
                     ),
                   ],
                 ),
@@ -802,32 +800,32 @@ class HomeScreen extends StatelessWidget {
                   crossAxisSpacing: 14,
                   mainAxisSpacing: 14,
                   childAspectRatio: screenWidth >= 1600
-                      ? 2.2
-                      : (screenWidth > 800 ? 1.8 : (screenWidth > 500 ? 1.8 : 2.6)),
+                      ? 1.5
+                      : (screenWidth > 800 ? 1.2 : (screenWidth > 500 ? 1.1 : 1.45)),
                   children: [
                     _buildStepCard(
                       context,
                       '1',
-                      'Assessment',
-                      'Evaluating site requirements, milk volume, and network.',
+                      'Requirement Assessment',
+                      'We evaluate your village collection center or dairy plant layout, daily milk volume, and infrastructure to determine the exact testing speed, hardware units, and software setup required.',
                     ),
                     _buildStepCard(
                       context,
                       '2',
-                      'Proposal',
-                      'Recommending hardware models, rate charts, and modules.',
+                      'Tailored Proposal',
+                      'Our engineering team recommends an ideal solution package matching your budget. We select optimal milk analyzer models, digital weighing scales, stirrers, rate charts, and data processors.',
                     ),
                     _buildStepCard(
                       context,
                       '3',
-                      'Installation',
-                      'Field mounting, sensor calibration, and staff training.',
+                      'Installation & Training',
+                      'Certified technicians execute complete hardware mounting, cabling, sensor calibration, and device pairing. We provide hands-on operator training for local staff to ensure immediate, smooth intake.',
                     ),
                     _buildStepCard(
                       context,
                       '4',
-                      'Support & AMC',
-                      'Preventive maintenance, spare parts, and software updates.',
+                      'Support & Maintenance',
+                      'Continuous post-deployment backing with scheduled preventive maintenance, routine sensor recalibration, fast spare part delivery, and helpline support to keep your operations zero-downtime.',
                     ),
                   ],
                 ),
@@ -994,151 +992,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStatItem(
-      String value,
-      String label,
-      bool isDark,
-      ) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          value,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w900,
-            height: 1,
-            letterSpacing: -0.8,
-            color: isDark
-                ? const Color(0xFF60A5FA)
-                : const Color(0xFF2563EB),
-          ),
-        ),
-
-        const SizedBox(height: 8),
-
-        Text(
-          label,
-          textAlign: TextAlign.center,
-          maxLines: 2,
-          style: TextStyle(
-            fontSize: 11.5,
-            height: 1.3,
-            fontWeight: FontWeight.w600,
-            color: isDark
-                ? const Color(0xFFCBD5E1)
-                : const Color(0xFF334155),
-          ),
-        ),
-      ],
-    );
-  }  Widget _buildCheckItem(
-    String text1,
-    String text2,
-    bool isDark,
-    double screenWidth,
-  ) {
-    if (screenWidth < 500) {
-      return Column(
-        children: [
-          Row(
-            children: [
-              const Icon(
-                Icons.check_circle_rounded,
-                color: Color(0xFF10B981),
-                size: 18,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  text1,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: isDark
-                        ? const Color(0xFFE2E8F0)
-                        : const Color(0xFF1E293B),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              const Icon(
-                Icons.check_circle_rounded,
-                color: Color(0xFF10B981),
-                size: 18,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  text2,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: isDark
-                        ? const Color(0xFFE2E8F0)
-                        : const Color(0xFF1E293B),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      );
-    }
-    return Row(
-      children: [
-        Expanded(
-          child: Row(
-            children: [
-              const Icon(
-                Icons.check_circle_rounded,
-                color: Color(0xFF10B981),
-                size: 18,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  text1,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: isDark
-                        ? const Color(0xFFE2E8F0)
-                        : const Color(0xFF1E293B),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Row(
-            children: [
-              const Icon(
-                Icons.check_circle_rounded,
-                color: Color(0xFF10B981),
-                size: 18,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  text2,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: isDark
-                        ? const Color(0xFFE2E8F0)
-                        : const Color(0xFF1E293B),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
 
   Widget _buildServiceCard(
     BuildContext context,
@@ -1187,8 +1040,6 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     desc,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 11.5,
                       color: isDark
@@ -1235,8 +1086,6 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     desc,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 11,
                       color: Color(0xFFCBD5E1),
@@ -1303,8 +1152,6 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     desc,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 10.5,
                       color: isDark
