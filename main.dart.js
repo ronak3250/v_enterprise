@@ -36569,7 +36569,7 @@ $S:2}
 B.aHT.prototype={
 $1(a){var s=B.dT().b
 s=s==null?null:s.canvasKitBaseUrl
-return(s==null?"https://www.gstatic.com/flutter-canvaskit/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/":s)+a},
+return(s==null?"https://www.gstatic.com/flutter-canvaskit/06a2e2a110089dff50fe635cffd2a61e1b24fbcd/":s)+a},
 $S:126}
 B.TE.prototype={
 gp(a){var s=this.a
@@ -118953,7 +118953,7 @@ r=this.a
 s=B.eB(B.bE(B.b([A.b1S,A.cg,r.mB("Home",new B.a8V(r)),r.mB("About Us",new B.a8W(r)),r.mB("Services",new B.a8X(r)),r.mB("Products",new B.a9_(r)),r.mB("Contact",new B.a90(r))],l),A.at,A.Q,A.V),o,s)
 q=B.eB(B.bE(B.b([A.b2h,A.cg,r.mB("Milk Analyzers",new B.a91(r)),r.mB("Auto Milk Collection Units",new B.a92(r)),r.mB("Milk Weighing Scale Systems",new B.a93(r)),r.mB("Ultrasonic Milk Stirrers",new B.a94(r)),r.mB("Dairy Control Automation",new B.a95(r))],l),A.at,A.Q,A.V),o,180)
 p=n?300:1/0
-return B.vA(A.ub,B.b([m,s,q,B.eB(B.bE(B.b([A.b20,A.cg,r.Td(A.x7,"Factory: Sr. No. 7081, Umta-Visnagar Road, At Umta - 384320, Tal. Visnagar, Dist. Mehsana, Gujarat, India."),r.Td(A.x0,"Comm.: 8-1/B, Suraxa Society, Near ITI Cross Road, Visnagar - 384315, Dist. Mehsana, Gujarat, India."),r.I3(A.lb,"+91 91732 51191",new B.a96(r)),r.I3(A.qb,"sales@vinitenterprise.in",new B.a8Y(r)),A.cH,B.jA(A.XO,A.b1G,new B.a8Z(a),B.hE(o,o,A.T,o,o,o,o,o,o,o,o,o,A.VQ,o,new B.bM(B.aH(8),A.P),o,o,o,o,o))],l),A.at,A.Q,A.V),o,p)],l),A.fB,32,32)},
+return B.vA(A.ub,B.b([m,s,q,B.eB(B.bE(B.b([A.b20,A.cg,r.Td(A.x7,"Factory: Sr. No. 7081, Umta-Visnagar Road, At Umta - 384320, Tal. Visnagar, Dist. Mehsana, Gujarat, India."),r.Td(A.x0,"Communication: 8-1/B, Suraxa Society, Near ITI Cross Road, Visnagar - 384315, Dist. Mehsana, Gujarat, India."),r.I3(A.lb,"+91 91732 51191",new B.a96(r)),r.I3(A.qb,"sales@vinitenterprise.in",new B.a8Y(r)),A.cH,B.jA(A.XO,A.b1G,new B.a8Z(a),B.hE(o,o,A.T,o,o,o,o,o,o,o,o,o,A.VQ,o,new B.bM(B.aH(8),A.P),o,o,o,o,o))],l),A.at,A.Q,A.V),o,p)],l),A.fB,32,32)},
 $S:230}
 B.a8V.prototype={
 $0(){var s=this.a.c.$1(0)
