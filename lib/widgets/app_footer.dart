@@ -142,7 +142,7 @@ class AppFooter extends StatelessWidget {
                         ),
                         _buildContactRow(
                           Icons.location_on_outlined,
-                          'Comm.: 8-1/B, Suraxa Society, Near ITI Cross Road, '
+                          'Communication: 8-1/B, Suraxa Society, Near ITI Cross Road, '
                               'Visnagar - 384315, Dist. Mehsana, Gujarat, India.',
                         ),_buildContactRow(Icons.phone_outlined, '+91 91732 51191', onTap: () => _launchUrl('tel:+919173251191')),
                         _buildContactRow(Icons.email_outlined, 'sales@vinitenterprise.in', onTap: () => _launchUrl('mailto:sales@vinitenterprise.in')),
