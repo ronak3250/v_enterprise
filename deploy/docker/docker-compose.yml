@@ -1,0 +1,11 @@
+services:
+  web:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile
+    container_name: vinit_enterprise_web
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production

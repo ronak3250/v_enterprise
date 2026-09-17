@@ -1,0 +1,13 @@
+{
+  "name": "vinit-enterprise-web-server",
+  "version": "1.0.0",
+  "description": "Production static server for Vinit Enterprise Flutter Web application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "compression": "^1.8.0",
+    "express": "^4.21.2"
+  }
+}
