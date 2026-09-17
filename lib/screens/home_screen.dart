@@ -676,8 +676,9 @@ class HomeScreen extends StatelessWidget {
           ),
           const SizedBox(height: 44),
 
+
           // LIVE VIDEO DEMONSTRATION SECTION (EKOMILK & WEIGHING SCALE MOBILE SYNC)
-          _buildVideoDemoSection(context, isDark, screenWidth),
+          // _buildVideoDemoSection(context, isDark, screenWidth),
 
           const SizedBox(height: 44),
 
