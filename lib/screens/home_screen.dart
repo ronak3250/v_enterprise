@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vinit_enterprise/models/product_model.dart';
 
+import 'package:vinit_enterprise/services/pdf_service.dart';
 import 'package:vinit_enterprise/widgets/animated_entrance.dart';
 import 'package:vinit_enterprise/widgets/app_footer.dart';
-import 'package:vinit_enterprise/widgets/brochure_viewer.dart';
 import 'package:vinit_enterprise/widgets/dairy_domain_ui.dart';
 import 'package:vinit_enterprise/widgets/dairy_lottie_widget.dart';
 import 'package:vinit_enterprise/widgets/product_card_widget.dart';
@@ -15,15 +15,25 @@ class HomeScreen extends StatelessWidget {
 
   const HomeScreen({super.key, required this.onNavigateToTab});
 
-
-
-  void _openCorporateBrochure(BuildContext context) {
-    BrochureViewerDialog.show(
-      context,
-      title: 'Vinit Enterprise Product Catalog Brochure',
-      brochurePath: ProductCatalog.allBrochurePaths.first,
-      allBrochures: ProductCatalog.allBrochurePaths,
+  Future<void> _downloadCorporateBrochure(BuildContext context) async {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Row(
+          children: [
+            SizedBox(
+              width: 18,
+              height: 18,
+              child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+            ),
+            SizedBox(width: 12),
+            Text('Downloading Vinit Enterprise Complete Brochure...'),
+          ],
+        ),
+        duration: Duration(seconds: 3),
+        backgroundColor: Color(0xFF0072CE),
+      ),
     );
+    await PdfService.downloadFullCatalogPdf();
   }
 
   @override
@@ -169,14 +179,14 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                         ElevatedButton.icon(
                                           onPressed: () =>
-                                              _openCorporateBrochure(context),
+                                              _downloadCorporateBrochure(context),
                                           icon: Icon(
-                                            Icons.picture_as_pdf_rounded,
+                                            Icons.file_download_rounded,
                                             color: Colors.white,
                                             size: screenWidth >= 1600 ? 19 : 17,
                                           ),
                                           label: Text(
-                                            'View Brochure',
+                                            'Download Brochure',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,

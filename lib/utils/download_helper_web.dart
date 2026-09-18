@@ -11,18 +11,23 @@ Future<void> downloadBytesDirectly(Uint8List bytes, String fileName, {String mim
     final url = web.URL.createObjectURL(blob);
     final anchor = web.HTMLAnchorElement()
       ..href = url
-      ..target = '_blank'
-      ..download = fileName;
+      ..download = fileName
+      ..style.display = 'none';
     web.document.body?.appendChild(anchor);
     anchor.click();
     anchor.remove();
-    web.URL.revokeObjectURL(url);
+    // Delay revocation to ensure browser completely finishes reading stream
+    Future.delayed(const Duration(seconds: 60), () {
+      try {
+        web.URL.revokeObjectURL(url);
+      } catch (_) {}
+    });
   } catch (_) {
     final resolvedUrl = Uri.base.resolve(fileName).toString();
     final anchor = web.HTMLAnchorElement()
       ..href = resolvedUrl
-      ..target = '_blank'
-      ..download = fileName;
+      ..download = fileName
+      ..style.display = 'none';
     web.document.body?.appendChild(anchor);
     anchor.click();
     anchor.remove();
@@ -52,8 +57,8 @@ Future<void> downloadOrOpenAsset(String assetPath) async {
     final fileName = assetPath.split('/').last;
     final anchor = web.HTMLAnchorElement()
       ..href = resolvedUrl
-      ..target = '_blank'
-      ..download = fileName;
+      ..download = fileName
+      ..style.display = 'none';
     web.document.body?.appendChild(anchor);
     anchor.click();
     anchor.remove();

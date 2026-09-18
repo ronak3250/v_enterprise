@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -22,9 +23,61 @@ class PdfService {
     'assets/brochures/vinit back cover.jpeg',
   ];
 
+  /// Robust multi-candidate asset loader supporting .jpg, .jpeg, spaces, and underscores
+  static Future<Uint8List?> _loadAssetBytes(String path) async {
+    final baseName = path.split('/').last;
+    final candidates = <String>{
+      path,
+      path.replaceAll('.jpeg', '.jpg'),
+      path.replaceAll('.jpg', '.jpeg'),
+      path.replaceAll(' ', '_'),
+      path.replaceAll('_', ' '),
+      'assets/brochures/$baseName',
+      'assets/brochures/${baseName.replaceAll('.jpeg', '.jpg')}',
+      'assets/brochures/${baseName.replaceAll('.jpg', '.jpeg')}',
+      'assets/brochures/${baseName.replaceAll(' ', '_')}',
+      'assets/brochures/${baseName.replaceAll('_', ' ')}',
+    };
+
+    for (final candidate in candidates) {
+      try {
+        final byteData = await rootBundle.load(candidate);
+        final bytes = byteData.buffer.asUint8List();
+        if (bytes.isNotEmpty) return bytes;
+      } catch (_) {}
+    }
+    return null;
+  }
+
   /// Generates and triggers direct download of a single product PDF brochure
-  /// (Front Cover + Product Official Sheet + Back Cover)
+  /// (Front Cover + Product Official Sheet + Back Cover = 3 Complete Pages)
   static Future<void> downloadProductPdf(Product product) async {
+    final sanitizeTitle = product.title.replaceAll(RegExp(r'[^a-zA-Z0-9_\-]'), '_');
+    final fileName = '${sanitizeTitle}_Official_Brochure.pdf';
+
+    // 1. Try to load pre-built dedicated 3-page product PDF directly
+    if (product.brochurePath.isNotEmpty) {
+      final base = product.brochurePath.split('/').last.replaceAll(RegExp(r'\.(jpg|jpeg|png)$', caseSensitive: false), '');
+      final pdfCandidates = <String>[
+        'assets/brochures/$base.pdf',
+        product.brochurePath.replaceAll(RegExp(r'\.(jpg|jpeg|png)$', caseSensitive: false), '.pdf'),
+        'assets/brochures/${base.replaceAll(' ', '_')}.pdf',
+        'assets/brochures/${base.replaceAll('_', ' ')}.pdf',
+      ];
+
+      for (final candidate in pdfCandidates) {
+        try {
+          final byteData = await rootBundle.load(candidate);
+          final bytes = byteData.buffer.asUint8List();
+          if (bytes.isNotEmpty) {
+            await downloadBytesDirectly(bytes, fileName, mimeType: 'application/pdf');
+            return;
+          }
+        } catch (_) {}
+      }
+    }
+
+    // 2. Dynamic generation: Ensure all 3 pages (Cover + Product + Back Cover) are loaded
     final pdf = pw.Document(
       title: '${product.title} - Official Brochure',
       author: 'Vinit Enterprise',
@@ -37,14 +90,12 @@ class PdfService {
       'assets/brochures/vinit back cover.jpeg',
     ];
 
-    bool addedAnyPage = false;
+    int addedPages = 0;
 
     for (final path in pagesToLoad) {
-      try {
-        final byteData = await rootBundle.load(path);
-        final imageBytes = byteData.buffer.asUint8List();
+      final imageBytes = await _loadAssetBytes(path);
+      if (imageBytes != null && imageBytes.isNotEmpty) {
         final pdfImage = pw.MemoryImage(imageBytes);
-
         pdf.addPage(
           pw.Page(
             pageFormat: PdfPageFormat.a4,
@@ -59,12 +110,12 @@ class PdfService {
             },
           ),
         );
-        addedAnyPage = true;
-      } catch (_) {}
+        addedPages++;
+      }
     }
 
-    // Fallback if image asset fails to load
-    if (!addedAnyPage) {
+    // Fallback text page if assets could not be loaded
+    if (addedPages == 0) {
       pdf.addPage(
         pw.Page(
           pageFormat: PdfPageFormat.a4,
@@ -124,14 +175,31 @@ class PdfService {
     }
 
     final bytes = await pdf.save();
-    final sanitizeTitle = product.title.replaceAll(RegExp(r'[^a-zA-Z0-9_\-]'), '_');
-    final fileName = '${sanitizeTitle}_Official_Brochure.pdf';
-
     await downloadBytesDirectly(bytes, fileName, mimeType: 'application/pdf');
   }
 
   /// Generates and triggers direct download of the full 13-page corporate catalog PDF
-  static Future<void> downloadFullCatalogPdf(List<Product> products) async {
+  static Future<void> downloadFullCatalogPdf([List<Product>? products]) async {
+    const fileName = 'Vinit_Enterprise_Complete_Catalog.pdf';
+
+    // 1. Direct load of official uploaded PDF catalog
+    const catalogCandidates = [
+      'assets/brochures/vinit_enterprise_complete_catalog.pdf',
+      'assets/brochures/Vinit_Enterprise_Complete_Catalog.pdf',
+    ];
+
+    for (final candidate in catalogCandidates) {
+      try {
+        final byteData = await rootBundle.load(candidate);
+        final bytes = byteData.buffer.asUint8List();
+        if (bytes.isNotEmpty) {
+          await downloadBytesDirectly(bytes, fileName, mimeType: 'application/pdf');
+          return;
+        }
+      } catch (_) {}
+    }
+
+    // 2. Fallback dynamic build if asset load fails
     final pdf = pw.Document(
       title: 'Vinit Enterprise - Complete Corporate Catalog',
       author: 'Vinit Enterprise',
@@ -141,11 +209,9 @@ class PdfService {
     int loadedCount = 0;
 
     for (final path in fullCatalogPagePaths) {
-      try {
-        final byteData = await rootBundle.load(path);
-        final imageBytes = byteData.buffer.asUint8List();
+      final imageBytes = await _loadAssetBytes(path);
+      if (imageBytes != null && imageBytes.isNotEmpty) {
         final pdfImage = pw.MemoryImage(imageBytes);
-
         pdf.addPage(
           pw.Page(
             pageFormat: PdfPageFormat.a4,
@@ -161,11 +227,10 @@ class PdfService {
           ),
         );
         loadedCount++;
-      } catch (_) {}
+      }
     }
 
     if (loadedCount == 0) {
-      // Fallback text page if assets unavailable
       pdf.addPage(
         pw.Page(
           pageFormat: PdfPageFormat.a4,
@@ -177,6 +242,6 @@ class PdfService {
     }
 
     final bytes = await pdf.save();
-    await downloadBytesDirectly(bytes, 'Vinit_Enterprise_Complete_Catalog.pdf', mimeType: 'application/pdf');
+    await downloadBytesDirectly(bytes, fileName, mimeType: 'application/pdf');
   }
 }

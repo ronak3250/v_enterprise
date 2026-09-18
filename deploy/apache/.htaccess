@@ -24,6 +24,7 @@
   AddType font/woff2 .woff2
   AddType image/webp .webp
   AddType image/svg+xml .svg
+  AddType application/pdf .pdf
 </IfModule>
 
 # 3. Enable Gzip / Deflate Compression
