@@ -65,7 +65,7 @@ This guide explains how to deploy the production build of **Vinit Enterprise** a
    ```bash
    docker compose -f deploy/docker/docker-compose.yml up -d --build
    ```
-2. The application will be live at `http://localhost:8080`.
+2. The application will be live at `http://localhost` (or `http://vinitenterprise.in`).
 3. To stop the container:
    ```bash
    docker compose -f deploy/docker/docker-compose.yml down

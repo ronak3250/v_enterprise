@@ -6,6 +6,7 @@ services:
     container_name: vinit_enterprise_web
     restart: always
     ports:
-      - "8080:80"
+      # Map host port 80 to container port 80 so it opens directly at http://vinitenterprise.in
+      - "80:80"
     environment:
       - NODE_ENV=production

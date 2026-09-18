@@ -1,7 +1,6 @@
 # ----------------------------------------------------------------------
 # Vinit Enterprise - GoDaddy Production Apache Configuration (.htaccess)
 # Specifically optimized for GoDaddy cPanel & Linux Web Hosting
-# Handles SPA routing, WebAssembly (.wasm), SSL, Gzip & Browser Caching
 # ----------------------------------------------------------------------
 
 # 1. Enable URL Rewriting & SPA Routing
